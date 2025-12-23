@@ -1,0 +1,481 @@
+/* ============================================
+   SCROLL ANIMATION STYLES - SMOOTH & SLOW
+   ============================================ */
+
+/* Base state for animated elements */
+.animate-on-scroll {
+  opacity: 0;
+  transition: none;
+}
+
+/* Active state when element is in view */
+.animate-on-scroll.animate-in {
+  opacity: 1;
+}
+
+/* ============================================
+   FADE IN ANIMATIONS
+   ============================================ */
+
+.fade-in {
+  transform: translateY(20px);
+}
+
+.fade-in.animate-in {
+  animation: fadeInUp 1.4s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-scale {
+  transform: scale(0.9);
+}
+
+.fade-in-scale.animate-in {
+  animation: fadeInScale 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   SLIDE ANIMATIONS
+   ============================================ */
+
+.slide-up {
+  transform: translateY(40px);
+}
+
+.slide-up.animate-in {
+  animation: slideUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  transform: translateY(-40px);
+}
+
+.slide-down.animate-in {
+  animation: slideDown 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-left {
+  transform: translateX(-40px);
+}
+
+.slide-left.animate-in {
+  animation: slideLeft 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-right {
+  transform: translateX(40px);
+}
+
+.slide-right.animate-in {
+  animation: slideRight 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   ROTATE & FLIP ANIMATIONS
+   ============================================ */
+
+.rotate-in {
+  transform: rotate(-90deg) scale(0.8);
+}
+
+.rotate-in.animate-in {
+  animation: rotateIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.flip-in {
+  transform: perspective(600px) rotateX(-60deg);
+  transform-origin: bottom;
+}
+
+.flip-in.animate-in {
+  animation: flipIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-60deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg);
+  }
+}
+
+/* ============================================
+   BOUNCE & ELASTIC ANIMATIONS
+   ============================================ */
+
+.bounce-in {
+  transform: scale(0.5);
+}
+
+.bounce-in.animate-in {
+  animation: bounceIn 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+  }
+  65% {
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.elastic-in {
+  transform: scale(0);
+}
+
+.elastic-in.animate-in {
+  animation: elasticIn 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes elasticIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  80% {
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   CARD SPECIFIC ANIMATIONS
+   ============================================ */
+
+.card-float {
+  transform: translateY(50px);
+}
+
+.card-float.animate-in {
+  animation: cardFloat 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-flip {
+  transform: perspective(1000px) rotateY(-70deg);
+  transform-origin: left;
+}
+
+.card-flip.animate-in {
+  animation: cardFlip 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFlip {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-70deg);
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg);
+  }
+}
+
+/* ============================================
+   ZOOM ANIMATIONS
+   ============================================ */
+
+.zoom-in {
+  transform: scale(0.7);
+}
+
+.zoom-in.animate-in {
+  animation: zoomIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.zoom-out {
+  transform: scale(1.3);
+}
+
+.zoom-out.animate-in {
+  animation: zoomOut 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes zoomOut {
+  0% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   BLUR & FOCUS ANIMATIONS
+   ============================================ */
+
+.blur-in {
+  filter: blur(8px);
+  transform: scale(1.05);
+}
+
+.blur-in.animate-in {
+  animation: blurIn 1.8s ease-out forwards;
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(1.05);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   SPECIAL EFFECTS
+   ============================================ */
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.typewriter.animate-in {
+  animation: typewriter 2.5s steps(40) forwards;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.glow-in {
+  text-shadow: none;
+}
+
+.glow-in.animate-in {
+  animation: glowIn 2s ease-out forwards;
+}
+
+@keyframes glowIn {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ============================================
+   STAGGER DELAYS FOR MULTIPLE ELEMENTS
+   ============================================ */
+
+.animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.45s; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.6s; }
+.animate-on-scroll:nth-child(6) { transition-delay: 0.75s; }
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile but keep smooth */
+  .slide-left, .slide-right {
+    transform: translateX(25px);
+  }
+  
+  .slide-left {
+    transform: translateX(-25px);
+  }
+  
+  .slide-up, .slide-down {
+    transform: translateY(25px);
+  }
+  
+  .slide-down {
+    transform: translateY(-25px);
+  }
+  
+  .card-float {
+    transform: translateY(30px);
+  }
+  
+  /* Keep smooth timing on mobile */
+  .animate-on-scroll.animate-in {
+    animation-duration: 1.2s !important;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    animation: none !important;
+    transition: opacity 0.6s ease-in-out !important;
+    transform: none !important;
+  }
+  
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+  }
+}
