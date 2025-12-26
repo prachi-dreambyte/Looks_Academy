@@ -1,6 +1,12 @@
 // routes.jsx
+import Layout from "../components/layouts/PublicLayout.jsx";
+import AdminLayout from "../components/layouts/AdminLayout.jsx";
 import ProtectedRoute from "../components/ProtectedRoute.jsx";
-import Layout from "../components/layouts/layout.jsx";
+
+import Login from "../pages/auth/Login.jsx";
+import CreateAccount from "../pages/auth/CreateAccount.jsx";
+import AdminDashboard from "../pages/auth/AdminDashboard.jsx";
+
 import { lazy } from "react";
 import React from "react";
 import BlogDetail from "../pages/BlogDetails/BlogDetails.jsx";
@@ -9,35 +15,32 @@ const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
 const AboutUs = lazy(() => import("../pages/AboutUs/AboutUs.jsx"));
 export const routes = [
-  // Public routes
+  // 🌍 PUBLIC ROUTES
   {
     path: "/",
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-    //   { path: "contact-us", element: <Page /> },
-    //   { path: "portfolio", element: <Portfolio /> },
       { path: "blogs", element: <Blogs /> },
        { path: "BlogsDetail", element: <BlogDetail /> },
       { path: "AboutUs", element: <AboutUs /> },
+      { path: "aboutus", element: <AboutUs /> },
+      { path: "login", element: <Login /> },
+      { path: "createaccount", element: <CreateAccount /> },
     ],
   },
-  // ✅ Protected Admin routes PhotographyCourse
-  {
-    element: <ProtectedRoute />, // guard wrapper
-    // children: [
-    //   {
-    //     path: "/dashboard",
-    //     element: <AdminLayout />,
-    //     children: [
-    //       { index: true, element: <Dashboard /> },
-    //       { path: "blogs", element: <AllBlogs /> },
-    //       { path: "blogs/add", element: <AddBlog /> },
-    //       { path: "blogs/edit/:slug", element: <EditBlog /> },
-    //     ],
-    //   },
-    // ],
-  },
 
-  // Public login route
+  // 🔐 ADMIN ROUTES
+  {
+  element: <ProtectedRoute />,
+  children: [
+    {
+      element: <AdminLayout />,
+      children: [
+        { path: "admin-dashboard", element: <AdminDashboard /> },
+      ],
+    },
+  ],
+},
+
 ];
