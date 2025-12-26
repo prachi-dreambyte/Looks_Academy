@@ -93,7 +93,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/PhotographyCourse"
+                 to="/AboutUs#salonfaq"
                   className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
                 >
                   FAQ

@@ -6,6 +6,8 @@ import '../../style/aboutus.css';
 const AboutSection = () => {
 const [openIndex, setOpenIndex] = useState(null);
 
+
+
   const faqs = [
     {
       question: "What services do you offer?",
