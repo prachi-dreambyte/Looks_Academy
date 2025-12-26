@@ -69,7 +69,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/#aboutus" className="nav-link">
+                <Link to="/AboutUs" className="nav-link">
                   About Us
                 </Link>
               </li>
@@ -85,10 +85,10 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/services"
+                  to="/blogs"
                   className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
                 >
-                  Services
+                  Blogs
                 </NavLink>
               </li>
               <li className="nav-item">

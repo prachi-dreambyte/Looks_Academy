@@ -12,46 +12,86 @@ import { BookOpen, Clock, Users, Award, ArrowRight } from "lucide-react";
 
 
 function Home() {
-   const [isVisible, setIsVisible] = useState(false);
+    const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    fade: false,
+    cssEase: 'ease-in-out'
+  };
+
+  const slides = [
+    {
+      id: 1,
+      title: 'Slide 1',
+      description: 'Welcome to the first slide of this beautiful carousel',
+      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    },
+    {
+      id: 2,
+      title: 'Slide 2',
+      description: 'Explore amazing features with smooth transitions',
+      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+    },
+    {
+      id: 3,
+      title: 'Slide 3',
+      description: 'Interactive and responsive design for all devices',
+      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+    },
+    {
+      id: 4,
+      title: 'Slide 4',
+      description: 'Easy to customize and extend as you need',
+      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+    }
+  ];
+
+  const [isVisible, setIsVisible] = useState(false);
   
     useEffect(() => {
       setIsVisible(true);
     }, []);
-  
-    const experts = [
-      {
-        id: 1,
-        name: "Emma Rodriguez",
-        title: "Hair Styling Master",
-        specialty: "Advanced Cutting & Color",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
-        experience: "15+ Years"
-      },
-      {
-        id: 2,
-        name: "Marcus Chen",
-        title: "Makeup Artist Expert",
-        specialty: "Bridal & Fashion Makeup",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        experience: "12+ Years"
-      },
-      {
-        id: 3,
-        name: "Sophia Bennett",
-        title: "Nail Art Specialist",
-        specialty: "Manicure & Pedicure",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-        experience: "10+ Years"
-      },
-      {
-        id: 4,
-        name: "James Wilson",
-        title: "Barbering Expert",
-        specialty: "Classic & Modern Cuts",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-        experience: "18+ Years"
-      }
-    ];
+
+     const sections = [
+    {
+      letter: 'H',
+      title: 'SALON',
+      description: 'We are happy to be offering our full range of services in the salon, wash and blow drys!',
+      bgColor: '#f5f5f5',
+      textColor: '#000',
+      hasImage: true
+    },
+    {
+      letter: 'A',
+      title: 'SERVICES',
+      description: 'Specializing in: precision cutting, balayage, creative hair color and keratin smoothing.',
+      bgColor: '#000',
+      textColor: '#fff',
+      hasImage: true
+    },
+    {
+      letter: 'I',
+      title: 'TEAM',
+      description: 'We are looking forward to providing you with a fun, relaxing and safe appointment.',
+      bgColor: '#f5f5f5',
+      textColor: '#000',
+      hasImage: true
+    },
+    {
+      letter: 'R',
+      title: 'SHOP',
+      description: 'From barely there pink to balayage blonde, our color experts will nail any tone color.',
+      bgColor: '#000',
+      textColor: '#fff',
+      hasImage: true
+    }
+  ];
    const courses = [
     {
       id: 1,
@@ -118,63 +158,43 @@ function Home() {
     // Navigate to courses page or show more courses
     window.location.href = "/courses";
   };
-  // Array of Instagram reel URLs
-  const { pathname, hash } = useLocation();
-  useEffect(() => {
-  // Small delay to ensure Bootstrap is loaded
-  const timer = setTimeout(() => {
-    const carouselElement = document.getElementById('carouselExampleSlidesOnly');
-    if (carouselElement && window.bootstrap && window.bootstrap.Carousel) {
-      // Dispose of any existing carousel instance
-      const existingCarousel = window.bootstrap.Carousel.getInstance(carouselElement);
-      if (existingCarousel) {
-        existingCarousel.dispose();
-      }
-      
-      // Create new carousel instance
-      new window.bootstrap.Carousel(carouselElement, {
-        interval: 1000,
-         ride: 'carousel',
-          pause: false,
-           wrap: true});
-
-    }
-  }, 100);
   
-  return () => clearTimeout(timer);
-}, []);
-
-
-  useEffect(() => {
-    if (hash) {
-      const element = document.getElementById(hash.replace("#", ""));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [pathname, hash]);
-
   return (
     <>
       {/* <Header /> */}
-
- <section>
-      <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img className="d-block zoom" src="/image/3.jpg" alt="First slide" />
-          </div>
-          <div className="carousel-item">
-            <img className="d-block zoom" src="/image/1.jpg" alt="Second slide" />
-          </div>
-          <div className="carousel-item">
-            <img className="d-block zoom" src="/image/3.jpg" alt="Third slide" />
+      {/* <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-lg-10 col-xl-8">
+            <div className="bg-white rounded-4 shadow-lg p-4 p-md-5">
+              <h1 className="text-center text-dark mb-4 fs-2 fw-bold">
+                My Slick Carousel
+              </h1>
+              
+              <Slider {...settings}>
+                {slides.map((slide) => (
+                  <div key={slide.id} className="px-2">
+                    <div
+                      className="rounded-3 p-5 text-center text-white d-flex flex-column align-items-center justify-content-center"
+                      style={{
+                        background: slide.gradient,
+                        minHeight: '300px',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+                      onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                    >
+                      <h2 className="display-4 fw-bold mb-3">{slide.title}</h2>
+                      <p className="fs-5 mb-0" style={{ opacity: 0.95 }}>
+                        {slide.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </div> */}
     <section className="Aboutsection">
       <div className='container'>
           <div className='AboutBackground'>
@@ -200,6 +220,7 @@ function Home() {
         </div>
       </div>
     </section>
+    {/* **********COURSES**************** */}
     <section className="courses-section">
       <div className="container-fluid">
         {/* Section Header */}
@@ -266,201 +287,93 @@ function Home() {
       </div>
 
     </section>
-    {/* ***************teacher********************** */}
-    <div className='pageContainer'>
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .expert-card {
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .expert-card:hover {
-          transform: translateY(-15px) scale(1.02);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
-        }
-
-        .expert-image-wrapper {
-          position: relative;
-          overflow: hidden;
-          border-radius: 15px 15px 0 0;
-        }
-
-        .expert-image {
-          transition: all 0.5s ease;
-          width: 100%;
-          height: 300px;
-          object-fit: cover;
-        }
-
-        .expert-card:hover .expert-image {
-          transform: scale(1.15);
-          filter: brightness(0.8);
-        }
-
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(216, 135, 206, 0.8), rgba(106, 90, 205, 0.8));
-          opacity: 0;
-          transition: opacity 0.4s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 18px;
-          font-weight: 600;
-        }
-
-        .expert-card:hover .overlay {
-          opacity: 1;
-        }
-
-        .badge-custom {
-          background: linear-gradient(135deg, #d887ce, #6a5acd);
-          color: white;
-          padding: 6px 16px;
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 600;
-          display: inline-block;
-          animation: float 3s ease-in-out infinite;
-        }
-
-        .section-title {
-          position: relative;
-          display: inline-block;
-        }
-
-        .section-title::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80px;
-          height: 4px;
-          background: linear-gradient(90deg, #d887ce, #6a5acd);
-          border-radius: 2px;
-        }
-
-        .card-animate {
-          animation: fadeInUp 0.6s ease-out backwards;
-        }
-
-        .card-animate:nth-child(1) { animation-delay: 0.1s; }
-        .card-animate:nth-child(2) { animation-delay: 0.2s; }
-        .card-animate:nth-child(3) { animation-delay: 0.3s; }
-        .card-animate:nth-child(4) { animation-delay: 0.4s; }
-
-        .social-icons {
-          position: absolute;
-          bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 15px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .expert-card:hover .social-icons {
-          opacity: 1;
-        }
-
-        .social-icon {
-          width: 35px;
-          height: 35px;
-          background: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-          background: linear-gradient(135deg, #d887ce, #6a5acd);
-          color: white;
-          transform: translateY(-3px);
-        }
-      `}</style>
-
-      <section className='section'>
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="section-title">
-              Meet Our Expert Teachers
-            </h2>
-            <p p>
-              Learn from industry professionals with decades of combined experience
-            </p>
+      
+       {/**********HAIR**********/}
+      <div className="row g-0">
+  {sections.map((section, index) => (
+    <div key={index} className="col-12 col-md-6 col-lg-3">
+      <div 
+        className="hair-card"
+        style={{ 
+          backgroundColor: section.bgColor,
+          color: section.textColor
+        }}
+      >
+        {section.hasImage && (
+          <div className="team-image-container">
+            <div className="image-overlay"></div>
           </div>
-
+        )}
+        <div className="content-wrapper">
+          <div className="letter">{section.letter}</div>
+          <div className="hair-title">{section.title}</div>
+          <p className="hair-description">{section.description}</p>
+          <button 
+            className="view-more-btn"
+            style={{ 
+              borderColor: section.textColor,
+              color: section.textColor
+            }}
+          >
+            View more
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+      {/* new section */}
+       <div className="SectionWrapper">
+       <div className="container hero-content">
           <div className="row">
-            {experts.map((expert, index) => (
-              <div key={expert.id} className="col-lg-3 col-md-6 col-sm-12">
-                <div className={`card expert-card card-animate ${isVisible ? 'visible' : ''}`}>
-                  <div className="expert-image-wrapper">
-                    <img 
-                      src={expert.image} 
-                      alt={expert.name}
-                      className="expert-image"
-                    />
-                    <div className="overlay">
-                      View Profile
-                    </div>
-                    <div className="social-icons">
-                      <div className="social-icon">
-                        <span>📘</span>
-                      </div>
-                      <div className="social-icon">
-                        <span>📷</span>
-                      </div>
-                      <div className="social-icon">
-                        <span>🐦</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body text-center cardBody">
-                    <span className="badge-custom mb-2">{expert.experience}</span>
-                    <h5 className='expertName'>{expert.name}</h5>
-                    <p className='expertTitle'>{expert.title}</p>
-                    <p className='specialty'>
-                      <strong>Specialty:</strong> {expert.specialty}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <div className="col-lg-6 col-md-12">
+              <div className="salon-logo">LOOKS ACADEMY</div>
+              <h1 className="premium-title">PREMIUM HAIR</h1>
+              <h2 className="premium-subtitle">SERVICES</h2>
+              <button className="contact-btn">Contact us</button>
+            </div>
+
+            <div className="col-lg-6 col-md-12">
+            </div>
           </div>
         </div>
-      </section>
       </div>
+       {/* ***************teacher********************** */}
+      <section className='Aboutsection'>
+  <div className='container'>
+    <h1 className="Connect">Connect With Us</h1>
+    <p className="ConnectPara">Follow us on social media for updates and exclusive content</p>
+    <div className='row'>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop" alt="Salon interior"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=600&fit=crop" alt="Hair styling"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop" alt="Hair treatment"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1595475884562-073c30d45670?w=800&h=600&fit=crop" alt="Salon services"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="/image/looks.jpg" alt="Salon logo" className="logo-center"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=800&h=600&fit=crop" alt="Hair coloring"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop" alt="Manicure service"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&h=600&fit=crop" alt="Makeup services"/>
+      </div>
+      <div className='col-md-4'>
+        <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=800&h=600&fit=crop" alt="Salon chairs"/>
+      </div>
+    </div>
+  </div>
+</section>
     </>
   )
 }
