@@ -18,17 +18,17 @@ const AboutUs = lazy(() => import("../pages/AboutUs/AboutUs.jsx"));
 export const routes = [
   /* ---------------- PUBLIC ROUTES ---------------- */
   {
-    path: "/",
-    element: <PublicLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "blogs", element: <Blogs /> },
-      { path: "blogs-detail", element: <BlogDetail /> },
-      { path: "aboutus", element: <AboutUs /> },
-      { path: "login", element: <Login /> },
-      { path: "createaccount", element: <CreateAccount /> },
-    ],
-  },
+  path: "/",
+  element: <PublicLayout />,
+  children: [
+    { index: true, element: <Home /> },
+    { path: "blogs", element: <Blogs /> },
+    { path: "blogs/:id", element: <BlogDetail /> }, // ✅ FIXED
+    { path: "aboutus", element: <AboutUs /> },
+    { path: "login", element: <Login /> },
+    { path: "createaccount", element: <CreateAccount /> },
+  ],
+},
 
   /* ---------------- ADMIN ROUTES ---------------- */
  {
