@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import logo from "/public/image/looks.jpeg";
 
 
 const Header = () => {
@@ -51,7 +52,7 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="logo-link" onClick={closeMobileMenu}>
               <img 
-                src="/image/looks.png" 
+                src={logo}
                 alt="Looks" 
                 className="header-logo" 
               />
@@ -236,6 +237,7 @@ const Header = () => {
 
         .modern-nav {
           width: 100%;
+          background: black;
         }
 
         .nav-container {
@@ -274,6 +276,8 @@ const Header = () => {
           margin: 0;
           padding: 0;
         }
+          .nav-menu:hover{
+          color:white;}
 
         .nav-item {
           position: relative;
@@ -281,7 +285,7 @@ const Header = () => {
 
         .nav-link,
         .dropdown-btn {
-          color: #000;
+          color: #ffffff;
           text-decoration: none;
           text-transform: uppercase;
           font-size: 17px;
@@ -311,6 +315,7 @@ const Header = () => {
         .nav-link:hover::after,
         .nav-link.active::after {
           width: 100%;
+          color: #ffffff !important;
         }
 
         .nav-link.active {
@@ -374,9 +379,10 @@ const Header = () => {
 
         /* CTA Button */
         .cta-button {
+          background-color: white !important;
           background: #000;
           text-transform: uppercase;
-          color: #fff;
+          color: #000000 !important;
           padding: 12px 28px;
           border-radius: 8px;
           text-decoration: none;
@@ -387,8 +393,9 @@ const Header = () => {
         }
 
         .cta-button:hover {
+          background-color: white !important;
           background: transparent;
-          color: #000;
+          color: #000000 !important;
           transform: translateY(-2px);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
