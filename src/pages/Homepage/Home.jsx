@@ -337,11 +337,18 @@ function Home() {
              </div>
            </div>
         {/**********HAIR**********/}
-        <div className=''>
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className=''>
           <h1 className='LooksStory'>OUR STORY</h1>
           <p className='LooksParagraph'>Looks Salon is one of the most powerful and fastest growing salon chain brand PanIndia,
              that has given the hairstyling industry a new horizon. Emerging as the largest single salon chain in the country.</p>
         </div>
+          </div>
+          <div className="col-md-3"></div>
+        </div>
+        
       <div className="row g-0">
   {sections.map((section, index) => (
     <div key={index} className="col-12 col-md-6 col-lg-3">
