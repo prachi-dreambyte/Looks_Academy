@@ -1,4 +1,15 @@
 /* ROOT */
+.mobileLogo {
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo img {
+  width: 225px;
+  
+  display: block;
+}
+
 .dashboard {
   display: flex;
   min-height: 100vh;
@@ -157,4 +168,94 @@
   .logo {
     font-size: 22px;
   }
+  .cards{
+    margin-top: 30px;
+  }
+}
+/* HEADER EXTRA */
+.subText {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+.todayBox {
+  background: #000;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card small {
+  font-size: 13px;
+  color: #999;
+}
+
+/* EXTRA INFO SECTION */
+.extraSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.infoCard {
+  background: linear-gradient(145deg, #000000, #1a1a1a);
+  color: #fff;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.infoCard h4 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.infoCard p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.active {
+  color: #2ecc71;
+  font-weight: 600;
 }

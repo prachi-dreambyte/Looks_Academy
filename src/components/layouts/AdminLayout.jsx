@@ -8,16 +8,14 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import styles from "../../style/AdminDashboard.module.css";
+import logo from "/public/image/looks.jpeg"; // 👈 add your logo path
 
 const AdminLayout = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // 🔴 Clear session
     sessionStorage.removeItem("token");
-
-    // 🔁 Redirect to login
     navigate("/login", { replace: true });
   };
 
@@ -25,7 +23,13 @@ const AdminLayout = () => {
     <div className={styles.dashboard}>
       {/* MOBILE HEADER */}
       <header className={styles.mobileHeader}>
-        <h2>Looks Salon</h2>
+        {/* 🔥 LOGO INSTEAD OF TEXT */}
+        <img
+          src={logo}
+          alt="Looks Salon"
+          className={styles.mobileLogo}
+        />
+
         <button onClick={() => setOpen(!open)}>
           {open ? <FaTimes /> : <FaBars />}
         </button>
@@ -34,7 +38,7 @@ const AdminLayout = () => {
       {/* SIDEBAR */}
       <aside className={`${styles.sidebar} ${open ? styles.show : ""}`}>
         <div className={styles.logo}>
-          <span>Looks</span> Salon
+          <img src={logo} alt="Looks Salon" />
         </div>
 
         <ul className={styles.menu}>
