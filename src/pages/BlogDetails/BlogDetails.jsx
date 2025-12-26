@@ -1,133 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from "react-router-dom";
-import '../../style/blog-details.css';
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
+import styles from "../../style/BlogDetails.module.css";
 
 const BlogDetail = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const { id } = useParams();
+
+  const [blog, setBlog] = useState(null);
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const IMAGE_URL = "http://localhost:5000/uploads/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
-    };
+    fetchSingleBlog();
+    fetchRecentBlogs();
+  }, [id]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const blogPost = {
-    title: "Blogs",
-    date: "December 15, 2024",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
-
+  const fetchSingleBlog = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/blogs/get-blog/${id}`
+      );
+      setBlog(res.data.data);
+    } catch (error) {
+      console.error("Error fetching blog", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const recentBlogs = [
-    {
-      id: 1,
-      title: "Getting Started with React Hooks",
-      date: "Dec 10, 2024",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop"
-    },
-    {
-      id: 2,
-      title: "CSS Grid vs Flexbox: When to Use Which",
-      date: "Dec 8, 2024",
-      image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=400&h=250&fit=crop"
-    },
-    {
-      id: 3,
-      title: "Building Responsive Websites",
-      date: "Dec 5, 2024",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=250&fit=crop"
-    },
-    {
-      id: 4,
-      title: "JavaScript ES6+ Features You Should Know",
-      date: "Dec 1, 2024",
-      image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=250&fit=crop"
+  const fetchRecentBlogs = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/api/blogs/get-all-blogs"
+      );
+
+      const filtered = res.data.data
+        .filter((item) => item._id !== id)
+        .slice(0, 5);
+
+      setRecentBlogs(filtered);
+    } catch (error) {
+      console.error("Error fetching recent blogs", error);
     }
-  ];
+  };
+
+  if (loading) return <p className="text-center my-5">Loading...</p>;
+  if (!blog) return <p className="text-center my-5">Blog not found</p>;
 
   return (
-    <>
-    <section>
-        <div className=''>
-            <img src="/image/HomeBanners/1.webp" alt="banner"/>
-        </div>
-         <div className="blog-detail-wrapper">
-      {/* <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div> */}
-      
+    <section className={styles.blogDetailWrapper}>
       <div className="container py-5">
-        <div className="row">
-          {/* Main Content */}
+        <div className="row g-4">
+
+          {/* MAIN BLOG */}
           <div className="col-lg-8">
-            <article className="blog-content">
-              <div className="blog-header">
-                <div className="blog-meta">
-                  <span className="date">{blogPost.date}</span>
-                </div>
-                <h1 className="blog-title">{blogPost.title}</h1>
-                <p>Web development has evolved significantly over the past decade. The landscape of tools,
-                 frameworks, and best practices continues to shift, requiring developers to stay updated with the latest trends and technologies.</p>
-              </div>
+            <article className={styles.blogContent}>
+              <span className={styles.date}>
+                {new Date(blog.createdAt).toDateString()}
+              </span>
 
-              <div className="blog-image">
-                <img src={blogPost.image} alt={blogPost.title} className="img-fluid" />
-              </div>
+              <h1 className={styles.blogTitle}>{blog.title}</h1>
+              <p className={styles.shortPara}>{blog.shortPara}</p>
 
-              <div className="blog-body">
-                <h3>The Rise of Modern Frameworks</h3>
-      <p>Modern JavaScript frameworks like React, Vue, and Angular have revolutionized how we build web applications. These tools provide developers with powerful abstractions that make it easier to create complex, interactive user interfaces.</p>
-      
-      <p>React, in particular, has gained massive popularity due to its component-based architecture and virtual DOM implementation. This allows developers to build reusable UI components that can be composed together to create sophisticated applications.</p>
-      
-      <h3>Key Principles of Modern Web Development</h3>
-      <p>Today's web development focuses on several core principles:</p>
-      <ul>
-        <li><strong>Performance:</strong> Optimizing load times and runtime performance</li>
-        <li><strong>Accessibility:</strong> Ensuring applications are usable by everyone</li>
-        <li><strong>Responsive Design:</strong> Creating layouts that work across all devices</li>
-        <li><strong>Security:</strong> Protecting user data and preventing vulnerabilities</li>
-      </ul>
-      <div className='BlogImage'><img src="/image/2 (1).webp" className='BlogImg' alt="imge1"/><img src="/image/2 (1).webp" className='BlogImg' alt="imge2"/><img className='BlogImg' src="/image/2 (1).webp" alt="imge3"/></div>
-      
-      <h3>The Future of Web Development</h3>
-      <p>As we look ahead, technologies like WebAssembly, Progressive Web Apps, and AI-powered tools are shaping the future of web development. The web platform continues to grow more capable, enabling experiences that were once only possible in native applications.</p>
-      
-      <p>Developers who embrace continuous learning and adapt to new technologies will find themselves well-positioned for success in this dynamic field. The key is to understand fundamental principles while remaining flexible enough to adopt new tools as they emerge.</p>
+              {blog.mainImage && (
+                <img
+                  src={IMAGE_URL + blog.mainImage}
+                  alt={blog.title}
+                  className={styles.blogImage}
+                />
+              )}
+
+              <div
+                className={styles.blogBody}
+                dangerouslySetInnerHTML={{ __html: blog.content1 }}
+              />
+
+              <div
+                className={styles.blogBody}
+                dangerouslySetInnerHTML={{ __html: blog.content2 }}
+              />
+
+              {blog.gallery?.length > 0 && (
+                <div className={styles.gallery}>
+                  {blog.gallery.map((img, i) => (
+                    <img
+                      key={i}
+                      src={IMAGE_URL + img}
+                      alt="gallery"
+                      className={styles.galleryImg}
+                    />
+                  ))}
                 </div>
+              )}
             </article>
           </div>
 
-          {/* Sidebar */}
+          {/* SIDEBAR */}
           <div className="col-lg-4">
-            <aside className="sidebar">
-              <div className="sidebar-section">
-                <h5 className="sidebar-title">Recent Posts</h5>
-                <div className="recent-posts">
-                  {recentBlogs.map((blog) => (
-                    <div key={blog.id} className="recent-post-item">
-                      <Link to="" className="nav-link"><img src={blog.image} alt={blog.title} className="recent-post-image" /></Link>
-                      <div className="recent-post-content">
-                        <Link to="" className="nav-link"><h6 className="recent-post-title">{blog.title}</h6></Link>
-                        <span className="recent-post-date">{blog.date}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <aside className={styles.sidebar}>
+              <h5 className={styles.sidebarTitle}>Recent Posts</h5>
+
+              {recentBlogs.map((item) => (
+                <Link
+                  to={`/blogs/${item._id}`}
+                  key={item._id}
+                  className={styles.recentPostCard}
+                >
+                  <img
+                    src={
+                      item.mainImage
+                        ? IMAGE_URL + item.mainImage
+                        : "https://via.placeholder.com/100"
+                    }
+                    alt={item.title}
+                  />
+
+                  <div>
+                    <h6>{item.title}</h6>
+                    <span>
+                      {new Date(item.createdAt).toDateString()}
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </aside>
           </div>
+
         </div>
       </div>
-    </div>
     </section>
-    
-    </>
-   
   );
 };
 

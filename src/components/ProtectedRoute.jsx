@@ -1,30 +1,15 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { fetchUser } from "../redux/slices/authSlice.js";
-import Loader from "./loader.jsx";
 
-export default function ProtectedRoute() {
-  const dispatch = useDispatch();
-  const { user, status } = useSelector((state) => state.auth);
+const ProtectedRoute = () => {
+  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    // On initial load, try to fetch user if not in Redux yet
-    if (!user && status === "idle") {
-      dispatch(fetchUser());
-    }
-  }, [user, status, dispatch]);
-
-  // Still checking auth
-  if (status === "loading") {
-    return <Loader/>;
-  }
-
-  // Not authenticated → redirect to login
-  if (!user && status === "failed") {
+  // Not logged in
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 
-  // Authenticated → render children
+  // Logged in
   return <Outlet />;
-}
+};
+
+export default ProtectedRoute;
