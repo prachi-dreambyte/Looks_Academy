@@ -7,12 +7,16 @@ import Login from "../pages/auth/Login.jsx";
 import CreateAccount from "../pages/auth/CreateAccount.jsx";
 import AdminDashboard from "../pages/auth/AdminDashboard.jsx";
 import BlogDetail from "../pages/BlogDetails/BlogDetails.jsx";
+import AllBlogs from "../components/admindashboard/AllBlogs/index.jsx";
+import CreateBlog from "../components/admindashboard/AllBlogs/add-new/index.jsx";
+import EditBlog from "../components/admindashboard/AllBlogs/[id]/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
 const AboutUs = lazy(() => import("../pages/AboutUs/AboutUs.jsx"));
 
 export const routes = [
+  /* ---------------- PUBLIC ROUTES ---------------- */
   {
     path: "/",
     element: <PublicLayout />,
@@ -26,15 +30,21 @@ export const routes = [
     ],
   },
 
-  {
-    element: <ProtectedRoute />,
-    children: [
-      {
-        element: <AdminLayout />,
-        children: [
-          { path: "/admin-dashboard", element: <AdminDashboard /> },
-        ],
-      },
-    ],
-  },
+  /* ---------------- ADMIN ROUTES ---------------- */
+ {
+  path: "/admin",
+  element: <ProtectedRoute />,
+  children: [
+    {
+      element: <AdminLayout />,
+      children: [
+        { index: true, element: <AdminDashboard /> },
+        { path: "dashboard", element: <AdminDashboard /> },
+        { path: "blogs", element: <AllBlogs /> },
+        { path: "add-new", element: <CreateBlog /> },
+        { path: "blogs/edit/:id", element: <EditBlog /> }, // ✅ FIXED
+      ],
+    },
+  ],
+},
 ];

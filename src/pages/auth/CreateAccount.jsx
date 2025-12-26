@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../style/CreateAccount.module.css";
-import { registerUser } from "../../services/authService";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -13,8 +14,6 @@ const CreateAccount = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -25,23 +24,36 @@ const CreateAccount = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
     setLoading(true);
 
     try {
-      const data = await registerUser(formData);
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
 
-      // ✅ Save token
-      localStorage.setItem("token", data.token);
+      // ✅ Save token & user
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      setSuccess("Account created successfully 🎉");
+      // 🎉 Success toast
+      toast.success("Account created successfully!");
 
-      // ✅ Redirect to Admin Dashboard
-      navigate("/admin-dashboard");
+      // ✅ Redirect
+      setTimeout(() => {
+        navigate("/admin");
+      }, 1500);
 
     } catch (err) {
-      setError(err.message);
+      // ❌ Error toast
+      toast.error(
+        err.response?.data?.message || "Registration failed"
+      );
     } finally {
       setLoading(false);
     }
@@ -91,9 +103,6 @@ const CreateAccount = () => {
               onChange={handleChange}
               required
             />
-
-            {error && <p className={styles.error}>{error}</p>}
-            {success && <p className={styles.success}>{success}</p>}
 
             <button type="submit" disabled={loading}>
               {loading ? "Creating..." : "Create Account"}

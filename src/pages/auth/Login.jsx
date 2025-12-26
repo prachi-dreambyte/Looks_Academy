@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "../../style/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../services/authService";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +14,6 @@ const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -24,20 +24,36 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
-      const data = await loginUser(formData);
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
 
-      // ✅ Save token
-      localStorage.setItem("token", data.token);
+      // ✅ Save token & user
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // 🎉 Success toast
+      toast.success("Login successfully!");
 
       // ✅ Redirect
-      navigate("/admin-dashboard");
+      setTimeout(() => {
+        navigate("/admin");
+      }, 1500);
 
     } catch (err) {
-      setError(err.message);
+      // ❌ Error toast
+      toast.error(
+        err.response?.data?.message || "Login failed"
+      );
     } finally {
       setLoading(false);
     }
@@ -45,7 +61,7 @@ const Login = () => {
 
   return (
     <div className={styles.loginContainer}>
-      
+
       {/* Left */}
       <div className={styles.loginLeft}>
         <div className={styles.overlay}>
@@ -88,8 +104,6 @@ const Login = () => {
                 {showPassword ? "🙈" : "👁️"}
               </span>
             </div>
-
-            {error && <p className={styles.error}>{error}</p>}
 
             <div className={styles.forgot}>
               <a href="#">Forgot Password?</a>
