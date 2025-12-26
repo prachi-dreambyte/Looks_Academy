@@ -3,6 +3,7 @@ import ProtectedRoute from "../components/ProtectedRoute.jsx";
 import Layout from "../components/layouts/layout.jsx";
 import { lazy } from "react";
 import React from "react";
+import BlogDetail from "../pages/BlogDetails/BlogDetails.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -17,6 +18,7 @@ export const routes = [
     //   { path: "contact-us", element: <Page /> },
     //   { path: "portfolio", element: <Portfolio /> },
       { path: "blogs", element: <Blogs /> },
+       { path: "BlogsDetail", element: <BlogDetail /> },
       { path: "AboutUs", element: <AboutUs /> },
     ],
   },
