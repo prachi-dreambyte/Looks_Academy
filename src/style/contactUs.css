@@ -1,0 +1,352 @@
+/* Base Styles (Desktop) */
+.TopBanner{
+    margin-top: 80px ;
+}
+.FrontHeadSection{
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    color: black;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    padding-top: 30px;
+}
+.ContactSection{
+    background-color: black;
+    color:#fff;
+    padding: 50px 90px;
+}
+.ContactForm{
+    padding: 15px 0px;
+}
+.ContactFormlabel{
+    font-size: 25px;
+    font-weight: 300;
+    margin-right: 15px;
+}
+.contactInput{
+    padding: 8px;
+    width: 100%;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+.ContactButton{
+    width: 100%;
+    padding: 5px;
+    font-size: 25px;
+    margin: 20px 0px;
+    border-radius: 6px;
+    border: none;
+    background: #363636;
+    color: #fff;
+}
+.contactWrapDisplay{
+    display: flex;
+    gap: 25px;
+    padding: 20px 0px 12px 70px;
+}
+.DreamParagraph{
+    font-size:18px;
+    padding-bottom: 10px;
+}
+.ContactBtn{
+    color: #fff;
+    background-color: #363636;
+    width: 25%;
+    padding: 12px 0px;
+}
+.ContactBtn:hover{
+    color:#fff;
+    background-color:#000;
+    width: 25%;
+    padding: 12px 0px;
+}
+.ContactUsLooking {
+    position: relative;
+    background-image: url('/image/back.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0px 92px 0px;
+    margin-top: 60px;
+}
+.ContactOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0e7d5d9;
+    opacity: 0.93;
+    z-index: 1;
+}
+.ContactWork {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    color: #000;
+    padding: 50px 0;
+}
+
+/* Tablet Large - 1192px */
+@media (max-width: 1192px) {
+    .ContactSection {
+        padding: 40px 60px;
+    }
+    .contactWrapDisplay {
+        padding: 20px 0px 12px 40px;
+    }
+}
+
+/* Tablet - 992px */
+@media (max-width: 992px) {
+    .ContactSection {
+        padding: 40px 40px;
+    }
+    .ContactFormlabel {
+        font-size: 22px;
+    }
+    .ContactButton {
+        font-size: 22px;
+    }
+    .contactWrapDisplay {
+        padding: 15px 0px 10px 20px;
+        gap: 20px;
+    }
+    .ContactBtn {
+        width: 35%;
+        padding: 10px 0px;
+    }
+    .ContactBtn:hover {
+        width: 35%;
+    }
+}
+
+/* Tablet Small - 768px */
+@media (max-width: 768px) {
+    .ContactSection {
+        padding: 30px 20px;
+    }
+    .ContactFormlabel {
+        font-size: 20px;
+    }
+    .ContactButton {
+        font-size: 20px;
+        padding: 8px;
+        margin: 15px 0px;
+    }
+    .contactWrapDisplay {
+        padding: 15px 0px 10px 0px;
+        gap: 15px;
+    }
+    .contactWrapDisplay svg {
+        width: 30px;
+        height: 30px;
+    }
+    .ContactBtn {
+        width: 50%;
+        padding: 12px 0px;
+        font-size: 16px;
+    }
+    .ContactBtn:hover {
+        width: 50%;
+    }
+    .ContactUsLooking {
+        padding: 80px 0px 70px 0px;
+        margin-top: 40px;
+    }
+    .ContactWork {
+        padding: 30px 20px;
+    }
+    .DreamParagraph {
+        font-size: 16px;
+    }
+}
+
+/* Mobile Large - 576px */
+@media (max-width: 576px) {
+    .ContactSection {
+        padding: 25px 15px;
+    }
+    .ContactFormlabel {
+        font-size: 18px;
+    }
+    .ContactButton {
+        font-size: 18px;
+        padding: 10px;
+        margin: 12px 0px;
+    }
+    .contactInput {
+        padding: 10px;
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+    .contactWrapDisplay {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0px 8px 0px;
+    }
+    .contactWrapDisplay svg {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+    }
+    .contactWrapDisplay p {
+        font-size: 16px;
+    }
+    .ContactBtn {
+        width: 60%;
+        padding: 12px 0px;
+        font-size: 16px;
+    }
+    .ContactBtn:hover {
+        width: 60%;
+    }
+    .ContactUsLooking {
+        padding: 60px 0px 50px 0px;
+        margin-top: 30px;
+    }
+    .ContactWork {
+        padding: 20px 15px;
+    }
+    .ContactWork .contactBlock h5 {
+        font-size: 24px;
+    }
+    .DreamParagraph {
+        font-size: 15px;
+    }
+}
+
+/* Mobile Medium - 480px */
+@media (max-width: 480px) {
+    .ContactSection {
+        padding: 20px 12px;
+    }
+    .ContactWrapper {
+        padding: 0 5px;
+    }
+    .ContactFormlabel {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .ContactButton {
+        font-size: 16px;
+        padding: 10px;
+    }
+    .contactInput {
+        padding: 8px;
+        font-size: 14px;
+    }
+    .contactWrapDisplay {
+        gap: 10px;
+        padding: 10px 0px 8px 0px;
+    }
+    .contactWrapDisplay svg {
+        width: 25px;
+        height: 25px;
+    }
+    .contactWrapDisplay p {
+        font-size: 14px;
+    }
+    .ContactBtn {
+        width: 70%;
+        padding: 10px 0px;
+        font-size: 15px;
+    }
+    .ContactBtn:hover {
+        width: 70%;
+    }
+    .ContactUsLooking {
+        padding: 50px 0px 40px 0px;
+    }
+    .ContactWork {
+        padding: 15px 10px;
+    }
+    .ContactWork .contactBlock h5 {
+        font-size: 22px;
+    }
+    .DreamParagraph {
+        font-size: 14px;
+    }
+}
+
+/* Mobile Small - 360px */
+@media (max-width: 360px) {
+    .ContactSection {
+        padding: 15px 10px;
+    }
+    .ContactFormlabel {
+        font-size: 15px;
+    }
+    .ContactButton {
+        font-size: 15px;
+        padding: 8px;
+        margin: 10px 0px;
+    }
+    .contactInput {
+        padding: 8px;
+        font-size: 13px;
+    }
+    .contactWrapDisplay {
+        gap: 8px;
+        padding: 8px 0px 6px 0px;
+    }
+    .contactWrapDisplay svg {
+        width: 22px;
+        height: 22px;
+    }
+    .contactWrapDisplay p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    .ContactBtn {
+        width: 80%;
+        padding: 10px 0px;
+        font-size: 14px;
+    }
+    .ContactBtn:hover {
+        width: 80%;
+    }
+    .ContactUsLooking {
+        padding: 40px 0px 35px 0px;
+        margin-top: 20px;
+    }
+    .ContactWork {
+        padding: 10px 8px;
+    }
+    .ContactWork .contactBlock h5 {
+        font-size: 20px;
+    }
+    .DreamParagraph {
+        font-size: 13px;
+        padding-bottom: 8px;
+    }
+    .TopBanner img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Additional responsive utilities */
+@media (max-width: 768px) {
+    .ConatctusDiv .row {
+        margin: 0;
+    }
+    .ConatctusDiv .col-md-6 {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    textarea.contactInput {
+        min-height: 100px;
+    }
+    iframe {
+        height: 200px !important;
+    }
+}

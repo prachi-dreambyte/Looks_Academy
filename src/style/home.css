@@ -1,53 +1,22 @@
 /* ==================== CRITICAL FIXES FOR RESPONSIVENESS ==================== */
 /* Craousel */
-.slick-prev,
-        .slick-next {
-          width: 40px;
-          height: 40px;
-          z-index: 1;
-        }
-
-        .slick-prev:before,
-        .slick-next:before {
-          font-size: 40px;
-          opacity: 0.75;
-        }
-
-        .slick-prev {
-          left: -50px;
-        }
-
-        .slick-next {
-          right: -50px;
-        }
-
-        .slick-dots {
-          bottom: -40px;
-        }
-
-        .slick-dots li button:before {
-          font-size: 12px;
-          color: #667eea;
-        }
-
-        .slick-dots li.slick-active button:before {
-          color: #764ba2;
-        }
-
-        @media (max-width: 768px) {
-          .slick-prev {
-            left: -25px;
-          }
-
-          .slick-next {
-            right: -25px;
-          }
-
-          .slick-prev:before,
-          .slick-next:before {
-            font-size: 30px;
-          }
-        }
+.LooksStory{
+   font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 10px;
+    color: black;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    padding-top: 30px;
+}
+.LooksParagraph{
+  text-align: center;
+  font-size: 20px;
+  color: black;
+      padding: 20px 300px;
+}
 /* 1. Fix dropdown styling to match navbar style */
 .dropdown-toggle {
   background: transparent !important;
@@ -981,7 +950,7 @@ body {
         }
 
         .premium-title {
-          font-size: 4rem;
+          font-size: 50px;
           font-weight: 300;
           letter-spacing: 8px;
           color: #d4af37;

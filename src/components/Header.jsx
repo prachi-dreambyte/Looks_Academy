@@ -51,7 +51,7 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="logo-link" onClick={closeMobileMenu}>
               <img 
-                src="/image/looks.jpg" 
+                src="/image/looks.png" 
                 alt="Looks" 
                 className="header-logo" 
               />
@@ -74,18 +74,18 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/#aboutus" className="nav-link">
+                <Link to="/Courses" className="nav-link">
                   Courses
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/#aboutus" className="nav-link">
+                <Link to="/Gallery" className="nav-link">
                   Gallery
                 </Link>
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/blogs"
+                  to="/Blogs"
                   className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
                 >
                   Blogs
@@ -102,7 +102,7 @@ const Header = () => {
             </ul>
 
             {/* CTA Button */}
-            <Link to="/contact-us" className="cta-button desktop-cta">
+            <Link to="/ContactUs" className="cta-button desktop-cta">
               Contact Us
             </Link>
 
@@ -205,7 +205,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="mobile-cta">
-                <Link to="/contact-us" className="cta-button" onClick={closeMobileMenu}>
+                <Link to="/ContactUs" className="cta-button" onClick={closeMobileMenu}>
                   Contact Us
                 </Link>
               </li>
