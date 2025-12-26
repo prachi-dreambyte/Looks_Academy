@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
 import "../style/footer.css";
+import logo from "/public/image/looks.jpeg";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -56,7 +57,7 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="col-lg-2 col-md-6 col-sm-6 mb-4 footer-column">
             <img
-              src="/image/looks.jpg" 
+              src={logo} 
               alt="Logo" 
               className="Logo"
             />
@@ -80,9 +81,8 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6 col-sm-6 mb-4 footer-column">
             <h3 className="footerName">Get in Touch</h3>
             <p className="footerPara">
-              Looks Academy, K.L. Plaza, Anurag Nursary Road,
-              near Nath Palace, Balliwala Chowk,
-              Shakti Enclave, Kaonli, Dehradun, Uttarakhand 248171
+              Looks Salon & Academy,Next to Raymond Showroom, G.M.S Road ,
+              Dehradun, Uttarakhand 248171
             </p>
           </div>
 
