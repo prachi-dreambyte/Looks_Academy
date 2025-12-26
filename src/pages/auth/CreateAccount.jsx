@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../style/CreateAccount.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -109,7 +109,7 @@ const CreateAccount = () => {
             </button>
 
             <p className={styles.loginLink}>
-              Already have an account? <a href="/login">Login</a>
+              Already have an account? <Link to="/login">Login</Link>
             </p>
           </form>
         </div>

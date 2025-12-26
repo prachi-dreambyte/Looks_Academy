@@ -37,7 +37,7 @@
       rgba(0, 0, 0, 0.55),
       rgba(0, 0, 0, 0.55)
     ),
-    url("/images/salon.jpg") center/cover no-repeat;
+    url("/public/image/loginimage.avif") center/cover no-repeat;
   color: #fff;
   padding: 90px;
   display: flex;
