@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
+import logo from "/public/image/looks.jpeg";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +31,7 @@ const Header = () => {
     const navbarCollapse = document.getElementById("navbarContent");
     if (navbarCollapse && navbarCollapse.classList.contains("show")) {
       const bsCollapse = new window.bootstrap.Collapse(navbarCollapse, {
-        toggle: false
+        toggle: false,
       });
       bsCollapse.hide();
     }
@@ -50,11 +50,7 @@ const Header = () => {
           <div className="nav-container">
             {/* Logo */}
             <Link to="/" className="logo-link" onClick={closeMobileMenu}>
-              <img 
-                src="/image/looks.png" 
-                alt="Looks" 
-                className="header-logo" 
-              />
+              <img src={logo} alt="Looks" className="header-logo" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -62,7 +58,9 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink
                   to="/"
-                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                   end
                 >
                   Home
@@ -86,15 +84,19 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink
                   to="/Blogs"
-                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   Blogs
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/PhotographyCourse"
-                  className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                  to="/AboutUs#salonfaq"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
                 >
                   FAQ
                 </NavLink>
@@ -107,8 +109,8 @@ const Header = () => {
             </Link>
 
             {/* Mobile Menu Toggle */}
-            <button 
-              className={`mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
+            <button
+              className={`mobile-toggle ${mobileMenuOpen ? "active" : ""}`}
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
             >
@@ -119,12 +121,14 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+          <div className={`mobile-nav ${mobileMenuOpen ? "active" : ""}`}>
             <ul className="mobile-menu">
               <li>
                 <NavLink
                   to="/"
-                  className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
                   end
                   onClick={closeMobileMenu}
                 >
@@ -132,14 +136,20 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <Link to="/#aboutus" className="mobile-link" onClick={closeMobileMenu}>
+                <Link
+                  to="/#aboutus"
+                  className="mobile-link"
+                  onClick={closeMobileMenu}
+                >
                   About Us
                 </Link>
               </li>
               <li>
                 <NavLink
                   to="/services"
-                  className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
                   onClick={closeMobileMenu}
                 >
                   Services
@@ -160,7 +170,10 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/ServiceAreaRishikesh" onClick={closeMobileMenu}>
+                      <Link
+                        to="/ServiceAreaRishikesh"
+                        onClick={closeMobileMenu}
+                      >
                         Rishikesh
                       </Link>
                     </li>
@@ -180,7 +193,9 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/portfolio"
-                  className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
                   onClick={closeMobileMenu}
                 >
                   Portfolio
@@ -189,7 +204,9 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/blogs"
-                  className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
                   onClick={closeMobileMenu}
                 >
                   Blog
@@ -198,14 +215,20 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/PhotographyCourse"
-                  className={({ isActive }) => isActive ? "mobile-link active" : "mobile-link"}
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
                   onClick={closeMobileMenu}
                 >
                   Courses
                 </NavLink>
               </li>
               <li className="mobile-cta">
-                <Link to="/ContactUs" className="cta-button" onClick={closeMobileMenu}>
+                <Link
+                  to="/ContactUs"
+                  className="cta-button"
+                  onClick={closeMobileMenu}
+                >
                   Contact Us
                 </Link>
               </li>
@@ -216,7 +239,7 @@ const Header = () => {
 
       <style jsx>{`
         /* ==================== MODERN FIXED HEADER STYLES ==================== */
-        
+
         .modern-header {
           position: fixed;
           top: 0;
@@ -236,6 +259,7 @@ const Header = () => {
 
         .modern-nav {
           width: 100%;
+          background: black;
         }
 
         .nav-container {
@@ -273,6 +297,10 @@ const Header = () => {
           list-style: none;
           margin: 0;
           padding: 0;
+          color: white !important;
+        }
+        .nav-menu:hover {
+          color: white;
         }
 
         .nav-item {
@@ -281,7 +309,7 @@ const Header = () => {
 
         .nav-link,
         .dropdown-btn {
-          color: #000;
+          color: #ffffff;
           text-decoration: none;
           text-transform: uppercase;
           font-size: 17px;
@@ -298,7 +326,7 @@ const Header = () => {
         }
 
         .nav-link::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;
@@ -311,6 +339,7 @@ const Header = () => {
         .nav-link:hover::after,
         .nav-link.active::after {
           width: 100%;
+          color: #ffffff !important;
         }
 
         .nav-link.active {
@@ -374,9 +403,10 @@ const Header = () => {
 
         /* CTA Button */
         .cta-button {
+          background-color: white !important;
           background: #000;
           text-transform: uppercase;
-          color: #fff;
+          color: #000000 !important;
           padding: 12px 28px;
           border-radius: 8px;
           text-decoration: none;
@@ -387,8 +417,9 @@ const Header = () => {
         }
 
         .cta-button:hover {
+          background-color: white !important;
           background: transparent;
-          color: #000;
+          color: #000000 !important;
           transform: translateY(-2px);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
