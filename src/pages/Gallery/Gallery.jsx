@@ -67,12 +67,11 @@ const GalleryGrid = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={bannerStyle}>
-        <h1 style={titleStyle}>GALLERY GRID</h1>
-        <div style={breadcrumbStyle}>HOME › GALLERY GRID</div>
-      </div>
-      
+    <>
+    <section className="TopBanner">
+        <img src="/image/couses.webp" alt="image1"/>
+      </section>
+      <div style={containerStyle}>      
       <div style={gridStyle}>
         {images.map((img, index) => (
           <img 
@@ -84,6 +83,8 @@ const GalleryGrid = () => {
         ))}
       </div>
     </div>
+    </>
+    
   );
 };
 

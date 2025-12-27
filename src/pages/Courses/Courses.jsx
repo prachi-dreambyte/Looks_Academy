@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import '../../style/course.css';
 
 const CoursesComponent = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [isVisible, setIsVisible] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({
+              ...prev,
+              [entry.target.dataset.index]: true,
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const cards = document.querySelectorAll('.course-card');
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
 
   const courses = [
     {
@@ -51,173 +74,8 @@ const CoursesComponent = () => {
     }
   ];
 
-  const containerStyle = {
-    background: '#000',
-    minHeight: '100vh',
-    padding: '80px 40px',
-    color: '#fff',
-  };
-
-  const headerStyle = {
-    textAlign: 'center',
-    marginBottom: '80px',
-  };
-
-  const titleStyle = {
-    fontSize: '56px',
-    fontWeight: '300',
-    letterSpacing: '8px',
-    marginBottom: '16px',
-    fontFamily: 'serif',
-  };
-
-  const subtitleStyle = {
-    fontSize: '16px',
-    letterSpacing: '3px',
-    color: '#999',
-    fontWeight: '300',
-  };
-
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '32px',
-    maxWidth: '1400px',
-    margin: '0 auto',
-  };
-
-  const cardStyle = (id) => ({
-    background: hoveredCard === id ? '#1a1a1a' : '#0a0a0a',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    cursor: 'pointer',
-    transition: 'all 0.4s ease',
-    transform: hoveredCard === id ? 'translateY(-12px)' : 'translateY(0)',
-    boxShadow: hoveredCard === id 
-      ? '0 20px 60px rgba(255,215,0,0.2)' 
-      : '0 4px 20px rgba(0,0,0,0.5)',
-    border: selectedCourse === id ? '2px solid #FFD700' : '2px solid transparent',
-  });
-
-  const imageContainerStyle = {
-    width: '100%',
-    height: '240px',
-    overflow: 'hidden',
-    position: 'relative',
-  };
-
-  const imageStyle = (id) => ({
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    transition: 'transform 0.4s ease',
-    transform: hoveredCard === id ? 'scale(1.1)' : 'scale(1)',
-  });
-
-  const overlayStyle = (id) => ({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: hoveredCard === id 
-      ? 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))' 
-      : 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8))',
-    transition: 'all 0.4s ease',
-  });
-
-  const contentStyle = {
-    padding: '28px',
-  };
-
-  const courseNameStyle = {
-    fontSize: '28px',
-    fontWeight: '400',
-    letterSpacing: '2px',
-    marginBottom: '8px',
-    fontFamily: 'serif',
-  };
-
-  const trainerStyle = {
-    fontSize: '13px',
-    color: '#FFD700',
-    letterSpacing: '2px',
-    marginBottom: '16px',
-    fontWeight: '300',
-  };
-
-  const descriptionStyle = {
-    fontSize: '14px',
-    color: '#bbb',
-    lineHeight: '1.6',
-    marginBottom: '20px',
-  };
-
-  const detailsRowStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '20px',
-    padding: '16px 0',
-    borderTop: '1px solid #333',
-    borderBottom: '1px solid #333',
-  };
-
-  const detailItemStyle = {
-    textAlign: 'center',
-  };
-
-  const detailLabelStyle = {
-    fontSize: '11px',
-    color: '#888',
-    letterSpacing: '1px',
-    marginBottom: '6px',
-  };
-
-  const detailValueStyle = {
-    fontSize: '16px',
-    fontWeight: '500',
-    letterSpacing: '1px',
-  };
-
-  const highlightsStyle = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '8px',
-    marginBottom: '24px',
-  };
-
-  const highlightItemStyle = {
-    fontSize: '12px',
-    color: '#aaa',
-    padding: '6px 0',
-    display: 'flex',
-    alignItems: 'center',
-  };
-
-  const dotStyle = {
-    width: '4px',
-    height: '4px',
-    background: '#FFD700',
-    borderRadius: '50%',
-    marginRight: '8px',
-  };
-
-  const buttonStyle = (id) => ({
-    width: '100%',
-    padding: '14px',
-    background: selectedCourse === id ? '#FFD700' : 'transparent',
-    color: selectedCourse === id ? '#000' : '#FFD700',
-    border: '2px solid #FFD700',
-    borderRadius: '6px',
-    fontSize: '14px',
-    letterSpacing: '2px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  });
-
-  const modalOverlayStyle = {
+  const selectedCourseData = courses.find(c => c.id === selectedCourse);
+   const modalOverlayStyle = {
     position: 'fixed',
     top: 0,
     left: 0,
@@ -230,8 +88,7 @@ const CoursesComponent = () => {
     zIndex: 1000,
     padding: '20px',
   };
-
-  const modalStyle = {
+   const modalStyle = {
     background: '#1a1a1a',
     borderRadius: '12px',
     padding: '40px',
@@ -239,8 +96,7 @@ const CoursesComponent = () => {
     width: '100%',
     border: '2px solid #FFD700',
   };
-
-  const modalTitleStyle = {
+   const modalTitleStyle = {
     fontSize: '32px',
     fontWeight: '300',
     letterSpacing: '3px',
@@ -271,81 +127,80 @@ const CoursesComponent = () => {
     transition: 'all 0.3s ease',
   };
 
-  const selectedCourseData = courses.find(c => c.id === selectedCourse);
 
   return (
-    <div style={containerStyle}>
-      <div style={headerStyle}>
-        <h1 style={titleStyle}>OUR COURSES</h1>
-        <p style={subtitleStyle}>TRANSFORM YOUR PASSION INTO PROFESSION</p>
+    <>
+    <section className="TopBanner">
+        <img src="/image/couses.webp" alt="image1"/>
+      </section>
+      <div className="courses-container" style={{ background: '#000', minHeight: '100vh' }}>
+      <div className="courses-header fade-in">
+        <div className="header-decoration"></div>
+        <h1 className="courses-title">OUR COURSES</h1>
+        <div className="title-underline"></div>
+        <p className="courses-subtitle">TRANSFORM YOUR PASSION INTO PROFESSION</p>
       </div>
 
-      <div style={gridStyle}>
-        {courses.map((course) => (
+      <div className="courses-grid">
+        {courses.map((course, index) => (
           <div
             key={course.id}
-            style={cardStyle(course.id)}
+            data-index={index}
+            className={`course-card ${hoveredCard === course.id ? 'hovered' : ''} ${
+              selectedCourse === course.id ? 'selected' : ''
+            } ${isVisible[index] ? 'visible' : ''}`}
             onMouseEnter={() => setHoveredCard(course.id)}
             onMouseLeave={() => setHoveredCard(null)}
+            style={{ animationDelay: `${index * 0.15}s` }}
           >
-            <div style={imageContainerStyle}>
-              <img src={course.image} alt={course.name} style={imageStyle(course.id)} />
-              <div style={overlayStyle(course.id)}></div>
+            <div className="card-shine"></div>
+            <div className="image-container">
+              <img src={course.image} alt={course.name} className="course-image" />
+              <div className="image-overlay"></div>
             </div>
 
-            <div style={contentStyle}>
-              <h3 style={courseNameStyle}>{course.name}</h3>
-              <p style={trainerStyle}>BY {course.trainer.toUpperCase()}</p>
-              <p style={descriptionStyle}>{course.description}</p>
+            <div className="card-content">
+              <h3 className="course-name">{course.name}</h3>
+              <p className="course-trainer">BY {course.trainer.toUpperCase()}</p>
+              <p className="course-description">{course.description}</p>
 
-              <div style={detailsRowStyle}>
-                <div style={detailItemStyle}>
-                  <div style={detailLabelStyle}>PRICE</div>
-                  <div style={detailValueStyle}>₹{course.price}</div>
+              <div className="details-row">
+                <div className="detail-item">
+                  <div className="detail-label">PRICE</div>
+                  <div className="detail-value">₹{course.price}</div>
                 </div>
-                <div style={detailItemStyle}>
-                  <div style={detailLabelStyle}>DURATION</div>
-                  <div style={detailValueStyle}>{course.duration}</div>
+                <div className="detail-item">
+                  <div className="detail-label">DURATION</div>
+                  <div className="detail-value">{course.duration}</div>
                 </div>
-                <div style={detailItemStyle}>
-                  <div style={detailLabelStyle}>LEVEL</div>
-                  <div style={detailValueStyle}>{course.level}</div>
+                <div className="detail-item">
+                  <div className="detail-label">LEVEL</div>
+                  <div className="detail-value">{course.level}</div>
                 </div>
               </div>
 
-              <div style={highlightsStyle}>
+              <div className="highlights">
                 {course.highlights.map((highlight, idx) => (
-                  <div key={idx} style={highlightItemStyle}>
-                    <div style={dotStyle}></div>
-                    {highlight}
+                  <div key={idx} className="highlight-item">
+                    <div className="highlight-dot"></div>
+                    <span>{highlight}</span>
                   </div>
                 ))}
               </div>
 
               <button
-                style={buttonStyle(course.id)}
+                className={`enquire-button ${selectedCourse === course.id ? 'selected' : ''}`}
                 onClick={() => setSelectedCourse(course.id)}
-                onMouseEnter={(e) => {
-                  if (selectedCourse !== course.id) {
-                    e.target.style.background = '#FFD700';
-                    e.target.style.color = '#000';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedCourse !== course.id) {
-                    e.target.style.background = 'transparent';
-                    e.target.style.color = '#FFD700';
-                  }
-                }}
               >
-                {selectedCourse === course.id ? 'SELECTED' : 'ENQUIRE NOW'}
+                <span>{selectedCourse === course.id ? 'SELECTED' : 'ENQUIRE NOW'}</span>
+                <div className="button-shine"></div>
               </button>
             </div>
           </div>
         ))}
       </div>
 
-      <div style={modalOverlayStyle} onClick={() => setSelectedCourse(null)}>
+       <div style={modalOverlayStyle} onClick={() => setSelectedCourse(null)}>
         {selectedCourseData && (
           <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
             <h2 style={modalTitleStyle}>{selectedCourseData.name}</h2>
@@ -404,6 +259,7 @@ const CoursesComponent = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

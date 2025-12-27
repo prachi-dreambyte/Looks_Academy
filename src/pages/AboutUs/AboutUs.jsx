@@ -34,6 +34,9 @@ const AboutSection = () => {
 
   return (
     <>
+    <section className="TopBanner">
+        <img src="/image/aboutUs.webp" alt="image1"/>
+      </section>
       <div className={styles.aboutSection}>
         <div className="container-fluid px-3 px-md-5">
           <div className="row align-items-center g-4">

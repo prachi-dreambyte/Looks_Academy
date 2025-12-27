@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/loader.css";
-import logo from "/image/Wlooks.png"; // adjust path if needed
+import logo from "/image/looks.jpeg"; // adjust path if needed
 
 const Loader = () => {
   return (

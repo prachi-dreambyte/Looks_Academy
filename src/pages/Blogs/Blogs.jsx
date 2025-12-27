@@ -31,6 +31,9 @@ const SalonBlog = () => {
   return (
     <>
       {/* HERO */}
+      <section className="TopBanner">
+        <img src="/image/blog.webp" alt="image1"/>
+      </section>
       <section className={styles.heroSection}>
         <div className="container">
           <h1>Looks Academy Blog</h1>
