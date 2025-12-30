@@ -15,6 +15,9 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
 
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -28,7 +31,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         formData,
         {
           headers: {
@@ -114,7 +117,8 @@ const Login = () => {
             </button>
 
             <span className={styles.signup}>
-              Don’t have an account? <Link to="/CreateAccount">Sign Up</Link>
+              Don’t have an account?{" "}
+              <Link to="/CreateAccount">Sign Up</Link>
             </span>
           </form>
         </div>

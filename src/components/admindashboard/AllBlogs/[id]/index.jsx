@@ -16,6 +16,9 @@ const EditBlog = () => {
   const [content2, setContent2] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const {
     register,
     handleSubmit,
@@ -28,7 +31,7 @@ const EditBlog = () => {
     const fetchBlog = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/blogs/get-blog/${id}`
+          `${API_BASE_URL}/api/blogs/get-blog/${id}`
         );
 
         const blog = res.data.data;
@@ -49,7 +52,7 @@ const EditBlog = () => {
     };
 
     fetchBlog();
-  }, [id, reset]);
+  }, [id, reset, API_BASE_URL]);
 
   /* ---------------- UPDATE BLOG ---------------- */
   const onSubmit = async (data) => {
@@ -72,10 +75,12 @@ const EditBlog = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/blogs/update-blog/${id}`,
+        `${API_BASE_URL}/api/blogs/update-blog/${id}`,
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
@@ -125,14 +130,20 @@ const EditBlog = () => {
             })}
           />
           {errors.shortPara && (
-            <p className={styles.error}>{errors.shortPara.message}</p>
+            <p className={styles.error}>
+              {errors.shortPara.message}
+            </p>
           )}
         </div>
 
         {/* MAIN IMAGE */}
         <div className={styles.field}>
           <label>Main Image (optional)</label>
-          <input type="file" accept="image/*" {...register("mainImage")} />
+          <input
+            type="file"
+            accept="image/*"
+            {...register("mainImage")}
+          />
         </div>
 
         {/* CONTENT 1 */}

@@ -10,8 +10,10 @@ const SalonBlog = () => {
 
   const navigate = useNavigate();
 
-  const API_URL = "http://localhost:5000/api/blogs/get-all-blogs";
-  const IMAGE_URL = "http://localhost:5000/uploads/";
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_URL = `${API_BASE_URL}/api/blogs/get-all-blogs`;
+  const IMAGE_URL = `${API_BASE_URL}/uploads/`;
 
   useEffect(() => {
     fetchBlogs();
@@ -32,8 +34,9 @@ const SalonBlog = () => {
     <>
       {/* HERO */}
       <section className="TopBanner">
-        <img src="/image/blog.webp" alt="image1"/>
+        <img src="/image/blog.webp" alt="Blogs Banner" />
       </section>
+
       <section className={styles.heroSection}>
         <div className="container">
           <h1>Looks Academy Blog</h1>
@@ -70,12 +73,15 @@ const SalonBlog = () => {
                     <div className={styles.blogCardBody}>
                       <h3 className={styles.blogTitle}>{post.title}</h3>
 
-                      <p className={styles.blogExcerpt}>{post.shortPara}</p>
+                      <p className={styles.blogExcerpt}>
+                        {post.shortPara}
+                      </p>
 
                       <div className={styles.blogMeta}>
-                        <span>{new Date(post.createdAt).toDateString()}</span>
+                        <span>
+                          {new Date(post.createdAt).toDateString()}
+                        </span>
 
-                        {/* Stop bubbling so button also works independently */}
                         <button
                           className={styles.readMoreBtn}
                           onClick={(e) => {

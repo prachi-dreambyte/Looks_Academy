@@ -10,6 +10,9 @@ const AdminDashboard = () => {
     revenue: 0,
   });
 
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     fetchStats();
   }, []);
@@ -17,14 +20,14 @@ const AdminDashboard = () => {
   const fetchStats = async () => {
     try {
       const blogRes = await axios.get(
-        "http://localhost:5000/api/blogs/get-all-blogs"
+        `${API_BASE_URL}/api/blogs/get-all-blogs`
       );
 
       setStats({
-        blogs: blogRes.data.count, // dynamic
-        customers: 356,            // future users API
-        stylists: 12,              // future staff API
-        revenue: 245000,           // future billing API
+        blogs: blogRes.data.count || blogRes.data.data.length,
+        customers: 356,   // future API
+        stylists: 12,     // future API
+        revenue: 245000,  // future API
       });
     } catch (error) {
       console.error("Dashboard error:", error);

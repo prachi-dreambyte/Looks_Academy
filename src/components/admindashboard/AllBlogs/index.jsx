@@ -18,14 +18,16 @@ const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:5000/api/blogs";
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_URL = `${API_BASE_URL}/api/blogs`;
 
   const fetchBlogs = async () => {
     try {
       const res = await fetch(`${API_URL}/get-all-blogs`);
       const result = await res.json();
 
-      if (result.success) {
+      if (res.ok && result.success) {
         setBlogs(result.data);
       } else {
         toast.error("Failed to fetch blogs");
@@ -76,7 +78,7 @@ const AllBlogs = () => {
         </button>
       </div>
 
-      {/* ✅ Responsive Table */}
+      {/* Responsive Table */}
       <Table className={styles.table}>
         <Thead>
           <Tr>
@@ -100,7 +102,9 @@ const AllBlogs = () => {
               <Tr key={blog._id}>
                 <Td>{blog.title}</Td>
                 <Td>Admin</Td>
-                <Td>{new Date(blog.createdAt).toLocaleDateString()}</Td>
+                <Td>
+                  {new Date(blog.createdAt).toLocaleDateString()}
+                </Td>
                 <Td>
                   <span className={styles.published}>Published</span>
                 </Td>
