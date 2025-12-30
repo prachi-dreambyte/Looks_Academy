@@ -366,7 +366,7 @@ const AboutSection = () => {
             <div className="col-12 text-center">
               <h2 className="cta-title">Want To Become A Perfect Beauty Professional?</h2>
               <p className="cta-text">Are you ready to take the next step towards your career?</p>
-              <Link to="/ContactUs"><button className="cta-button">Enroll Now</button></Link>
+              <Link to="/EnrollNow"><button className="cta-button">Enroll Now</button></Link>
             </div>
           </div>
         </div>

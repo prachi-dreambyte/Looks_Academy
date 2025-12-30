@@ -91,7 +91,7 @@ const Footer = () => {
             <h3 className="footerName">Home</h3>
             <ul className="list-unstyled footer-links">
               <li className="footerParagraph">
-                <Link to="/AboutUs">About</Link>
+                <Link to="/AboutUs">About Us</Link>
               </li>
               <li className="footerParagraph">
                 <Link to="/Courses">Courses</Link>
@@ -99,18 +99,25 @@ const Footer = () => {
               <li className="footerParagraph">
                 <Link to="/Blogs">Blogs</Link>
               </li>
+              <li className="footerParagraph">
+                <Link to="/Gallery">Gallery</Link>
+              </li>
             </ul>
           </div>
 
           {/* Newsletter Signup */}
           <div className="col-lg-3 col-md-6 col-sm-6 mb-4 footer-column">
             <h3 className="footerName">Say Hello</h3>
-            <h4 className="footerSubName">Newsletter Signup</h4>
-            <p className="footerPara mb-3" style={{ fontSize: "14px" }}>
-              Subscribe to get the latest updates and offers.
+             <p><Link to="/TermsAndCondition" className="footer-link-small">
+              Terms & Conditions
+            </Link>
+            </p>
+            <p><Link to="/privacy-policy" className="footer-link-small">
+              Privacy Policy
+            </Link>
             </p>
             
-            <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+            {/* <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <div className="input-group mb-3">
                 <input
                   type="email"
@@ -176,14 +183,15 @@ const Footer = () => {
                   <span>{status.message}</span>
                 </div>
               )}
-            </form>
+            </form> */}
           </div>
         </div>
+        
 
-        <hr className="footer-divider" />
+        {/* <hr className="footer-divider" /> */}
 
         {/* Bottom Footer */}
-        <div className="footer-bottom">
+        {/* <div className="footer-bottom">
           <div className="footer-links-bottom">
             <Link to="/TermsAndCondition" className="footer-link-small">
               Terms & Conditions
@@ -196,7 +204,7 @@ const Footer = () => {
           <div className="footer-copyright">
             Design by <b>LOOKS</b> © {new Date().getFullYear()}. All rights reserved.
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

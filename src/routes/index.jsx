@@ -14,6 +14,7 @@ import AllBlogs from "../components/admindashboard/AllBlogs/index.jsx";
 import CreateBlog from "../components/admindashboard/AllBlogs/add-new/index.jsx";
 import EditBlog from "../components/admindashboard/AllBlogs/[id]/index.jsx";
 import SalonBlog from "../pages/Blogs/Blogs.jsx";
+import EnrollNow from "../pages/EnrollNow/EnrollNow.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -34,6 +35,7 @@ export const routes = [
       { path: "ContactUs", element: <ContactUs /> },
       { path: "Gallery", element: <Gallery /> },
       { path: "Courses", element: <Courses /> },
+      { path: "EnrollNow", element: <EnrollNow /> },
     ],
   },
 

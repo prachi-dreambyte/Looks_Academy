@@ -313,10 +313,10 @@ Students benefit from structured learning modules, live demonstrations, and real
                          <Award size={16} />
                          <span>{course.level}</span>
                        </div>
-                       <button className="enroll-btn">
+                      <Link to="/EnrollNow" className="nav-link"><button className="enroll-btn">
                          Enroll Now
                          <ArrowRight size={16} />
-                       </button>
+                       </button></Link> 
                      </div>
                    </div>
                  </div>

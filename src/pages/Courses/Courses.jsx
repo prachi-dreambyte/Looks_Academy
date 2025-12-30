@@ -241,7 +241,7 @@ const CoursesComponent = () => {
                 *Price is exclusive of applicable taxes
               </div>
             </div>
-            <Link to="/ContactUs" className="pt-4">
+            <Link to="/EnrollNow" className="pt-4">
             <button
               style={modalButtonStyle}
               onClick={() => setSelectedCourse(null)}
