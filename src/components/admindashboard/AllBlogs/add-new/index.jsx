@@ -19,6 +19,9 @@ const CreateBlog = () => {
     formState: { errors },
   } = useForm();
 
+  // ✅ CHANGE HERE (ENV BASE URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
@@ -41,9 +44,9 @@ const CreateBlog = () => {
         });
       }
 
-      // 🔥 API CALL
+      // 🔥 API CALL (FIXED)
       await axios.post(
-        "http://localhost:5000/api/blogs/create-blog",
+        `${API_BASE_URL}/api/blogs/create-blog`,
         formData,
         {
           headers: {
