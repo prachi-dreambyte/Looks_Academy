@@ -11,7 +11,9 @@ const BlogDetail = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const IMAGE_URL = "http://localhost:5000/uploads/";
+  // ✅ CHANGE HERE (ENV URL)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const IMAGE_URL = `${API_BASE_URL}/uploads/`;
 
   useEffect(() => {
     fetchSingleBlog();
@@ -21,7 +23,7 @@ const BlogDetail = () => {
   const fetchSingleBlog = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/blogs/get-blog/${id}`
+        `${API_BASE_URL}/api/blogs/get-blog/${id}`
       );
       setBlog(res.data.data);
     } catch (error) {
@@ -34,7 +36,7 @@ const BlogDetail = () => {
   const fetchRecentBlogs = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/blogs/get-all-blogs"
+        `${API_BASE_URL}/api/blogs/get-all-blogs`
       );
 
       const filtered = res.data.data
