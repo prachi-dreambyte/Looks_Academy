@@ -127,10 +127,6 @@ function Home() {
     //   category: "Business"
     // }
   ];
-  const handleReadMore = () => {
-    // Navigate to courses page or show more courses
-    window.location.href = "/Courses";
-  };
   return (
     <>
       {/*===============SLIDER====================*/}
@@ -203,9 +199,7 @@ function Home() {
           <div className="col-md-6">
             <div className=''>
           <h1 className='LooksStory'>OUR STORY</h1>
-          <p className='LooksParagraph'>Looks Salon is one of the most powerful and fastest growing salon chain brand PanIndia,
-             that has given the hairstyling industry a new horizon. Emerging as the largest single salon chain in the country.</p>
-        </div>
+          <p className='LooksParagraph'>Looks Salon, one of India’s fastest-growing pan-India salon chains, has set new benchmarks in the hairstyling industry. Carrying this legacy forward, Looks Academy in Dehradun offers world-class, industry-led training with hands-on learning to prepare aspiring professionals for successful careers in the beauty industry.</p></div>
           </div>
           <div className="col-md-3"></div>
         </div>
@@ -252,16 +246,13 @@ function Home() {
              <div className='row'>
             <div className='col-md-6'>
             <div className='LooksAbout'>
-              <h1 className='AboutHead'>ABOUT US (WHO WE ARE)</h1>
-              <p className='AboutPara'>Looks Academy is a premium beauty destination dedicated to enhancing confidence, creativity, and professional excellence. We offer high-quality salon
-                 services along with expert-led beauty education under one roof. At Looks Salon, our experienced professionals deliver personalized hair, makeup, skincare, and grooming services using modern techniques, 
-                 premium products, and the highest standards of hygiene. Alongside this, Looks Academy empowers aspiring artists with practical, hands-on training in makeup artistry, hair styling, skincare, and salon business fundamentals.
-                 .</p>
-              <p className='AboutPara'>Looks Academy nurtures aspiring beauty artists through expertly curated, hands-on training programs that blend creativity, industry knowledge, and real-world practice. 
+              <h1 className='AboutHead'>Why YOU SHOULD JOIN US</h1>
+              <p className='AboutPara'>Looks Academy is where passion meets professional excellence. Backed by the trusted legacy of Looks Salon—India’s leading pan-India salon chain—the academy offers industry-relevant training through expert mentors, modern techniques, and hands-on salon experience. Our carefully designed courses prepare students for the rapidly growing beauty and wellness industry, opening doors to careers in salons, bridal styling, freelancing, fashion, and entrepreneurship. At Looks Academy Dehradun, students gain practical skills, confidence, and a strong foundation for long-term success.
+Students benefit from structured learning modules, live demonstrations, and real-world client exposure that bridge the gap between training and professional practice. The academy focuses on building creativity, discipline, and professional ethics essential for career growth. With access to advanced tools, updated trends, and continuous guidance, students stay ahead in a competitive industry. Our certification adds credibility and recognition to their professional journey. At Looks Academy, education transforms into opportunity and lifelong success</p>{/* <p className='AboutPara'>Looks Academy nurtures aspiring beauty artists through expertly curated, hands-on training programs that blend creativity, industry knowledge, and real-world practice. 
                 Whether you step in to indulge in a transformative beauty experience or to shape a successful career in the beauty industry, Looks promises sophistication, confidence, and unmatched quality at every touchpoint.
-              </p>
+              </p> */}
               <div className="text-center mt-5">
-             <Link to="/AboutUs"><button onClick={handleReadMore} className="AboutButton">
+              <Link to="/AboutUs" className="nav-link"><button className="AboutButton">
                View More
                <ArrowRight size={20} />
              </button></Link>
@@ -322,10 +313,10 @@ function Home() {
                          <Award size={16} />
                          <span>{course.level}</span>
                        </div>
-                       <Link to="/ContactUs" className="nav-link"><button className="enroll-btn">
+                       <button className="enroll-btn">
                          Enroll Now
                          <ArrowRight size={16} />
-                       </button></Link>
+                       </button>
                      </div>
                    </div>
                  </div>
@@ -335,11 +326,11 @@ function Home() {
    
            {/* Read More Button */}
            <div className="text-center mt-5">
-             <button onClick={handleReadMore} className="read-more-btn">
+             <Link to="/Courses" className="nav-link"><button className="read-more-btn">
                <BookOpen size={20} />
                View All Courses
                <ArrowRight size={20} />
-             </button>
+             </button></Link>
            </div>
          </div>
    

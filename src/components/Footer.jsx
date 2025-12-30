@@ -91,13 +91,13 @@ const Footer = () => {
             <h3 className="footerName">Home</h3>
             <ul className="list-unstyled footer-links">
               <li className="footerParagraph">
-                <Link to="/#aboutus">About</Link>
+                <Link to="/AboutUs">About</Link>
               </li>
               <li className="footerParagraph">
-                <Link to="/services">Courses</Link>
+                <Link to="/Courses">Courses</Link>
               </li>
               <li className="footerParagraph">
-                <Link to="/blogs">Blogs</Link>
+                <Link to="/Blogs">Blogs</Link>
               </li>
             </ul>
           </div>

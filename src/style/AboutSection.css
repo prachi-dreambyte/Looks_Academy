@@ -928,6 +928,9 @@
 
 /* 576px and below (Mobile Portrait) */
 @media (max-width: 576px) {
+  .TopBanner{
+    margin-top: 50px;
+  }
   .hero-title {
     font-size: 1.8rem;
   }

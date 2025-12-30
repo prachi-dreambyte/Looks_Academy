@@ -305,12 +305,12 @@ body {
 }
 
 /* 17. Safe area for notched devices */
-@supports (padding: max(0px)) {
+/* @supports (padding: max(0px)) {
   body {
     padding-left: max(15px, env(safe-area-inset-left));
     padding-right: max(15px, env(safe-area-inset-right));
   }
-}
+} */
 
 /* 18. Fix any remaining layout shifts */
 .FrontSecondSection,

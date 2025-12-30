@@ -40,28 +40,9 @@ const SalonGallery = () => {
   return (
     <>
       <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        html, body {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          overflow-x: hidden;
-        }
-
-        body {
-          font-family: 'Montserrat', 'Arial', sans-serif;
-          background: #ffffff;
-          color: #1a1a1a;
-        }
-
         .top-bar {
           background: #000000;
-          padding: 3px 0;
+          // padding: 3px 0;
           text-align: center;
         }
 

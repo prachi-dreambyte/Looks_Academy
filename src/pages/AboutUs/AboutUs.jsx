@@ -70,8 +70,8 @@ const AboutSection = () => {
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-12">
               <h1 className="hero-title">About Our Academy</h1>
-              <p className="hero-subtitle">Looks Academy, which was founded with a desire for excellence and a dedication to developing talent, is today well-known in the field of beauty education. We have been at the forefront of enabling people to 
-                explore their creative potential and seek lucrative jobs in the beauty business for more than a decade.</p>
+              <p className="hero-subtitle">Looks Academy is a premier professional training institute dedicated to shaping the next generation of beauty and hairstyling experts. Backed by the legacy of Looks Salon—India’s largest and fastest-growing pan-India salon chain—the academy brings industry knowledge, global techniques, and real-world salon experience under one roof. With a strong focus on practical learning, expert mentorship, and career-oriented education, Looks Academy equips students with the skills, confidence, and professionalism required to succeed in the ever-evolving beauty and wellness industry. Located in Dehradun, 
+                the academy stands as a center of excellence where creativity is nurtured, talent is refined, and passion is transformed into a rewarding career.</p>
               <div className="golden-line"></div>
             </div>
             <div className="col-lg-6 col-md-12">
