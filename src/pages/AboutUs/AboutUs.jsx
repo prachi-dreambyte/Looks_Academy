@@ -13,24 +13,24 @@ const AboutSection = () => {
 
   const faqs = [
     {
-      question: "What services do you offer?",
-      answer: "We offer a comprehensive range of beauty services including haircuts, styling, coloring, highlights, balayage, keratin treatments, manicures, pedicures, facials, waxing, makeup, and bridal packages. Our expert stylists are trained in the latest trends and techniques."
+      question: "Do you offer professional certification after course completion?",
+      answer: "All our courses are certification-based. After successful completion and assessment, students receive a professional certificate that helps them start a career or open their own parlor."
     },
     {
-      question: "Do I need to book an appointment?",
-      answer: "While walk-ins are welcome based on availability, we highly recommend booking an appointment to ensure you get your preferred time slot and stylist. You can book online through our website or call us directly."
+      question: "Who can join the parlor and beauty courses?",
+      answer: "Our courses are open to beginners as well as working professionals. No prior experience is required—anyone passionate about beauty, makeup, or wellness can enroll."
     },
     {
-      question: "What are your salon's hours?",
-      answer: "We're open Monday through Saturday from 9:00 AM to 8:00 PM, and Sunday from 10:00 AM to 6:00 PM. Extended hours are available for special events and bridal services with advance booking."
+      question: "What courses are available at your beauty academy in Dehradun?",
+      answer: "We offer a wide range of courses including basic to advanced training, makeup artistry, hair styling, skincare treatments, nail art, and salon management."
     },
     {
-      question: "What is your cancellation policy?",
-      answer: "We require at least 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a fee. We understand emergencies happen, so please contact us as soon as possible."
+      question: "Do you provide practical training with real clients?",
+      answer: "Our training focuses heavily on hands-on practice. Students work on real models and clients under expert supervision to gain industry-ready experience."
     },
     {
-      question: "Do you offer bridal packages?",
-      answer: "Yes! We specialize in bridal hair and makeup services. Our packages include trial sessions, day-of services for the bride and bridal party, and can be customized to your specific needs. Contact us to schedule a consultation."
+      question: "What is the duration of beauty and parlor courses?",
+      answer: "Course duration varies depending on the program selected. We offer short-term, advanced, and professional courses to suit different learning needs and career goals."
     }
   ];
 
@@ -77,7 +77,7 @@ const AboutSection = () => {
             <div className="col-lg-6 col-md-12">
               <div className="hero-image-wrapper">
                 <img 
-                  src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=600&fit=crop" 
+                  src="/image/Aboutus _V01.webp" 
                   alt="Salon Academy" 
                   className="hero-image"
                 />

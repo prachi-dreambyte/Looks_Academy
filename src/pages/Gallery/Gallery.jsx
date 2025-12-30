@@ -386,7 +386,7 @@ const SalonGallery = () => {
         <div className="top-bar-line"></div>
       </div>
 <section className="TopBanner">
-        <img src="/image/couses.webp" alt="image1"/>
+        <img src="/image/gallery.webp" alt="image1"/>
       </section>
 
       <div className="filter-wrapper">
