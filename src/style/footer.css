@@ -589,10 +589,22 @@ footer .logo:hover {
     line-height: 1.6;
     padding: 0 10px;
   }
+  .Logo{
+    width: 148px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-left: 40px;
+  }
 }
 
 /* Small Mobile (360px and below) */
 @media (max-width: 360px) {
+  .Logo{
+    width: 148px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-left: 40px;
+  }
   footer {
     text-align: center;
     padding: 30px 12px 18px;

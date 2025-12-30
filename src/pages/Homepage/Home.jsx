@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo,  useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import '../../style/home.css';
 import Slider from 'react-slick';
@@ -13,7 +13,7 @@ import { BookOpen, Clock, Users, Award, ArrowRight } from "lucide-react";
 
 
 function Home() {
-  
+ 
   // slider===============//
   const images = [
     '/image/HomeBanners/1.webp',

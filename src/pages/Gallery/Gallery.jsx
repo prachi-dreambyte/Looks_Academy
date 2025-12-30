@@ -6,21 +6,23 @@ const SalonGallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const galleryImages = [
-    { id: 1, category: 'hairstyling', url: '/image/Connect With Us/1.webp', alt: 'Hair Styling Training' },
-    { id: 2, category: 'makeup', url: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&h=600&fit=crop', alt: 'Makeup Artistry' },
-    { id: 3, category: 'hairstyling', url: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&h=600&fit=crop', alt: 'Coloring Techniques' },
-    { id: 4, category: 'nails', url: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=600&fit=crop', alt: 'Nail Art Course' },
-    { id: 5, category: 'hairstyling', url: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop', alt: 'Modern Cuts' },
-    { id: 6, category: 'makeup', url: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop', alt: 'Bridal Makeup' },
-    { id: 7, category: 'hairstyling', url: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=600&fit=crop', alt: 'Styling Session' },
-    { id: 8, category: 'skincare', url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=600&fit=crop', alt: 'Skincare Treatment' },
-    { id: 9, category: 'makeup', url: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&h=600&fit=crop', alt: 'Professional Makeup' },
-    { id: 10, category: 'nails', url: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&h=600&fit=crop', alt: 'Manicure Training' },
-    { id: 11, category: 'hairstyling', url: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&h=600&fit=crop', alt: 'Hair Treatment' },
-    { id: 12, category: 'skincare', url: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&h=600&fit=crop', alt: 'Facial Treatment' },
-    { id: 13, category: 'makeup', url: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&h=600&fit=crop', alt: 'Eye Makeup Artistry' },
-    { id: 14, category: 'hairstyling', url: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&h=600&fit=crop', alt: 'Bridal Hair Styling' },
-    { id: 15, category: 'nails', url: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&h=600&fit=crop', alt: 'Gel Nails Design' }
+    { id: 1, category: 'hairstyling', url: '/image/Gallery/1.webp', alt: 'Hair Styling Training' },
+    { id: 2, category: 'makeup', url: '/image/Gallery/6.webp', alt: 'Makeup Artistry' },
+    { id: 3, category: 'hairstyling', url: '/image/Gallery/2.webp', alt: 'Coloring Techniques' },
+    { id: 4, category: 'nails', url: '/image/Gallery/11.webp', alt: 'Nail Art Course' },
+    { id: 5, category: 'hairstyling', url: '/image/Gallery/3.webp', alt: 'Modern Cuts' },
+    { id: 6, category: 'makeup', url: '/image/Gallery/7.webp', alt: 'Bridal Makeup' },
+    { id: 7, category: 'hairstyling', url: '/image/Gallery/4.webp', alt: 'Styling Session' },
+    { id: 8, category: 'skincare', url: '/image/Gallery/16.webp', alt: 'Skincare Treatment' },
+    { id: 9, category: 'makeup', url: '/image/Gallery/8.webp', alt: 'Professional Makeup' },
+    { id: 10, category: 'nails', url: '/image/Gallery/12.webp', alt: 'Manicure Training' },
+    { id: 11, category: 'hairstyling', url: '/image/Gallery/5.webp', alt: 'Hair Treatment' },
+    { id: 12, category: 'skincare', url: '/image/Gallery/17.webp', alt: 'Facial Treatment' },
+    { id: 13, category: 'makeup', url: '/image/Gallery/9.webp', alt: 'Eye Makeup Artistry' },
+    { id: 15, category: 'nails', url: '/image/Gallery/13.webp', alt: 'Gel Nails Design' },
+    { id: 16, category: 'makeup', url: '/image/Gallery/10.webp', alt: 'Eye Makeup Artistry'},
+    { id: 17, category: 'nails', url: '/image/Gallery/14.webp', alt: 'Gel Nails Design' },
+     { id: 18, category: 'skincare', url: '/image/Gallery/18.webp', alt: 'Facial Treatment' },
   ];
 
   const filters = [

@@ -56,11 +56,11 @@ const Footer = () => {
         <div className="row footer-main-content justify-content-center">
           {/* Logo Section */}
           <div className="col-lg-2 col-md-6 col-sm-6 mb-4 footer-column">
-            <img
+           <Link to="/" className="nav-link"><img
               src={logo} 
               alt="Logo" 
               className="Logo"
-            />
+            /></Link>
             <ul className="list-unstyled footer-links mt-4">
               <li className="footerParagraph">
                 <a href="tel:+918279720490" className="d-flex align-items-center gap-2">
@@ -98,9 +98,6 @@ const Footer = () => {
               </li>
               <li className="footerParagraph">
                 <Link to="/blogs">Blogs</Link>
-              </li>
-              <li className="footerParagraph">
-                <Link to="/blogs">FAQ</Link>
               </li>
             </ul>
           </div>
