@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../style/course.css';
+import { Link, useLocation } from 'react-router-dom';
 
 const CoursesComponent = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -37,7 +38,7 @@ const CoursesComponent = () => {
       level: 'Professional',
       description: 'Elite professional training by L\'Oréal certified trainers',
       highlights: ['International Certification', 'Hands-on Training', 'Industry Standards', 'Advanced Techniques'],
-      image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600'
+      image: '/image/Our Popular Courses/1.webp'
     },
     {
       id: 2,
@@ -48,7 +49,7 @@ const CoursesComponent = () => {
       level: 'Basic',
       description: 'Foundation course in professional makeup artistry',
       highlights: ['Skin Preparation', 'Color Theory', 'Basic Techniques', 'Product Knowledge'],
-      image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600'
+      image:"/image/Our Popular Courses/2.webp"
     },
     {
       id: 3,
@@ -59,7 +60,7 @@ const CoursesComponent = () => {
       level: 'Basic to Advanced',
       description: 'Complete journey from basics to advanced makeup artistry',
       highlights: ['Bridal Makeup', 'Fashion Makeup', 'Special Effects', 'Portfolio Building'],
-      image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600'
+      image: '/image/Our Popular Courses/4.webp'
     },
     {
       id: 4,
@@ -70,7 +71,7 @@ const CoursesComponent = () => {
       level: 'Comprehensive',
       description: 'Complete beauty therapy and cosmetology program',
       highlights: ['Skin Care', 'Hair Styling', 'Nail Art', 'Spa Treatments'],
-      image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600'
+      image: '/image/Our Popular Courses/3.webp'
     }
   ];
 
@@ -125,6 +126,7 @@ const CoursesComponent = () => {
     fontWeight: '600',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
+    marginTop: '5px',
   };
 
 
@@ -133,7 +135,7 @@ const CoursesComponent = () => {
     <section className="TopBanner">
         <img src="/image/couses.webp" alt="image1"/>
       </section>
-      <div className="courses-container" style={{ background: '#000', minHeight: '100vh' }}>
+      <div className="courses-container" style={{ background: '#fff', minHeight: '100vh' }}>
       <div className="courses-header fade-in">
         <div className="header-decoration"></div>
         <h1 className="courses-title">OUR COURSES</h1>
@@ -151,12 +153,11 @@ const CoursesComponent = () => {
             } ${isVisible[index] ? 'visible' : ''}`}
             onMouseEnter={() => setHoveredCard(course.id)}
             onMouseLeave={() => setHoveredCard(null)}
-            style={{ animationDelay: `${index * 0.15}s` }}
           >
             <div className="card-shine"></div>
             <div className="image-container">
               <img src={course.image} alt={course.name} className="course-image" />
-              <div className="image-overlay"></div>
+              <div className="imageOverlay"></div>
             </div>
 
             <div className="card-content">
@@ -240,7 +241,22 @@ const CoursesComponent = () => {
                 *Price is exclusive of applicable taxes
               </div>
             </div>
-            
+            <Link to="/ContactUs" className="pt-4">
+            <button
+              style={modalButtonStyle}
+              onClick={() => setSelectedCourse(null)}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#FFC700';
+                e.target.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#FFD700';
+                e.target.style.transform = 'scale(1)';
+              }}
+            >
+              ENROLL NOW
+            </button>
+            </Link>
             <button
               style={modalButtonStyle}
               onClick={() => setSelectedCourse(null)}

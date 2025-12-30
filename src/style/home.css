@@ -1,10 +1,14 @@
 /* ==================== CRITICAL FIXES FOR RESPONSIVENESS ==================== */
 /* Craousel */
+.nav-link::after{
+  text-decoration: none !important;
+  background: none !important;
+}
 .LooksStory{
    font-size: 40px;
     font-weight: 400;
     letter-spacing: 10px;
-    color: #fff;
+    color: black;
     margin-bottom: 16px;
     text-transform: uppercase;
     line-height: 1.2;
@@ -14,7 +18,7 @@
 .LooksParagraph{
   text-align: center;
   font-size: 20px;
-  color: #fff;
+  color: black;
 }
 /* 1. Fix dropdown styling to match navbar style */
 .dropdown-toggle {
@@ -346,6 +350,35 @@ body {
 }
 
 /* *******************AboutUs************************** */
+        .AboutButton {
+          background: #fff;
+          color: black;
+          border: none;
+          padding: 16px 40px;
+          border-radius: 50px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          transition: all 0.4s ease;
+          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .AboutButton:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+          background: #fff;
+        }
+
+        .AboutButton svg:last-child {
+          transition: transform 0.3s ease;
+        }
+
+        .AboutButton:hover svg:last-child {
+          transform: translateX(5px);
+        }
 .AboutBackground{
   background: black;
   padding: 80px 40px;
@@ -373,24 +406,35 @@ body {
 .Aboutsection{
    padding: 50px 60px;
    background: #c4c5bf;
+   background-image: url('/image/looks2.png');
+}
+.ConnectSection{
+   padding: 50px 60px;
+   background: #c4c5bf;
+   background-image: url('/image/looks4.png');
 }
 
 /* ***********Our Course***************** */
 .courses-section {
-          padding: 80px 100px;
+          padding: 50px 20px;
           background: black;
+          min-height: 500px;
+          display: block !important;
+          visibility: visible !important;
         }
 
-        .container {
+        /* .container {
           max-width: 1320px;
           margin: 0 auto;
           padding: 0 15px;
-        }
+        } */
 
         /* Section Header */
         .section-header {
           text-align: center;
           margin-bottom: 60px;
+          display: block !important;
+          visibility: visible !important;
         }
 
         .section-title {
@@ -403,6 +447,7 @@ body {
     line-height: 1.2;
     text-align: center;
     padding-top: 30px;
+    position: relative;
         }
 
         .section-title::after {
@@ -426,46 +471,53 @@ body {
         }
 
         /* Grid System */
-        .row {
+        /* .row {
           display: flex;
           flex-wrap: wrap;
           margin: 0 -12px;
-        }
+          visibility: visible !important;
+        } */
 
        
 
-        .col-lg-4, .col-md-6, .col-sm-12 {
+        /* .col-lg-4, .col-md-6, .col-sm-12 {
           padding: 0 12px;
-        }
+          display: block !important;
+          visibility: visible !important;
+        } */
 
-        .col-lg-4 {
+        /* .col-lg-4 {
           flex: 0 0 33.333333%;
           max-width: 33.333333%;
-        }
+        } */
 
         /* Course Card */
         .course-card {
           margin-bottom: 50px;
-    background: #fff;
+    background: #fff !important;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
     height: 90%;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
+    visibility: visible !important;
+    opacity: 1 !important;
         }
 
         .course-card:hover {
-          transform: translateY(-10px);
+          transform: translateY(32px);
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
         .course-image-wrapper {
           position: relative;
           width: 100%;
-          height: 220px;
+          /* height: 220px; */
           overflow: hidden;
+          display: block !important;
+          visibility: visible !important;
         }
 
         .course-image {
@@ -473,6 +525,8 @@ body {
           height: 100%;
           object-fit: cover;
           transition: transform 0.4s ease;
+          display: block !important;
+          visibility: visible !important;
         }
 
         .course-card:hover .course-image {
@@ -496,8 +550,9 @@ body {
         .course-content {
           padding: 24px;
           flex: 1;
-          display: flex;
+          display: flex !important;
           flex-direction: column;
+          visibility: visible !important;
         }
 
         .course-title {
@@ -663,9 +718,9 @@ body {
             max-width: 100%;
           }
 
-          .row {
+          /* .row {
             gap: 20px;
-          }
+          } */
 
           .course-card {
             margin-bottom: 0;
@@ -754,9 +809,60 @@ body {
             width: 100%;
             max-width: 300px;
           }
+          .premium-title{
+            font-size: 30px !important;
+          }
+           .Aboutsection {
+            padding: 20px 20px !important;
+          }
+          .AboutPara {
+            font-size: 17px;
+          }
+          .AboutBackground {
+            padding: 40px 20px;
+          }
+          .AboutImage{
+            padding-top: 40px;
+          }
+          .AboutButton {
+            padding: 10px 26px;
         }
+        .ConnectSection {
+    padding: 25px 20px;
+        }
+            .hair-title {
+        font-size: 18px !important;
+    }
+    .Brands {
+    font-size: 30px;
+    }
+    .logo-center {
+    object-fit: contain;
+    padding: 34px !important;
+    height: 110px !important;
+    }
+    .Connect{
+          font-size: 30px !important;
+    font-weight: 500 !important;
+    letter-spacing: 3px !important;
+    padding-top:100px !important;
+    }
+    .Brands {
+    font-size: 30px !important;
+    }
+    .hair-card{
+      padding: 36px 10px !important;
+      min-height: 345px !important;
+    }
+      }
 
         @media (max-width: 360px) {
+          .Aboutsection {
+    padding: 20px 20px !important;
+          }
+          .premium-title{
+            font-size: 30px !important;
+          }
           .section-title {
             font-size: 24px;
           }
@@ -778,6 +884,11 @@ body {
             padding: 10px 24px;
           }
         }
+         @media (max-width: 340px) {
+           .premium-title{
+            font-size: 30px !important;
+          }
+         }
 
   /* 1234567890 */
   .SectionWrapper {
@@ -943,7 +1054,7 @@ body {
 
         .premium-title {
           font-size: 50px;
-          font-weight: 300;
+          font-weight: 500;
           letter-spacing: 8px;
           color: #d4af37;
           margin-bottom: 1rem;

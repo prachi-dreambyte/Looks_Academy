@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../../style/AboutSection.module.css';
+import '../../style/AboutSection.css';
+import { Link, useLocation } from 'react-router-dom';
 
 const AboutSection = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+ const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
     {
@@ -34,167 +40,107 @@ const AboutSection = () => {
 
   return (
     <>
-    <section className="TopBanner">
+     <section className="TopBanner">
         <img src="/image/aboutUs.webp" alt="image1"/>
       </section>
-      <div className={styles.aboutSection}>
-        <div className="container-fluid px-3 px-md-5">
-          <div className="row align-items-center g-4">
-            {/* Left Content Column */}
-            <div className="col-lg-6 col-md-12">
-              <div className={styles.contentWrapper}>
-                <div className={`${styles.decorativeCircle} ${styles.circle1}`}></div>
-                <div className={`${styles.decorativeCircle} ${styles.circle2}`}></div>
-                
-                <h1 className={styles.sectionTitle}>
-                  <span className={styles.titleLine}>About Us</span>
-                </h1>
-                
-                <div className={styles.titleUnderline}></div>
-                
-                <p className={styles.tagline}>Nurture International Beauty Professionals with perfection</p>
-                
-                <div className={styles.contentBody}>
-                  <div className={styles.infoCard}>
-                    <div className={styles.cardIcon}>
-                      <div className={styles.iconCircle}></div>
-                    </div>
-                    <div className={styles.cardContent}>
-                      <h3>LOOKS BEAUTY ACADEMY</h3>
-                      <p>
-                        A comprehensive Beauty Academy offering courses in Makeup, 
-                        <strong> Hair, Skin, Nails, Nutrition, Salon Management, Hair Extension, 
-                        Eyelashes Extension</strong> and others. We are the finest and best 
-                        International Beauty Academy in India with high-quality international 
-                        standards and certified by many National and International certification 
-                        organisations.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.missionStatement}>
-                    <div className={styles.quoteMark}>"</div>
-                    <p>
-                      We craft and develop every student as an international PRO Beauty Professional. 
-                      <strong> We Educate, Encourage, Evolve, Empower, Embrace, and Excel</strong> every 
-                      aspiring beauty professional and nurture them with Perfection and every student 
-                      gets Empowered to make their career and brand globally.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+       <div className="salon-about-page">
+      {/* Animated Background Elements */}
+      <div className="bg-shapes">
+        <div className="shape shape-1"></div>
+        <div className="shape shape-2"></div>
+        <div className="shape shape-3"></div>
+        <div className="shape shape-4"></div>
+      </div>
 
-            {/* Right Images Column */}
+      {/* Floating Background Icons */}
+      <div className="floating-icons">
+        <div className="float-icon icon-1">✨</div>
+        <div className="float-icon icon-2">✨</div>
+        <div className="float-icon icon-3">✨</div>
+        <div className="float-icon icon-4">✨</div>
+        <div className="float-icon icon-5">✨</div>
+        <div className="float-icon icon-6">✨</div>
+        <div className="float-icon icon-7">✨</div>
+        <div className="float-icon icon-8">✨</div>
+      </div>
+
+      {/* Hero Section */}
+      <section className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
+        <div className="container">
+          <div className="row align-items-center">
             <div className="col-lg-6 col-md-12">
-              <div className={styles.imagesContainer}>
-                <div className={`${styles.decorativeCircle} ${styles.circle3}`}></div>
-                <div className={`${styles.decorativeCircle} ${styles.circle4}`}></div>
-                
-                <div className={styles.imageStack}>
-                  <div className={`${styles.imageWrapper} ${styles.primaryImage}`}>
-                    <div className={styles.imageBorder}></div>
-                    <img 
-                      src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" 
-                      alt="Beauty Professional 1" 
-                      className="img-fluid"
-                    />
-                  </div>
-                  
-                  <div className={`${styles.imageWrapper} ${styles.secondaryImage}`}>
-                    <div className={styles.imageBorder}></div>
-                    <img 
-                      src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" 
-                      alt="Beauty Professional 2" 
-                      className="img-fluid"
-                    />
-                  </div>
-                </div>
+              <h1 className="hero-title">About Our Academy</h1>
+              <p className="hero-subtitle">Looks Academy, which was founded with a desire for excellence and a dedication to developing talent, is today well-known in the field of beauty education. We have been at the forefront of enabling people to 
+                explore their creative potential and seek lucrative jobs in the beauty business for more than a decade.</p>
+              <div className="golden-line"></div>
+            </div>
+            <div className="col-lg-6 col-md-12">
+              <div className="hero-image-wrapper">
+                <img 
+                  src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=600&fit=crop" 
+                  alt="Salon Academy" 
+                  className="hero-image"
+                />
               </div>
             </div>
           </div>
         </div>
-        
-        <div className={styles.backgroundPattern}></div>
-      </div>
+      </section>
 
-      {/* Mission Vision Section */}
-      <section className={styles.missionVisionSection}>
-        <div className="container py-5">
-          <div className={`${styles.sectionHeader} text-center mb-5`}>
-            <h2 className={styles.sectionMission}>
-              <span className={styles.titleWord}>Our Purpose</span>
-            </h2>
-            <div className={styles.titleUnderline}></div>
-            <p className={styles.sectionSubtitle}>
-              <span className={styles.subtitleWord}>Empowering</span>{' '}
-              <span className={styles.subtitleWord}>tomorrow</span>{' '}
-              <span className={styles.subtitleWord}>through</span>{' '}
-              <span className={styles.subtitleWord}>innovation</span>{' '}
-              <span className={styles.subtitleWord}>today</span>
-            </p>
+      {/* Story Section */}
+      
+      <section className="story-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center mb-5">
+              <h2 className="section-title">Our Story</h2>
+              <div className="title-underline"></div>
+            </div>
           </div>
-
-          <div className="row g-4">
-            {/* Mission Card */}
-            <div className="col-lg-6 col-md-12">
-              <div className={`${styles.missionCard} h-100`}>
-                <div className={styles.cardImageWrapper}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" 
-                    alt="Mission" 
-                    className={styles.cardImage}
-                  />
-                  <div className={styles.imageOverlay}></div>
-                </div>
-                <div className={styles.cardBody}>
-                  <div className={`${styles.iconBadge} ${styles.missionBadge}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                      <path d="M2 17l10 5 10-5"></path>
-                      <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                  </div>
-                  <h3 className={styles.cardTitle}>
-                    <span className={styles.cardTitleWord}>Our Mission</span>
-                  </h3>
-                  <p className={styles.cardText}>
-                    <span className={styles.textLine}>To empower businesses with innovative solutions
-                    that transform challenges into opportunities.
-                    We deliver excellence through cutting-edge
-                    technology and exceptional service.</span>
-                  </p>
-                </div>
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-md-12 mb-4">
+              <div className="story-image-grid">
+                <img 
+                  src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop" 
+                  alt="Training Session" 
+                  className="story-img story-img-1"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&h=300&fit=crop" 
+                  alt="Students Learning" 
+                  className="story-img story-img-2"
+                />
               </div>
             </div>
-
-            {/* Vision Card */}
             <div className="col-lg-6 col-md-12">
-              <div className={`${styles.visionCard} h-100`}>
-                <div className={styles.cardImageWrapper}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop" 
-                    alt="Vision" 
-                    className={styles.cardImage}
-                  />
-                  <div className={styles.imageOverlay}></div>
+              <div className="story-card">
+                <p className="story-text">
+                  Founded with a vision to revolutionize beauty education, our Salon Academy has been nurturing talent and shaping careers for over a decade. We believe that every artist deserves world-class training and the opportunity to excel in the beauty industry.
+                </p>
+                <p className="story-text">
+                  Our state-of-the-art facilities combined with industry-leading instructors provide students with an unparalleled learning experience. We don't just teach techniques; we inspire creativity and build confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="row mt-5">
+            <div className="col-12">
+              <div className="stats-grid">
+                <div className="stat-card">
+                  <h3 className="stat-number">5000+</h3>
+                  <p className="stat-label">Graduates</p>
                 </div>
-                <div className={styles.cardBody}>
-                  <div className={`${styles.iconBadge} ${styles.visionBadge}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                  </div>
-                  <h3 className={styles.cardTitle}>
-                    <span className={styles.cardTitleWord}>Our Vision</span>
-                  </h3>
-                  <p className={styles.cardText}>
-                    <span className={styles.textLine}>To be the global leader recognized for
-                    transforming how organizations achieve their
-                    goals through innovation and creativity that
-                    inspires positive change worldwide.</span>
-                  </p>
+                <div className="stat-card">
+                  <h3 className="stat-number">50+</h3>
+                  <p className="stat-label">Expert Trainers</p>
+                </div>
+                <div className="stat-card">
+                  <h3 className="stat-number">15+</h3>
+                  <p className="stat-label">Years Excellence</p>
+                </div>
+                <div className="stat-card">
+                  <h3 className="stat-number">98%</h3>
+                  <p className="stat-label">Success Rate</p>
                 </div>
               </div>
             </div>
@@ -202,53 +148,231 @@ const AboutSection = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <div className={styles.salonFaqWrapper}>
-        <div className={styles.salonFaqContainer}>
-          <div className={styles.salonFaqHeader}>
-            <h1 className={styles.salonFaqTitle}>Frequently Asked</h1>
-            <p className={styles.salonFaqSubtitle}>
-              Everything you need to know about our salon services and policies
-            </p>
-          </div>
-
-          <div className={styles.salonFaqList}>
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className={`${styles.salonFaqItem} ${openIndex === index ? styles.active : ''}`}
-              >
-                <button
-                  className={styles.salonFaqQuestionBtn}
-                  onClick={() => toggleAccordion(index)}
-                >
-                  <div className={styles.salonFaqQuestionContent}>
-                    <span className={styles.salonFaqNumber}>0{index + 1}</span>
-                    <span className={styles.salonFaqQuestionText}>{faq.question}</span>
+      {/* Mission & Vision Section */}
+      <section className="mission-vision-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 col-md-12 mb-4">
+              <div className="mv-card mission-card">
+                <div className="mv-image-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&h=400&fit=crop" 
+                    alt="Our Mission" 
+                    className="mv-image"
+                  />
+                  <div className="mv-overlay">
+                    <h3 className="mv-title">Our Mission</h3>
                   </div>
-                  <svg
-                    className={`${styles.salonChevronIcon} ${openIndex === index ? styles.open : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <div className={`${styles.salonFaqAnswer} ${openIndex === index ? styles.open : ''}`}>
-                  <p className={styles.salonFaqAnswerText}>{faq.answer}</p>
+                </div>
+                <div className="mv-content">
+                  <p className="mv-text">
+                    To empower aspiring beauty professionals with cutting-edge skills, industry knowledge, and the confidence to succeed. We are committed to providing accessible, comprehensive training that transforms passion into profitable careers while maintaining the highest standards of excellence in beauty education.
+                  </p>
+                  <ul className="mv-list">
+                    <li>Deliver world-class education and training</li>
+                    <li>Foster creativity and innovation</li>
+                    <li>Build industry-ready professionals</li>
+                    <li>Create opportunities for success</li>
+                  </ul>
                 </div>
               </div>
-            ))}
+            </div>
+            <div className="col-lg-6 col-md-12 mb-4">
+              <div className="mv-card vision-card">
+                <div className="mv-image-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&h=400&fit=crop" 
+                    alt="Our Vision" 
+                    className="mv-image"
+                  />
+                  <div className="mv-overlay">
+                    <h3 className="mv-title">Our Vision</h3>
+                  </div>
+                </div>
+                <div className="mv-content">
+                  <p className="mv-text">
+                    To become the leading beauty academy globally, recognized for excellence in education and for producing the most sought-after beauty professionals in the industry. We envision a future where our graduates set trends, lead innovations, and elevate the standards of beauty artistry worldwide.
+                  </p>
+                  <ul className="mv-list">
+                    <li>Lead the beauty education industry</li>
+                    <li>Set global standards for excellence</li>
+                    <li>Inspire the next generation of artists</li>
+                    <li>Shape the future of beauty</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      {/* Values Section */}
+      <section className="values-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center mb-5">
+              <h2 className="section-title">Our Values</h2>
+              <div className="title-underline"></div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-4 col-md-6 mb-4">
+              <div className="value-card">
+                <div className="value-image-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop" 
+                    alt="Excellence" 
+                    className="value-image"
+                  />
+                </div>
+                <div className="value-icon">✨</div>
+                <h4 className="value-title">Excellence</h4>
+                <p className="value-text">We strive for perfection in every aspect of beauty education and skill development.</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6 mb-4">
+              <div className="value-card">
+                <div className="value-image-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" 
+                    alt="Innovation" 
+                    className="value-image"
+                  />
+                </div>
+                <div className="value-icon">💡</div>
+                <h4 className="value-title">Innovation</h4>
+                <p className="value-text">Embracing cutting-edge techniques and trends to keep our students ahead of the curve.</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6 mb-4">
+              <div className="value-card">
+                <div className="value-image-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop" 
+                    alt="Community" 
+                    className="value-image"
+                  />
+                </div>
+                <div className="value-icon">🤝</div>
+                <h4 className="value-title">Community</h4>
+                <p className="value-text">Building a supportive network of professionals who grow together and inspire each other.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="gallery-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center mb-5">
+              <h2 className="sectionTitle">Our Facilities</h2>
+              <div className="title-underline"></div>
+            </div>
+          </div>
+          <div className="row g-4">
+            <div className="col-lg-4 col-md-6">
+              <div className="gallery-item">
+                <img 
+                  src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=400&h=500&fit=crop" 
+                  alt="Modern Classroom" 
+                  className="gallery-image"
+                />
+                <div className="gallery-overlay">
+                  <p>Modern Classrooms</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="gallery-item">
+                <img 
+                  src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=500&fit=crop" 
+                  alt="Practice Stations" 
+                  className="gallery-image"
+                />
+                <div className="gallery-overlay">
+                  <p>Professional Stations</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="gallery-item">
+                <img 
+                  src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=500&fit=crop" 
+                  alt="State-of-art Equipment" 
+                  className="gallery-image"
+                />
+                <div className="gallery-overlay">
+                  <p>Advanced Equipment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       {/* FAQ Section */}
+      <div className="salonFaqWrapper">
+  <div className="salonFaqContainer">
+    <div className="salonFaqHeader">
+      <h1 className="salonFaqTitle">Frequently Asked</h1>
+      <p className="salonFaqSubtitle">
+        Everything you need to know about our salon services and policies
+      </p>
+    </div>
+
+    <div className="salonFaqList">
+      {faqs.map((faq, index) => (
+        <div 
+          key={index} 
+          className={`salonFaqItem ${openIndex === index ? 'active' : ''}`}
+        >
+          <button
+            className="salonFaqQuestionBtn"
+            onClick={() => toggleAccordion(index)}
+          >
+            <div className="salonFaqQuestionContent">
+              <span className="salonFaqNumber">0{index + 1}</span>
+              <span className="salonFaqQuestionText">{faq.question}</span>
+            </div>
+            <svg
+              className={`salonChevronIcon ${openIndex === index ? 'open' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth="2.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <div className={`salonFaqAnswer ${openIndex === index ? 'open' : ''}`}>
+            <p className="salonFaqAnswerText">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+    </div>
+     {/* CTA Section */}
+     {/* Parallax CTA Section */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center">
+              <h2 className="cta-title">Want To Become A Perfect Beauty Professional?</h2>
+              <p className="cta-text">Are you ready to take the next step towards your career?</p>
+              <Link to="/ContactUs"><button className="cta-button">Enroll Now</button></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
+   
   );
 }
 

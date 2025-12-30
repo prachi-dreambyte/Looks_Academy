@@ -91,16 +91,6 @@ const Header = () => {
                   Blogs
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/AboutUs#salonfaq"
-                  className={({ isActive }) =>
-                    isActive ? "nav-link active" : "nav-link"
-                  }
-                >
-                  FAQ
-                </NavLink>
-              </li>
             </ul>
 
             {/* CTA Button */}
@@ -125,7 +115,7 @@ const Header = () => {
             <ul className="mobile-menu">
               <li>
                 <NavLink
-                  to="/"
+                  to="/Home"
                   className={({ isActive }) =>
                     isActive ? "mobile-link active" : "mobile-link"
                   }
@@ -137,7 +127,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/#aboutus"
+                  to="/AboutUs"
                   className="mobile-link"
                   onClick={closeMobileMenu}
                 >
@@ -146,81 +136,35 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/services"
-                  className={({ isActive }) =>
-                    isActive ? "mobile-link active" : "mobile-link"
-                  }
-                  onClick={closeMobileMenu}
-                >
-                  Services
-                </NavLink>
-              </li>
-              <li className="mobile-dropdown">
-                <details>
-                  <summary className="mobile-link">Services Area</summary>
-                  <ul className="mobile-submenu">
-                    <li>
-                      <Link to="/ServiceAreaDehradun" onClick={closeMobileMenu}>
-                        Dehradun
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/ServiceAreaDelhi" onClick={closeMobileMenu}>
-                        Delhi
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/ServiceAreaRishikesh"
-                        onClick={closeMobileMenu}
-                      >
-                        Rishikesh
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/ServiceAreaNodia" onClick={closeMobileMenu}>
-                        Noida
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/ServiceAreaGurgaon" onClick={closeMobileMenu}>
-                        Gurgaon
-                      </Link>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-              <li>
-                <NavLink
-                  to="/portfolio"
-                  className={({ isActive }) =>
-                    isActive ? "mobile-link active" : "mobile-link"
-                  }
-                  onClick={closeMobileMenu}
-                >
-                  Portfolio
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/blogs"
-                  className={({ isActive }) =>
-                    isActive ? "mobile-link active" : "mobile-link"
-                  }
-                  onClick={closeMobileMenu}
-                >
-                  Blog
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/PhotographyCourse"
+                  to="/Courses"
                   className={({ isActive }) =>
                     isActive ? "mobile-link active" : "mobile-link"
                   }
                   onClick={closeMobileMenu}
                 >
                   Courses
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/Gallery"
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
+                  onClick={closeMobileMenu}
+                >
+                  Gallery
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/Blogs"
+                  className={({ isActive }) =>
+                    isActive ? "mobile-link active" : "mobile-link"
+                  }
+                  onClick={closeMobileMenu}
+                >
+                  Blog
                 </NavLink>
               </li>
               <li className="mobile-cta">
@@ -239,7 +183,6 @@ const Header = () => {
 
       <style jsx>{`
         /* ==================== MODERN FIXED HEADER STYLES ==================== */
-
         .modern-header {
           position: fixed;
           top: 0;
@@ -429,7 +372,7 @@ const Header = () => {
           display: none;
           flex-direction: column;
           gap: 5px;
-          background: none;
+          background: #fff;
           border: none;
           cursor: pointer;
           padding: 8px;
@@ -496,7 +439,7 @@ const Header = () => {
             left: 0;
             width: 100%;
             height: calc(100vh - 70px);
-            background: #fff;
+            background: #fff !important;
             transform: translateX(-100%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;

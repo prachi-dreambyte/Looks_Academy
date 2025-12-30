@@ -35,7 +35,7 @@ function Home() {
     bgColor: '#1a1a1a',
     textColor: '#ffffff',
     hasImage: true,
-    imagePath:'/image/1.jpg' // Add your hair image path
+    imagePath:'/image/HAIR/1.webp' // Add your hair image path
   },
   {
     letter: 'A',
@@ -44,7 +44,7 @@ function Home() {
     bgColor: '#ffffff',
     textColor: '#000000',
     hasImage: true,
-    imagePath: '/image/Our Popular Courses/3.webp' // Add your academy image path
+    imagePath: '/image/HAIR/2.webp' // Add your academy image path
   },
   {
     letter: 'I',
@@ -53,7 +53,7 @@ function Home() {
     bgColor: '#000000',
     textColor: '#FFF',
     hasImage: true,
-    imagePath: '/image/Our Popular Courses/6.webp' // Add your innovation image path
+    imagePath: '/image/HAIR/3.webp' // Add your innovation image path
   },
   {
     letter: 'R',
@@ -62,70 +62,70 @@ function Home() {
     bgColor: '#FFF',
     textColor: '#000000',
     hasImage: true,
-    imagePath: '/image/A.jpeg' // Add your results image path
+    imagePath: '/image/HAIR/4.webp' // Add your results image path
   }
 ];
  const courses = [
     {
       id: 1,
-      title: "Professional Makeup Artistry",
+      title: "ARTH Courses",
       description: "Master the art of makeup application with hands-on training in bridal, editorial, and special effects makeup techniques.",
       duration: "6 Months",
       students: "150+",
-      level: "Beginner to Advanced",
+      level: "Professional",
       image: "/image/Our Popular Courses/1.webp",
       category: "Makeup"
     },
     {
       id: 2,
-      title: "Hair Styling & Design",
+      title: "Makeup Courses",
       description: "Learn cutting-edge hair styling techniques including cuts, colors, treatments, and modern styling methods.",
-      duration: "4 Months",
+      duration: "2 Months",
       students: "120+",
-      level: "All Levels",
-      image: "h/image/Our Popular Courses/2.webp",
-      category: "Hair"
+      level: "Basic",
+      image: "/image/Our Popular Courses/2.webp",
+      category: "Makeup"
     },
     {
       id: 3,
-      title: "Skin Care & Aesthetics",
+      title: "Beauty Courses",
       description: "Comprehensive training in skincare treatments, facial therapies, and advanced aesthetic procedures.",
-      duration: "5 Months",
+      duration: "3 Months",
       students: "100+",
-      level: "Intermediate",
+      level: "Comprehensive",
       image: "/image/Our Popular Courses/3.webp",
       category: "Skincare"
     },
-    {
-      id: 4,
-      title: "Nail Art & Technology",
-      description: "Expert training in nail care, nail art designs, gel extensions, and the latest nail technology trends.",
-      duration: "3 Months",
-      students: "90+",
-      level: "Beginner",
-      image: "/image/Our Popular Courses/4.webp",
-      category: "Nails"
-    },
-    {
-      id: 5,
-      title: "Bridal Makeup Specialist",
-      description: "Specialize in bridal makeup with traditional and contemporary techniques for Indian and international styles.",
-      duration: "3 Months",
-      students: "200+",
-      level: "Advanced",
-      image: "/image/Our Popular Courses/5.webp",
-      category: "Bridal"
-    },
-    {
-      id: 6,
-      title: "Salon Management & Entrepreneurship",
-      description: "Learn business skills to start and manage your own beauty salon, including marketing and client management.",
-      duration: "2 Months",
-      students: "80+",
-      level: "All Levels",
-      image: "/image/Our Popular Courses/6.webp",
-      category: "Business"
-    }
+    // {
+    //   id: 4,
+    //   title: "Nail Art & Technology",
+    //   description: "Expert training in nail care, nail art designs, gel extensions, and the latest nail technology trends.",
+    //   duration: "3 Months",
+    //   students: "90+",
+    //   level: "Beginner",
+    //   image: "/image/Our Popular Courses/4.webp",
+    //   category: "Nails"
+    // },
+    // {
+    //   id: 5,
+    //   title: "Bridal Makeup Specialist",
+    //   description: "Specialize in bridal makeup with traditional and contemporary techniques for Indian and international styles.",
+    //   duration: "3 Months",
+    //   students: "200+",
+    //   level: "Advanced",
+    //   image: "/image/Our Popular Courses/5.webp",
+    //   category: "Bridal"
+    // },
+    // {
+    //   id: 6,
+    //   title: "Salon Management & Entrepreneurship",
+    //   description: "Learn business skills to start and manage your own beauty salon, including marketing and client management.",
+    //   duration: "2 Months",
+    //   students: "80+",
+    //   level: "All Levels",
+    //   image: "/image/Our Popular Courses/6.webp",
+    //   category: "Business"
+    // }
   ];
   const handleReadMore = () => {
     // Navigate to courses page or show more courses
@@ -134,7 +134,7 @@ function Home() {
   return (
     <>
       {/*===============SLIDER====================*/}
-      <div className="container my-5">
+      <div className="container-fluid my-5">
       <div
         id="imageSlider"
         className="carousel slide"
@@ -213,7 +213,7 @@ function Home() {
         <div className='conatainer'>
            <div className="row g-0">
   {sections.map((section, index) => (
-    <div key={index} className="col-12 col-md-6 col-lg-3">
+    <div key={index} className="col-6 col-md-6 col-lg-3">
       <div 
         className="hair-card"
         style={{ 
@@ -253,13 +253,19 @@ function Home() {
             <div className='col-md-6'>
             <div className='LooksAbout'>
               <h1 className='AboutHead'>ABOUT US (WHO WE ARE)</h1>
-              <p className='AboutPara'>LOOKS Academy, one of the top makeup academy and beauty school, is where your journey towards a successful beauty career begins. 
-              Our Beauty School is known to offer the best education and professional training across a variety of beauty disciplines.</p>
-              <p className='AboutPara'>Whether you are interested in learning cosmetology, the art of makeup, hairdressing, nail art, or more, our programs are designed to teach you top-notch knowledge 
-                that helps you excel in the beauty industry. The cosmetology program we offer is an exploration of beauty techniques. From advanced skincare and makeup applications to 
-                hair cutting and styling, we have everything that will ensure you a secured career. 
+              <p className='AboutPara'>Looks Academy is a premium beauty destination dedicated to enhancing confidence, creativity, and professional excellence. We offer high-quality salon
+                 services along with expert-led beauty education under one roof. At Looks Salon, our experienced professionals deliver personalized hair, makeup, skincare, and grooming services using modern techniques, 
+                 premium products, and the highest standards of hygiene. Alongside this, Looks Academy empowers aspiring artists with practical, hands-on training in makeup artistry, hair styling, skincare, and salon business fundamentals.
+                 .</p>
+              <p className='AboutPara'>Looks Academy nurtures aspiring beauty artists through expertly curated, hands-on training programs that blend creativity, industry knowledge, and real-world practice. 
+                Whether you step in to indulge in a transformative beauty experience or to shape a successful career in the beauty industry, Looks promises sophistication, confidence, and unmatched quality at every touchpoint.
               </p>
-              <button className='btn AboutButton'>READ MORE</button>
+              <div className="text-center mt-5">
+             <Link to="/AboutUs"><button onClick={handleReadMore} className="AboutButton">
+               View More
+               <ArrowRight size={20} />
+             </button></Link>
+           </div>
             </div>
           </div>
           <div className='col-md-6'>
@@ -316,10 +322,10 @@ function Home() {
                          <Award size={16} />
                          <span>{course.level}</span>
                        </div>
-                       <button className="enroll-btn">
+                       <Link to="/ContactUs" className="nav-link"><button className="enroll-btn">
                          Enroll Now
                          <ArrowRight size={16} />
-                       </button>
+                       </button></Link>
                      </div>
                    </div>
                  </div>
@@ -338,38 +344,53 @@ function Home() {
          </div>
    
        </section>
-   
+      {/* new section */}
+       <div className="SectionWrapper">
+       <div className="container hero-content">
+          <div className="row">
+            <div className="col-lg-6 col-md-12">
+              <div className="salon-logo">LOOKS ACADEMY</div>
+              <h1 className="premium-title">LEARN FROM PROFESSIONAlS</h1>
+              <h2 className="premium-subtitle"></h2>
+              <Link to="/ContactUs" className="nav-link"><button className="contact-btn">Contact us</button></Link>
+            </div>
+
+            <div className="col-lg-6 col-md-12">
+            </div>
+          </div>
+        </div>
+      </div>
        {/* ***************teacher********************** */}
-      <section className='Aboutsection'>
+      <section className='ConnectSection'>
   <div className='container'>
     <h1 className="Connect">Connect With Us</h1>
     <p className="ConnectPara">Follow us on social media for updates and exclusive content</p>
     <div className='row'>
-      <div className='col-md-4'>
-        <img src="/image/Connect With Us/1.webp" alt="Salon interior"/>
+      <div className='col-md-4 col-6'>
+        <img src="/image/Connect With Us/6.webp" alt="Salon interior"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/8.webp" alt="Hair styling"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/2.webp" alt="Hair treatment"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/3.webp" alt="Salon services"/>
       </div>
       <div className='col-md-4'>
-        <img src="/image/Wlooks.png" alt="Salon logo" className="logo-center"/>
+        <img src="/image/looks.jpeg" alt="Salon logo" className="logo-center"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/4.webp" alt="Hair coloring"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/5.webp" alt="Manicure service"/>
       </div>
-      <div className='col-md-4'>
-        <img src="/image/Connect With Us/6.webp" alt="Makeup services"/>
+      <div className='col-md-4 col-6'>
+        <img src="/image/Connect With Us/1.webp" alt="Makeup services"/>
       </div>
-      <div className='col-md-4'>
+      <div className='col-md-4 col-6'>
         <img src="/image/Connect With Us/7.webp" alt="Salon chairs"/>
       </div>
     </div>
