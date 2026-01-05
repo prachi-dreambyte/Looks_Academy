@@ -15,6 +15,10 @@ import CreateBlog from "../components/admindashboard/AllBlogs/add-new/index.jsx"
 import EditBlog from "../components/admindashboard/AllBlogs/[id]/index.jsx";
 import SalonBlog from "../pages/Blogs/Blogs.jsx";
 import EnrollNow from "../pages/EnrollNow/EnrollNow.jsx";
+import AllBanner from "../components/admindashboard/banner/index.jsx";
+import AddBanner from "../components/admindashboard/banner/add-new/index.jsx";
+import AllOurStory from "../components/admindashboard/Our_story/index.jsx";
+import AddOurStory from "../components/admindashboard/Our_story/add-new/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -41,19 +45,31 @@ export const routes = [
 
   /* ---------------- ADMIN ROUTES ---------------- */
   {
-    path: "/admin",
-    element: <ProtectedRoute />,
-    children: [
-      {
-        element: <AdminLayout />,
-        children: [
-          { index: true, element: <AdminDashboard /> },
-          { path: "dashboard", element: <AdminDashboard /> },
-          { path: "blogs", element: <AllBlogs /> },
-          { path: "add-new", element: <CreateBlog /> },
-          { path: "blogs/edit/:id", element: <EditBlog /> }, // ✅ FIXED
-        ],
-      },
-    ],
-  },
+  path: "/admin",
+  element: <ProtectedRoute />,
+  children: [
+    {
+      element: <AdminLayout />,
+      children: [
+        { index: true, element: <AdminDashboard /> },
+        { path: "dashboard", element: <AdminDashboard /> },
+
+        // BLOG ROUTES
+        { path: "blogs", element: <AllBlogs /> },
+        { path: "blogs/add-new", element: <CreateBlog /> },
+        { path: "blogs/edit/:id", element: <EditBlog /> },
+
+        // BANNER ROUTES
+        { path: "banner", element: <AllBanner /> },
+        { path: "banner/add-new", element: <AddBanner /> },
+
+        //Our Story routes
+        {path:"our_story" , element:<AllOurStory/>},
+        {path:"our_story/add-new" , element:<AddOurStory/>}
+
+      ],
+    },
+  ],
+}
+
 ];

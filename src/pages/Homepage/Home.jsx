@@ -13,19 +13,50 @@ import { BookOpen, Clock, Users, Award, ArrowRight } from "lucide-react";
 
 
 function Home() {
- 
-  // slider===============//
-  const images = [
-    '/image/HomeBanners/1.webp',
-    '/image/HomeBanners/2.webp',
-    '/image/HomeBanners/3.webp',
-    '/image/HomeBanners/4.webp',
-  ];
+  const [banners, setBanners] = useState([]);
+  const [story, setStory] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  
-    useEffect(() => {
-      setIsVisible(true);
-    }, []);
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  /* ================= BANNERS ================= */
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/banner/home`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setBanners(data.data);
+        }
+      });
+  }, [API_BASE_URL]);
+
+  /* ================= OUR STORY ================= */
+  useEffect(() => {
+    const fetchStory = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/our-story`);
+        const result = await res.json();
+
+        if (res.ok && result.success && result.data.length > 0) {
+          setStory(result.data[0]);
+        }
+      } catch {
+        console.error("Failed to load Our Story");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStory();
+  }, [API_BASE_URL]);
+
+  /* ================= VISIBILITY ================= */
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+
     
   const sections = [
   {
@@ -129,81 +160,88 @@ function Home() {
   ];
   return (
     <>
-      {/*===============SLIDER====================*/}
-      <div className="container-fluid my-5">
-      <div
-        id="imageSlider"
-        className="carousel slide"
-        data-bs-ride="carousel"
-        data-bs-interval="3000"
-      >
-        {/* Indicators */}
-        <div className="carousel-indicators">
-          <button data-bs-target="#imageSlider" data-bs-slide-to="0" className="active"></button>
-          <button data-bs-target="#imageSlider" data-bs-slide-to="1"></button>
-          <button data-bs-target="#imageSlider" data-bs-slide-to="2"></button>
-          <button data-bs-target="#imageSlider" data-bs-slide-to="3"></button>
-        </div>
-
-        {/* Slides */}
-        <div className="carousel-inner rounded">
-          <div className="carousel-item active">
-            <img
-              src="/image/HomeBanners/1.webp"
-              className="d-block w-100 slider-img"
-              alt="Slide 1"
-            />
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="/image/HomeBanners/2.webp"
-              className="d-block w-100 slider-img"
-              alt="Slide 2"
-            />
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="/image/HomeBanners/3.webp"
-              className="d-block w-100 slider-img"
-              alt="Slide 3"
-            />
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="/image/HomeBanners/4.webp"
-              className="d-block w-100 slider-img"
-              alt="Slide 4"
-            />
-          </div>
-        </div>
-
-        {/* Controls */}
-        <button className="carousel-control-prev" data-bs-target="#imageSlider" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-
-        <button className="carousel-control-next" data-bs-target="#imageSlider" data-bs-slide="next">
-          <span className="carousel-control-next-icon"></span>
-        </button>
+      {/*===============SLIDER (DYNAMIC)====================*/}
+{banners.length > 0 && (
+  <div className="container-fluid my-5">
+    <div
+      id="imageSlider"
+      className="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="3000"
+    >
+      {/* Indicators */}
+      <div className="carousel-indicators">
+        {banners.map((_, index) => (
+          <button
+            key={index}
+            data-bs-target="#imageSlider"
+            data-bs-slide-to={index}
+            className={index === 0 ? "active" : ""}
+          ></button>
+        ))}
       </div>
+
+      {/* Slides */}
+      <div className="carousel-inner rounded">
+        {banners.map((banner, index) => (
+          <div
+            key={banner._id}
+            className={`carousel-item ${index === 0 ? "active" : ""}`}
+          >
+            <img
+              src={`${API_BASE_URL}${banner.image}`}
+              className="d-block w-100 slider-img"
+              alt={`banner-${index}`}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Controls */}
+      {banners.length > 1 && (
+        <>
+          <button
+            className="carousel-control-prev"
+            data-bs-target="#imageSlider"
+            data-bs-slide="prev"
+          >
+            <span className="carousel-control-prev-icon"></span>
+          </button>
+
+          <button
+            className="carousel-control-next"
+            data-bs-target="#imageSlider"
+            data-bs-slide="next"
+          >
+            <span className="carousel-control-next-icon"></span>
+          </button>
+        </>
+      )}
     </div>
+  </div>
+)}
+
 
 
         {/**********HAIR**********/}
-        <div className='conatiner'>
-          <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
-            <div className=''>
-          <h1 className='LooksStory'>OUR STORY</h1>
-          <p className='LooksParagraph'>Looks Salon, one of India’s fastest-growing pan-India salon chains, has set new benchmarks in the hairstyling industry. Carrying this legacy forward, Looks Academy in Dehradun offers world-class, industry-led training with hands-on learning to prepare aspiring professionals for successful careers in the beauty industry.</p></div>
-          </div>
-          <div className="col-md-3"></div>
+        {loading ? null : story && (
+  <div className="conatiner">
+    <div className="row">
+      <div className="col-md-3"></div>
+      <div className="col-md-6">
+        <div>
+          <h1 className="LooksStory">{story.title}</h1>
+          <div
+            className="LooksParagraph"
+            dangerouslySetInnerHTML={{ __html: story.content }}
+          />
         </div>
-        </div>
+      </div>
+      <div className="col-md-3"></div>
+    </div>
+  </div>
+)}
+
         <div className='conatainer'>
            <div className="row g-0">
   {sections.map((section, index) => (

@@ -24,11 +24,7 @@ const AdminLayout = () => {
       {/* MOBILE HEADER */}
       <header className={styles.mobileHeader}>
         {/* 🔥 LOGO INSTEAD OF TEXT */}
-        <img
-          src={logo}
-          alt="Looks Salon"
-          className={styles.mobileLogo}
-        />
+        <img src={logo} alt="Looks Salon" className={styles.mobileLogo} />
 
         <button onClick={() => setOpen(!open)}>
           {open ? <FaTimes /> : <FaBars />}
@@ -46,21 +42,34 @@ const AdminLayout = () => {
             <NavLink
               to="/admin/dashboard"
               onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                isActive ? styles.active : ""
-              }
+              className={({ isActive }) => (isActive ? styles.active : "")}
             >
               <FaTachometerAlt /> Dashboard
             </NavLink>
           </li>
-
+          <li>
+            <NavLink
+              to="/admin/banner"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Home Banner
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/our_story"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Our Story
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to="/admin/blogs"
               onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                isActive ? styles.active : ""
-              }
+              className={({ isActive }) => (isActive ? styles.active : "")}
             >
               <FaBlog /> Blogs
             </NavLink>

@@ -72,7 +72,8 @@ const AllBlogs = () => {
         <h2>All Blogs</h2>
         <button
           className={styles.createBtn}
-          onClick={() => navigate("/admin/add-new")}
+          onClick={() => navigate("add-new")}
+
         >
           + Create Blog
         </button>
