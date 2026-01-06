@@ -16,6 +16,7 @@ function Home() {
   const [banners, setBanners] = useState([]);
   const [story, setStory] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [whyJoinUs, setWhyJoinUs] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -50,6 +51,24 @@ function Home() {
 
     fetchStory();
   }, [API_BASE_URL]);
+/* ================= WHY JOIN US ================= */
+useEffect(() => {
+  const fetchWhyJoinUs = async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/why-join-us`);
+      const result = await res.json();
+
+      if (res.ok && result.success && result.data.length > 0) {
+        // CMS allows only ONE record
+        setWhyJoinUs(result.data[0]);
+      }
+    } catch {
+      console.error("Failed to load Why Join Us");
+    }
+  };
+
+  fetchWhyJoinUs();
+}, [API_BASE_URL]);
 
   /* ================= VISIBILITY ================= */
   useEffect(() => {
@@ -278,34 +297,48 @@ function Home() {
 </div></div>        
      
      {/*========================ABOUTUS=======================================*/}      
-    <section className="Aboutsection">
-      <div className='container'>
-          <div className='AboutBackground'>
-             <div className='row'>
-            <div className='col-md-6'>
-            <div className='LooksAbout'>
-              <h1 className='AboutHead'>Why YOU SHOULD JOIN US</h1>
-              <p className='AboutPara'>Looks Academy is where passion meets professional excellence. Backed by the trusted legacy of Looks Salon—India’s leading pan-India salon chain—the academy offers industry-relevant training through expert mentors, modern techniques, and hands-on salon experience. Our carefully designed courses prepare students for the rapidly growing beauty and wellness industry, opening doors to careers in salons, bridal styling, freelancing, fashion, and entrepreneurship. At Looks Academy Dehradun, students gain practical skills, confidence, and a strong foundation for long-term success.
-Students benefit from structured learning modules, live demonstrations, and real-world client exposure that bridge the gap between training and professional practice. The academy focuses on building creativity, discipline, and professional ethics essential for career growth. With access to advanced tools, updated trends, and continuous guidance, students stay ahead in a competitive industry. Our certification adds credibility and recognition to their professional journey. At Looks Academy, education transforms into opportunity and lifelong success</p>{/* <p className='AboutPara'>Looks Academy nurtures aspiring beauty artists through expertly curated, hands-on training programs that blend creativity, industry knowledge, and real-world practice. 
-                Whether you step in to indulge in a transformative beauty experience or to shape a successful career in the beauty industry, Looks promises sophistication, confidence, and unmatched quality at every touchpoint.
-              </p> */}
+    {whyJoinUs && (
+  <section className="Aboutsection">
+    <div className="container">
+      <div className="AboutBackground">
+        <div className="row">
+
+          {/* LEFT CONTENT */}
+          <div className="col-md-6">
+            <div className="LooksAbout">
+              <h1 className="AboutHead">
+                {whyJoinUs.title}
+              </h1>
+
+              <p
+  className="AboutPara"
+  dangerouslySetInnerHTML={{ __html: whyJoinUs.content }}
+/>
+
+
               <div className="text-center mt-5">
-              <Link to="/AboutUs" className="nav-link"><button className="AboutButton">
-               View More
-               <ArrowRight size={20} />
-             </button></Link>
-           </div>
+                <Link to="/AboutUs" className="nav-link">
+                  <button className="AboutButton">
+                    View More <ArrowRight size={20} />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className='col-md-6'>
-           <div className='AboutImage'>
-            <img src="/image/B.png" alt="IMAGE"/>
-           </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="col-md-6">
+            <div className="AboutImage">
+              <img src="/image/B.png" alt="IMAGE" />
+            </div>
           </div>
-          </div>
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+)}
+
     {/* **********COURSES**************** */}
        <section className="courses-section">
          <div className="container-fluid">

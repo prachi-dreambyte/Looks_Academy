@@ -78,7 +78,7 @@ const AddOurStory = () => {
         toast.success(
           storyId ? "Our Story updated successfully" : "Our Story created successfully"
         );
-        navigate("/admin/our_story");
+        navigate("/admin/our-story");
       } else {
         toast.error(result.message || "Something went wrong");
       }

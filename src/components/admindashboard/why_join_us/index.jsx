@@ -3,50 +3,43 @@ import styles from "../../../style/blogs/AllBlogs.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from "react-super-responsive-table";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-const AllOurStory = () => {
+const WhyJoinUs = () => {
   const navigate = useNavigate();
-  const [stories, setStories] = useState([]);
+  const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  const API_URL = `${API_BASE_URL}/api/our-story`;
+  const API_URL = `${API_BASE_URL}/api/why-join-us`;
 
   /* =========================
-     FETCH ALL OUR STORIES
+     FETCH WHY JOIN US
   ========================= */
-  const fetchStories = async () => {
+  const fetchWhyJoinUs = async () => {
     try {
       const res = await fetch(API_URL);
       const result = await res.json();
 
       if (res.ok && result.success) {
-        setStories(result.data);
+        setRecords(result.data);
       } else {
-        toast.error("Failed to fetch Our Stories");
+        toast.error("Failed to fetch data");
       }
     } catch {
-      toast.error("Failed to fetch Our Stories");
+      toast.error("Server error");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchStories();
+    fetchWhyJoinUs();
   }, []);
 
   /* =========================
-     DELETE STORY
+     DELETE
   ========================= */
   const handleDelete = async (id) => {
   try {
@@ -60,26 +53,26 @@ const AllOurStory = () => {
       throw new Error();
     }
 
-    setStories((prev) => prev.filter((story) => story._id !== id));
-    toast.success("Our Story deleted successfully");
+    setRecords((prev) => prev.filter((item) => item._id !== id));
+    toast.success("Deleted successfully");
   } catch {
-    toast.error("Failed to delete Our Story");
+    toast.error("Delete failed");
   }
 };
 
 
-  if (loading) return <p>Loading stories...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className={styles.tableCard}>
       {/* Header */}
       <div className={styles.header}>
-        <h2>All Our Stories</h2>
+        <h2>Why Join Us</h2>
         <button
           className={styles.createBtn}
           onClick={() => navigate("add-new")}
         >
-          + Create Story or Update Story
+          + Create or Update
         </button>
       </div>
 
@@ -88,6 +81,7 @@ const AllOurStory = () => {
         <Thead>
           <Tr>
             <Th>Title</Th>
+            <Th>Content</Th>
             <Th>Author</Th>
             <Th>Date</Th>
             <Th>Status</Th>
@@ -96,28 +90,40 @@ const AllOurStory = () => {
         </Thead>
 
         <Tbody>
-          {stories.length === 0 ? (
+          {records.length === 0 ? (
             <Tr>
               <Td colSpan="5" style={{ textAlign: "center" }}>
-                No Our Story found
+                No data found
               </Td>
             </Tr>
           ) : (
-            stories.map((story) => (
-              <Tr key={story._id}>
-                <Td>{story.title}</Td>
-                <Td>Admin</Td>
+            records.map((item) => (
+              <Tr key={item._id}>
+                <Td>{item.title}</Td>
+
                 <Td>
-                  {new Date(story.createdAt).toLocaleDateString()}
+                  <div
+                    style={{
+                      maxWidth: "300px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
                 </Td>
+
+                <Td>Admin</Td>
+                <Td>{new Date(item.createdAt).toLocaleDateString()}</Td>
+
                 <Td>
                   <span className={styles.published}>Published</span>
                 </Td>
+
                 <Td className={styles.actions}>
-                 
                   <button
                     className={styles.deleteBtn}
-                    onClick={() => handleDelete(story._id)}
+                    onClick={() => handleDelete(item._id)}
                   >
                     Delete
                   </button>
@@ -131,4 +137,4 @@ const AllOurStory = () => {
   );
 };
 
-export default AllOurStory;
+export default WhyJoinUs;
