@@ -76,6 +76,15 @@ const AdminLayout = () => {
           </li>
           <li>
             <NavLink
+              to="/admin/connect-with-us"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Connect With Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/admin/blogs"
               onClick={() => setOpen(false)}
               className={({ isActive }) => (isActive ? styles.active : "")}

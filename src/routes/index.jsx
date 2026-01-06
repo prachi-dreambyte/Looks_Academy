@@ -21,6 +21,8 @@ import AllOurStory from "../components/admindashboard/Our_story/index.jsx";
 import AddOurStory from "../components/admindashboard/Our_story/add-new/index.jsx";
 import WhyJoinUs from "../components/admindashboard/why_join_us/index.jsx";
 import AddWhyJoinUs from "../components/admindashboard/why_join_us/add-new/index.jsx";
+import AllGallery from "../components/admindashboard/connect_with_us/index.jsx";
+import AddGallery from "../components/admindashboard/connect_with_us/add-new/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -47,38 +49,41 @@ export const routes = [
 
   /* ---------------- ADMIN ROUTES ---------------- */
   {
-  path: "/admin",
-  element: <ProtectedRoute />,
-  children: [
-    {
-      element: <AdminLayout />,
-      children: [
-        { index: true, element: <AdminDashboard /> },
-        { path: "dashboard", element: <AdminDashboard /> },
+    path: "/admin",
+    element: <ProtectedRoute />,
+    children: [
+      {
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <AdminDashboard /> },
+          { path: "dashboard", element: <AdminDashboard /> },
 
-        // BLOG ROUTES
-        { path: "blogs", element: <AllBlogs /> },
-        { path: "blogs/add-new", element: <CreateBlog /> },
-        { path: "blogs/edit/:id", element: <EditBlog /> },
+          // BLOG ROUTES
+          { path: "blogs", element: <AllBlogs /> },
+          { path: "blogs/add-new", element: <CreateBlog /> },
+          { path: "blogs/edit/:id", element: <EditBlog /> },
 
-        // BANNER ROUTES
-        { path: "banner", element: <AllBanner /> },
-        { path: "banner/add-new", element: <AddBanner /> },
+          // BANNER ROUTES
+          { path: "banner", element: <AllBanner /> },
+          { path: "banner/add-new", element: <AddBanner /> },
 
-        /* OUR STORY ROUTES */
-        { path: "our-story", element: <AllOurStory /> },
-        { path: "our-story/add-new", element: <AddOurStory /> },
+          /* OUR STORY ROUTES */
+          { path: "our-story", element: <AllOurStory /> },
+          { path: "our-story/add-new", element: <AddOurStory /> },
 
-        /* WHY JOIN US ROUTES */
-        { path: "why-join-us", element: <WhyJoinUs /> },
-         {
-          path: "why-join-us/add-new",
-          element: <AddWhyJoinUs />, // ✅ CREATE FORM
-        },
+          /* WHY JOIN US ROUTES */
+          { path: "why-join-us", element: <WhyJoinUs /> },
+          {
+            path: "why-join-us/add-new",
+            element: <AddWhyJoinUs />, // ✅ CREATE FORM
+          },
 
-      ],
-    },
-  ],
-}
+          // Connect with us
 
+          { path: "connect-with-us", element: <AllGallery /> },
+          { path: "connect-with-us/add-new", element: <AddGallery /> },
+        ],
+      },
+    ],
+  },
 ];
