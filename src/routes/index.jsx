@@ -31,6 +31,8 @@ import GalleryBannerForm from "../components/admindashboard/gallery-banner/add-n
 import AllCourses from "../components/admindashboard/courses/index.jsx";
 import CreateCourse from "../components/admindashboard/courses/add-new/index.jsx";
 import EditCourse from "../components/admindashboard/courses/[id]/index.jsx";
+import CoursesGalleryBanner from "../components/admindashboard/courses-banner/index.jsx";
+import CoursesGalleryBannerForm from "../components/admindashboard/courses-banner/add-new/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -102,6 +104,8 @@ export const routes = [
           { path: "courses", element: <AllCourses /> },
           { path: "courses/add-new", element: <CreateCourse /> },
           { path: "courses/edit/:id", element: <EditCourse /> },
+          { path: "coursesbanner", element: <CoursesGalleryBanner /> },
+          { path: "coursesbanner/add-new", element: <CoursesGalleryBannerForm /> },
 
         ],
       },

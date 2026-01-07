@@ -101,6 +101,15 @@ const AdminLayout = () => {
               <FaBlog /> Gallery Banner
             </NavLink>
           </li>
+           <li>
+            <NavLink
+              to="/admin/coursesbanner"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Courses Banner
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to="/admin/courses"
@@ -110,6 +119,7 @@ const AdminLayout = () => {
               <FaBlog /> Courses
             </NavLink>
           </li>
+         
           <li>
             <NavLink
               to="/admin/blogs"

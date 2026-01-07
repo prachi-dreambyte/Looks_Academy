@@ -18,6 +18,8 @@ function Home() {
   const [whyJoinUs, setWhyJoinUs] = useState(null);
   const [connectData, setConnectData] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [courses, setCourses] = useState([]);
+
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -89,6 +91,18 @@ function Home() {
     fetchConnectGallery();
   }, [API_BASE_URL]);
 
+// get my all courses
+  useEffect(() => {
+  fetch(`${API_BASE_URL}/api/courses/get-all-courses`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        setCourses(data.data);
+      }
+    })
+    .catch(() => console.error("Failed to load courses"));
+}, [API_BASE_URL]);
+
   /* ================= VISIBILITY ================= */
   useEffect(() => {
     setIsVisible(true);
@@ -132,71 +146,10 @@ function Home() {
       imagePath: "/image/HAIR/4.webp", // Add your results image path
     },
   ];
-  const courses = [
-    {
-      id: 1,
-      title: "ARTH Courses",
-      description:
-        "Master the art of makeup application with hands-on training in bridal, editorial, and special effects makeup techniques.",
-      duration: "6 Months",
-      students: "150+",
-      level: "Professional",
-      image: "/image/Our Popular Courses/1.webp",
-      category: "Makeup",
-    },
-    {
-      id: 2,
-      title: "Makeup Courses",
-      description:
-        "Learn cutting-edge hair styling techniques including cuts, colors, treatments, and modern styling methods.",
-      duration: "2 Months",
-      students: "120+",
-      level: "Basic",
-      image: "/image/Our Popular Courses/2.webp",
-      category: "Makeup",
-    },
-    {
-      id: 3,
-      title: "Beauty Courses",
-      description:
-        "Comprehensive training in skincare treatments, facial therapies, and advanced aesthetic procedures.",
-      duration: "3 Months",
-      students: "100+",
-      level: "Comprehensive",
-      image: "/image/Our Popular Courses/3.webp",
-      category: "Skincare",
-    },
-    // {
-    //   id: 4,
-    //   title: "Nail Art & Technology",
-    //   description: "Expert training in nail care, nail art designs, gel extensions, and the latest nail technology trends.",
-    //   duration: "3 Months",
-    //   students: "90+",
-    //   level: "Beginner",
-    //   image: "/image/Our Popular Courses/4.webp",
-    //   category: "Nails"
-    // },
-    // {
-    //   id: 5,
-    //   title: "Bridal Makeup Specialist",
-    //   description: "Specialize in bridal makeup with traditional and contemporary techniques for Indian and international styles.",
-    //   duration: "3 Months",
-    //   students: "200+",
-    //   level: "Advanced",
-    //   image: "/image/Our Popular Courses/5.webp",
-    //   category: "Bridal"
-    // },
-    // {
-    //   id: 6,
-    //   title: "Salon Management & Entrepreneurship",
-    //   description: "Learn business skills to start and manage your own beauty salon, including marketing and client management.",
-    //   duration: "2 Months",
-    //   students: "80+",
-    //   level: "All Levels",
-    //   image: "/image/Our Popular Courses/6.webp",
-    //   category: "Business"
-    // }
-  ];
+  const formatPrice = (price) => {
+  return new Intl.NumberFormat("en-IN").format(price);
+};
+
   return (
     <>
       {/*===============SLIDER (DYNAMIC)====================*/}
@@ -371,51 +324,67 @@ function Home() {
           </div>
 
           {/* Courses Grid */}
-          <div className="row">
-            {courses.map((course) => (
-              <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
-                <div className="course-card">
-                  <div className="course-image-wrapper">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="course-image"
-                    />
-                    <div className="course-category">{course.category}</div>
-                  </div>
-
-                  <div className="course-content">
-                    <h3 className="course-title">{course.title}</h3>
-                    <p className="course-description">{course.description}</p>
-
-                    <div className="course-meta">
-                      <div className="meta-item">
-                        <Clock size={16} />
-                        <span>{course.duration}</span>
-                      </div>
-                      <div className="meta-item">
-                        <Users size={16} />
-                        <span>{course.students}</span>
-                      </div>
-                    </div>
-
-                    <div className="course-footer">
-                      <div className="course-level">
-                        <Award size={16} />
-                        <span>{course.level}</span>
-                      </div>
-                      <Link to="/EnrollNow" className="nav-link">
-                        <button className="enroll-btn">
-                          Enroll Now
-                          <ArrowRight size={16} />
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Courses Grid */}
+{/* Courses Grid */}
+<div className="row">
+  {courses.slice(0, 3).map((course) => (
+    <div key={course._id} className="col-lg-4 col-md-6 col-sm-12">
+      <div className="course-card">
+        <div className="course-image-wrapper">
+          <img
+            src={`${API_BASE_URL}/uploads/${course.image}`}
+            alt={course.title}
+            className="course-image"
+            onError={(e) =>
+              (e.target.src =
+                "https://via.placeholder.com/400x250?text=No+Image")
+            }
+          />
+          <div className="course-category">
+            {course.category || "Course"}
           </div>
+        </div>
+
+        <div className="course-content">
+          <h3 className="course-title">{course.title}</h3>
+
+          <p className="course-description">
+            {course.description?.replace(/<[^>]+>/g, "").slice(0, 140)}...
+          </p>
+
+          <div className="course-meta">
+            <div className="meta-item">
+              <Clock size={16} />
+              <span>{course.duration}</span>
+            </div>
+            <div className="meta-item">
+  <span style={{ fontWeight: 600 }}>
+  ₹{formatPrice(course.price)}
+</span>
+
+</div>
+
+          </div>
+
+          <div className="course-footer">
+            <div className="course-level">
+              <Award size={16} />
+              <span>{course.level}</span>
+            </div>
+            <Link to="/EnrollNow" className="nav-link">
+              <button className="enroll-btn">
+                Enroll Now
+                <ArrowRight size={16} />
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
 
           {/* Read More Button */}
           <div className="text-center mt-5">

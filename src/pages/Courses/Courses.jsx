@@ -10,6 +10,8 @@ const CoursesComponent = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isVisible, setIsVisible] = useState({});
+  const [banner, setBanner] = useState(null);
+
 
   /* ================= HELPERS ================= */
   const stripHtml = (html = "") => html.replace(/<[^>]+>/g, "");
@@ -53,7 +55,24 @@ const CoursesComponent = () => {
     return () => observer.disconnect();
   }, [courses]);
 
+useEffect(() => {
+  fetch(`${API_BASE_URL}/api/courses-gallery-banner/get`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success && data.data) {
+        setBanner(data.data);
+      }
+    })
+    .catch(() => console.error("Failed to load courses banner"));
+}, [API_BASE_URL]);
+
   const selectedCourseData = courses.find((c) => c._id === selectedCourse);
+
+
+  const formatPrice = (price) => {
+  return new Intl.NumberFormat("en-IN").format(price);
+};
+
 
   /* ================= MODAL STYLES (UNCHANGED) ================= */
   const modalOverlayStyle = {
@@ -111,9 +130,16 @@ const CoursesComponent = () => {
   return (
     <>
       {/* TOP BANNER */}
-      <section className="TopBanner">
-        <img src="/image/couses.webp" alt="image1" />
-      </section>
+      <section className="TopBanner mt-5">
+  {banner?.image && (
+    <img
+      src={`${API_BASE_URL}/${banner.image}`}
+      alt="Courses Banner"
+    />
+  )}
+</section>
+
+
 
       <div
         className="courses-container"
@@ -171,9 +197,12 @@ const CoursesComponent = () => {
 
                 <div className="details-row">
                   <div className="detail-item">
-                    <div className="detail-label">PRICE</div>
-                    <div className="detail-value">₹{course.price}</div>
-                  </div>
+  <div className="detail-label">PRICE</div>
+  <div className="detail-value">
+    ₹{formatPrice(course.price)}
+  </div>
+</div>
+
                   <div className="detail-item">
                     <div className="detail-label">DURATION</div>
                     <div className="detail-value">{course.duration}</div>
