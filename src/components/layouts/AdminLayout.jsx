@@ -171,6 +171,15 @@ const AdminLayout = () => {
               <FaBlog /> Blogs
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/admin/brands"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />Brands Logo
+            </NavLink>
+          </li>
         </ul>
 
         {/* LOGOUT */}

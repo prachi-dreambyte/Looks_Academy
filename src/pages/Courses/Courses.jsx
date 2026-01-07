@@ -282,9 +282,9 @@ useEffect(() => {
                   </div>
                   <div>
                     <div style={{ color: "#888", fontSize: "12px" }}>PRICE</div>
-                    <div style={{ fontSize: "20px" }}>
-                      ₹{selectedCourseData.price}
-                    </div>
+                     <div className="detail-value">
+    ₹{formatPrice(selectedCourseData.price)}
+  </div>
                   </div>
                   <div>
                     <div style={{ color: "#888", fontSize: "12px" }}>LEVEL</div>
