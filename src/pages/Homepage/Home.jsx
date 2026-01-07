@@ -1,15 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import "../../style/home.css";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Footer from "../../components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { motion } from "framer-motion";
-import { FaCamera, FaVideo, FaPhotoVideo } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Clock, Users, Award, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { BookOpen, Clock, Award, ArrowRight } from "lucide-react";
 
 function Home() {
   const [banners, setBanners] = useState([]);

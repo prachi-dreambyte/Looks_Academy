@@ -56,10 +56,6 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
-  background: #1a1a1a;
-}
-
 button:disabled {
   background: #aaa;
   cursor: not-allowed;
