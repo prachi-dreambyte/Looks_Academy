@@ -10,7 +10,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   background: #000;
   color: #fff;
 }
@@ -20,11 +21,16 @@ body {
   padding: 0;
 }
 
+/* ========================================
+   ANIMATIONS
+======================================== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -35,16 +41,20 @@ body {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.8;
@@ -56,6 +66,7 @@ body {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -67,6 +78,7 @@ body {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -74,11 +86,14 @@ body {
 }
 
 @keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, .3);
   }
+
   50% {
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 40px rgba(255, 215, 0, .6);
   }
 }
 
@@ -86,14 +101,8 @@ body {
    TOP BANNER
 ======================================== */
 
-.TopBanner {
-  width: 100%;
-  height: auto;
-}
-
 .TopBanner img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
@@ -105,22 +114,7 @@ body {
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   min-height: 100vh;
   padding: 80px 40px;
-  color: #fff;
   position: relative;
-  overflow: hidden;
-}
-
-.courses-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
-  pointer-events: none;
 }
 
 /* ========================================
@@ -130,8 +124,6 @@ body {
 .courses-header {
   text-align: center;
   margin-bottom: 80px;
-  position: relative;
-  z-index: 1;
 }
 
 .fade-in {
@@ -143,20 +135,16 @@ body {
   height: 4px;
   background: linear-gradient(90deg, transparent, #d4af37, transparent);
   margin: 0 auto 30px;
-  animation: slideInLeft 0.8s ease-out;
 }
 
 .courses-title {
   font-size: clamp(36px, 6vw, 72px);
-  font-weight: 300;
-  letter-spacing: clamp(4px, 1vw, 12px);
-  margin-bottom: 20px;
   font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: 10px;
   background: linear-gradient(135deg, #d4af37, black, #d4af37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .title-underline {
@@ -164,165 +152,106 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #d4af37, transparent);
   margin: 20px auto;
-  animation: slideInRight 0.8s ease-out 0.4s both;
 }
 
 .courses-subtitle {
-  font-size: clamp(12px, 2vw, 16px);
-  letter-spacing: clamp(2px, 0.5vw, 4px);
-  color:black;
-  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #000;
   font-family: 'Montserrat', sans-serif;
-  animation: fadeInUp 1s ease-out 0.6s both;
 }
 
 /* ========================================
-   GRID
+   GRID  🔥 FIXED
 ======================================== */
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 32px;
-  max-width: 1400px;
+  grid-template-columns: repeat(4, 1fr);
+  /* 👈 FORCE 4 CARDS */
+  gap: 36px;
+  max-width: 1760px;
+  /* prevents 5th card */
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
+
 /* ========================================
-   COURSE CARDS
+   COURSE CARD
 ======================================== */
 
 .course-card {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid rgba(255, 215, 0, 0.1);
-  position: relative;
+  border: 2px solid rgba(255, 215, 0, .1);
+  transition: all .5s ease;
   opacity: 0;
   transform: translateY(50px);
+
+  max-width: 474px;
+  /* 🔥 SIZE LOCK */
+  width: 100%;
+  margin: 0 auto;
 }
 
 .course-card.visible {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.course-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%); */
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-  z-index: 1;
+  animation: fadeInUp .8s forwards;
 }
 
 .course-card.hovered {
   transform: translateY(-16px) scale(1.02);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(255, 215, 0, 0.2),
-    inset 0 0 0 2px rgba(255, 215, 0, 0.3);
   border-color: #d4af37;
-}
-
-.course-card.hovered::before {
-  opacity: 1;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .5);
 }
 
 .course-card.selected {
   border-color: #d4af37;
-  animation: glow 2s ease-in-out infinite;
-}
-
-.card-shine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.course-card.hovered .card-shine {
-  animation: shimmer 1.5s ease-in-out;
+  animation: glow 2s infinite;
 }
 
 /* ========================================
-   IMAGE SECTION
+   IMAGE
 ======================================== */
 
 .image-container {
-  width: 100%;
   height: 280px;
   overflow: hidden;
-  position: relative;
 }
 
 .course-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform .7s ease;
 }
 
 .course-card.hovered .course-image {
-  transform: scale(1.15) rotate(2deg);
-}
-
-.imageOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: all 0.5s ease;
-}
-
-.course-card.hovered .image-overlay {
-  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)); */
+  transform: scale(1.15);
 }
 
 /* ========================================
-   CARD CONTENT
+   CONTENT
 ======================================== */
 
 .card-content {
   padding: 32px 28px;
-  background-color: #000 !important;
+  background: #000;
 }
 
 .course-name {
-  font-size: clamp(24px, 3vw, 32px);
-  font-weight: 400;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
+  font-size: 28px;
   font-family: 'Cormorant Garamond', serif;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.course-card.hovered .course-name {
-  color: #d4af37;
+  letter-spacing: 2px;
+  color: #ffff;
 }
 
 .course-trainer {
-  font-size: 13px;
+  font-size: 14px;
   color: #d4af37;
+  font-weight: 600;
   letter-spacing: 2px;
   margin-bottom: 16px;
-  font-weight: 400;
-  font-family: 'Montserrat', sans-serif;
-  opacity: 0.9;
 }
 
 .course-description {
@@ -330,48 +259,29 @@ body {
   color: #bbb;
   line-height: 1.8;
   margin-bottom: 24px;
-  font-family: 'Montserrat', sans-serif;
-  transition: color 0.3s ease;
-}
-
-.course-card.hovered .course-description {
-  color: #ddd;
 }
 
 /* ========================================
-   DETAILS ROW
+   DETAILS
 ======================================== */
 
 .details-row {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  margin-bottom: 24px;
   padding: 20px 0;
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-.detail-item {
-  text-align: center;
-  flex: 1;
+  border-top: 1px solid rgba(255, 215, 0, .2);
+  border-bottom: 1px solid rgba(255, 215, 0, .2);
 }
 
 .detail-label {
   font-size: 10px;
   color: #888;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
 }
 
 .detail-value {
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
   color: #d4af37;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 /* ========================================
@@ -388,16 +298,8 @@ body {
 .highlight-item {
   font-size: 12px;
   color: #aaa;
-  padding: 8px 0;
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease;
-}
-
-.course-card.hovered .highlight-item {
-  color: #ddd;
-  transform: translateX(5px);
 }
 
 .highlight-dot {
@@ -406,216 +308,43 @@ body {
   background: #d4af37;
   border-radius: 50%;
   margin-right: 10px;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.course-card.hovered .highlight-dot {
-  box-shadow: 0 0 10px #d4af37;
-  animation: pulse 2s ease-in-out infinite;
 }
 
 /* ========================================
-   ENQUIRE BUTTON
+   BUTTON
 ======================================== */
 
 .enquire-button {
   width: 100%;
   padding: 16px;
-  background: transparent;
-  color: #d4af37;
   border: 2px solid #d4af37;
   border-radius: 50px;
+  background: transparent;
+  color: #d4af37;
   font-size: 14px;
   letter-spacing: 2px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: 'Montserrat', sans-serif;
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-}
-
-.enquire-button span {
-  position: relative;
-  z-index: 2;
-}
-
-.button-shine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
 }
 
 .enquire-button:hover {
   background: #d4af37;
   color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-}
-
-.enquire-button:hover .button-shine {
-  left: 100%;
-}
-
-.enquire-button.selected {
-  background: #d4af37;
-  color: #000;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-}
-
-.enquire-button:active {
-  transform: translateY(0);
 }
 
 /* ========================================
-   RESPONSIVE DESIGN
+   MOBILE
 ======================================== */
 
-/* Large Desktop (1920px) */
-@media (min-width: 1600px) {
-  .courses-container {
-    padding: 70px 60px;
-  }
-  
-  .courses-header {
-    margin-bottom: 100px;
-  }
-  
-  .courses-grid {
-    gap: 40px;
-    max-width: 1700px;
-  }
-  
-  /* .image-container {
-    height: 320px;
-  } */
-}
-
-/* Tablet (768px - 1024px) */
-@media (max-width: 1024px) {
-  .courses-container {
-    padding: 60px 30px;
-  }
-  
-  .courses-header {
-    margin-bottom: 60px;
-  }
-  
-  .courses-grid {
-    gap: 24px;
-  }
-  
-  .image-container {
-    height: 240px;
-  }
-  
-  .card-content {
-    padding: 24px 20px;
-  }
-}
-
-/* Mobile (340px - 767px) */
 @media (max-width: 767px) {
-  .courses-container {
-    padding: 40px 20px;
-  }
-  
-  .courses-header {
-    margin-bottom: 40px;
-  }
-  
-  .header-decoration {
-    width: 40px;
-    height: 3px;
-    margin-bottom: 20px;
-  }
-  
-  .title-underline {
-    width: 80px;
-    margin: 12px auto;
-  }
-  
   .courses-grid {
-    gap: 20px;
     grid-template-columns: 1fr;
   }
-  
+
   .course-card {
-    border-radius: 16px;
+    max-width: 100%;
   }
-  
+
   .image-container {
     height: 200px;
-  }
-  
-  .card-content {
-    padding: 20px 16px;
-  }
-  
-  .course-name {
-    margin-bottom: 6px;
-  }
-  
-  .course-trainer {
-    font-size: 11px;
-    margin-bottom: 12px;
-  }
-  
-  .course-description {
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-  
-  .details-row {
-    flex-direction: column;
-    padding: 16px 0;
-    gap: 12px;
-  }
-  
-  .detail-item {
-    width: 100%;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-  }
-  
-  .detail-item:last-child {
-    border-bottom: none;
-  }
-  
-  .highlights {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .highlight-item {
-    font-size: 11px;
-    padding: 6px 0;
-  }
-  
-  .enquire-button {
-    padding: 14px;
-    font-size: 12px;
-  }
-}
-
-/* Extra Small Mobile (340px - 400px) */
-@media (max-width: 400px) {
-  .courses-container {
-    padding: 30px 16px;
-  }
-  
-  .image-container {
-    height: 180px;
-  }
-  
-  .card-content {
-    padding: 16px 12px;
   }
 }

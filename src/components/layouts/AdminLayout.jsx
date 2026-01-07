@@ -85,6 +85,33 @@ const AdminLayout = () => {
           </li>
           <li>
             <NavLink
+              to="/admin/gallery"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Gallery
+            </NavLink>
+          </li>
+           <li>
+            <NavLink
+              to="/admin/gallerybanner"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Gallery Banner
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/courses"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog /> Courses
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/admin/blogs"
               onClick={() => setOpen(false)}
               className={({ isActive }) => (isActive ? styles.active : "")}

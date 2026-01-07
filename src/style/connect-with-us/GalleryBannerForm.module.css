@@ -1,0 +1,135 @@
+/* Wrapper */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111827, #1f2933);
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title */
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 14px;
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 22px;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Preview */
+.previewBox {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.previewBox img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Upload Box */
+.uploadBox {
+  border: 2px dashed #9ca3af;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+
+.uploadBox:hover {
+  border-color: #111827;
+  background: #f3f4f6;
+}
+
+.uploadBox span {
+  font-size: 14px;
+  color: #374151;
+  display: block;
+  word-break: break-word;
+}
+
+/* Hide input */
+.uploadBox input {
+  display: none;
+}
+
+/* Button */
+.submitBtn {
+  background: linear-gradient(135deg, #111827, #000);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 22px;
+  }
+
+  .previewBox img {
+    height: 160px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

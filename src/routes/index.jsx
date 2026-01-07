@@ -23,6 +23,14 @@ import WhyJoinUs from "../components/admindashboard/why_join_us/index.jsx";
 import AddWhyJoinUs from "../components/admindashboard/why_join_us/add-new/index.jsx";
 import AllGallery from "../components/admindashboard/connect_with_us/index.jsx";
 import AddGallery from "../components/admindashboard/connect_with_us/add-new/index.jsx";
+import LooksAllGallery from "../components/admindashboard/gallery/index.jsx";
+import LooksAddGallery from "../components/admindashboard/gallery/add-new/index.jsx";
+import LooksEditGallery from "../components/admindashboard/gallery/[id]/index.jsx";
+import AllGalleryBanner from "../components/admindashboard/gallery-banner/index.jsx";
+import GalleryBannerForm from "../components/admindashboard/gallery-banner/add-new/index.jsx";
+import AllCourses from "../components/admindashboard/courses/index.jsx";
+import CreateCourse from "../components/admindashboard/courses/add-new/index.jsx";
+import EditCourse from "../components/admindashboard/courses/[id]/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -82,6 +90,19 @@ export const routes = [
 
           { path: "connect-with-us", element: <AllGallery /> },
           { path: "connect-with-us/add-new", element: <AddGallery /> },
+
+          //looks gallery 
+          { path: "gallery", element: <LooksAllGallery /> },
+          { path: "gallery/add-new", element: <LooksAddGallery /> },
+          { path: "gallery/edit/:id", element: <LooksEditGallery /> }, 
+          { path: "gallerybanner", element: <AllGalleryBanner /> },
+          { path: "gallerybanner/add-new", element: <GalleryBannerForm /> },
+
+          // Courses routes
+          { path: "courses", element: <AllCourses /> },
+          { path: "courses/add-new", element: <CreateCourse /> },
+          { path: "courses/edit/:id", element: <EditCourse /> },
+
         ],
       },
     ],
