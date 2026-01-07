@@ -3,36 +3,95 @@ import axios from "axios";
 import styles from "../../style/AdminDashboard.module.css";
 
 const AdminDashboard = () => {
-  const [stats, setStats] = useState({
-    blogs: 0,
-    customers: 0,
-    stylists: 0,
-    revenue: 0,
-  });
-
-  // ✅ CHANGE HERE (ENV BASE URL)
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+  const [stats, setStats] = useState({
+    blogs: 0,
+    homeBanners: 0,
+    courses: 0,
+    courseGalleryBanners: 0,
+    galleryBanners: 0,
+    gallery: 0,
+    looksGallery: 0,
+    ourStory: 0,
+    whyJoinUs: 0,
+  });
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    fetchStats();
+    fetchDashboardStats();
   }, []);
 
-  const fetchStats = async () => {
+  /* ✅ SAFE COUNT HANDLER (FIXED FOR ALL APIs) */
+  const safeCount = (res) => {
+    if (!res || !res.data) return 0;
+
+    // Case 1: { count: number, data: [] }
+    if (typeof res.data.count === "number") {
+      return res.data.count;
+    }
+
+    // Case 2: { data: [] }
+    if (Array.isArray(res.data.data)) {
+      return res.data.data.length;
+    }
+
+    // Case 3: direct array []
+    if (Array.isArray(res.data)) {
+      return res.data.length;
+    }
+
+    return 0;
+  };
+
+  const fetchDashboardStats = async () => {
     try {
-      const blogRes = await axios.get(
-        `${API_BASE_URL}/api/blogs/get-all-blogs`
-      );
+      setLoading(true);
+
+      const [
+        blogs,
+        homeBanners,
+        courses,
+        courseGalleryBanners,
+        galleryBanners,
+        gallery,
+        looksGallery,
+        ourStory,
+        whyJoinUs,
+      ] = await Promise.all([
+        axios.get(`${API_BASE_URL}/api/blogs/get-all-blogs`),
+        axios.get(`${API_BASE_URL}/api/banner/home`),
+        axios.get(`${API_BASE_URL}/api/courses/get-all-courses`),
+        axios.get(`${API_BASE_URL}/api/courses-gallery-banner/get`),
+        axios.get(`${API_BASE_URL}/api/gallery-banner/get`),
+        axios.get(`${API_BASE_URL}/api/gallery/get-all-gallery`),
+        axios.get(`${API_BASE_URL}/api/looksgallery/get-all`),
+        axios.get(`${API_BASE_URL}/api/our-story`),
+        axios.get(`${API_BASE_URL}/api/why-join-us`),
+      ]);
 
       setStats({
-        blogs: blogRes.data.count || blogRes.data.data.length,
-        customers: 356,   // future API
-        stylists: 12,     // future API
-        revenue: 245000,  // future API
+        blogs: safeCount(blogs),
+        homeBanners: safeCount(homeBanners),
+        courses: safeCount(courses),
+        courseGalleryBanners: safeCount(courseGalleryBanners),
+        galleryBanners: safeCount(galleryBanners),
+        gallery: safeCount(gallery),
+        looksGallery: safeCount(looksGallery),
+        ourStory: safeCount(ourStory),
+        whyJoinUs: safeCount(whyJoinUs),
       });
     } catch (error) {
-      console.error("Dashboard error:", error);
+      console.error("Dashboard API Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <h3 className={styles.loading}>Loading Dashboard...</h3>;
+  }
 
   return (
     <>
@@ -41,7 +100,7 @@ const AdminDashboard = () => {
         <div>
           <h1>Salon Admin Dashboard</h1>
           <span className={styles.subText}>
-            Manage blogs, customers & salon activity
+            Live Website Content Overview
           </span>
         </div>
 
@@ -50,46 +109,42 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* STATS CARDS */}
+      {/* DASHBOARD CARDS */}
       <div className={styles.cards}>
-        <div className={styles.card}>
-          <h3>Total Blogs</h3>
-          <p>{stats.blogs}</p>
-          <small>Published articles</small>
-        </div>
-
-        <div className={styles.card}>
-          <h3>Total Customers</h3>
-          <p>{stats.customers}</p>
-          <small>Registered clients</small>
-        </div>
-
-        <div className={styles.card}>
-          <h3>Stylists</h3>
-          <p>{stats.stylists}</p>
-          <small>Active professionals</small>
-        </div>
-
-        <div className={styles.card}>
-          <h3>Monthly Revenue</h3>
-          <p>₹{stats.revenue.toLocaleString()}</p>
-          <small>Current month</small>
-        </div>
+        <Card title="Home Banners" value={stats.homeBanners} />
+         <Card title="Our Story Sections" value={stats.ourStory} />
+        <Card title="Why Join Us" value={stats.whyJoinUs} />
+        <Card title="Gallery Images Banner" value={stats.gallery} />
+        <Card title="Looks Gallery" value={stats.looksGallery} />
+        <Card title="Courses" value={stats.courses} />
+         <Card title="Blogs" value={stats.blogs} />
+       
       </div>
 
-      {/* EXTRA SALON INFO */}
+      {/* EXTRA INFO */}
       <div className={styles.extraSection}>
         <div className={styles.infoCard}>
-          <h4>Salon Status</h4>
-          <p className={styles.active}>Open & Running</p>
+          <h4>System Status</h4>
+          <p className={styles.active}>All APIs Running</p>
         </div>
 
         <div className={styles.infoCard}>
           <h4>Admin Login</h4>
-          <p>Last login: {new Date().toLocaleTimeString()}</p>
+          <p>{new Date().toLocaleString()}</p>
         </div>
       </div>
     </>
+  );
+};
+
+/* 🔹 REUSABLE CARD COMPONENT */
+const Card = ({ title, value }) => {
+  return (
+    <div className={styles.card}>
+      <h3>{title}</h3>
+      <p>{value}</p>
+      <small>Total Records</small>
+    </div>
   );
 };
 

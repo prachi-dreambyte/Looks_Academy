@@ -63,9 +63,9 @@ const Footer = () => {
             /></Link>
             <ul className="list-unstyled footer-links mt-4">
               <li className="footerParagraph">
-                <a href="tel:+918279720490" className="d-flex align-items-center gap-2">
+                <a href="tel:+918006022277" className="d-flex align-items-center gap-2">
                   <Phone size={18} className="flex-shrink-0" />
-                  <span>+91 8279720490</span>
+                  <span>+91 8006022277</span>
                 </a>
               </li>
               <li className="footerParagraph">

@@ -10,7 +10,6 @@ const PublicLayout = () => {
       <Header />
       <Outlet />
       <Slider />
-      
       <Footer />
     </>
   );
