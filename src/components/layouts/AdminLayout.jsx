@@ -57,6 +57,53 @@ const AdminLayout = () => {
               <FaTachometerAlt /> Dashboard
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/admin/aboutus"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />About Us
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/admin/faqs"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />FAQ
+            </NavLink>
+          </li>
+           <li>
+            <NavLink
+              to="/admin/our-values"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />Our Values
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/our-facilities"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />Our Facilities
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/about-banner"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
+              <FaBlog />About Us Banner
+            </NavLink>
+          </li>
+
 
           {/* HOME DROPDOWN */}
           <li className={styles.dropdown}>
