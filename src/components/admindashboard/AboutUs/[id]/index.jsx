@@ -25,93 +25,85 @@ const EditAboutUs = () => {
   const [visionTagInput, setVisionTagInput] = useState("");
 
   const [mainImagePreview, setMainImagePreview] = useState("");
-const [storyImage1Preview, setStoryImage1Preview] = useState("");
-const [storyImage2Preview, setStoryImage2Preview] = useState("");
-const [missionImagePreview, setMissionImagePreview] = useState("");
-const [visionImagePreview, setVisionImagePreview] = useState("");
-
+  const [storyImage1Preview, setStoryImage1Preview] = useState("");
+  const [storyImage2Preview, setStoryImage2Preview] = useState("");
+  const [missionImagePreview, setMissionImagePreview] = useState("");
+  const [visionImagePreview, setVisionImagePreview] = useState("");
 
   const [loading, setLoading] = useState(true);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    reset,
-  } = useForm();
+  const { register, handleSubmit, setValue, reset } = useForm();
 
   /* ================= FETCH DATA ================= */
-useEffect(() => {
-  const fetchAboutUs = async () => {
-    try {
-      const res = await axios.get(
-        `${API_BASE_URL}/api/AboutUs/getAboutUsById/${id}`
-      );
+  useEffect(() => {
+    const fetchAboutUs = async () => {
+      try {
+        const res = await axios.get(
+          `${API_BASE_URL}/api/AboutUs/getAboutUsById/${id}`
+        );
 
-      const data = res.data.data;
+        const data = res.data.data;
 
-      reset({
-        title: data.title,
-        shortPara: data.shortPara,
-        description: data.ourStory.description,
-        graduates: data.numbers.graduates,
-        trainers: data.numbers.trainers,
-        years: data.numbers.years,
-        rate: data.numbers.rate,
-        missiontitle: data.mission.title,
-        missiondescription: data.mission.description,
-        visiontitle: data.vision.title,
-        visiondescription: data.vision.description,
-      });
+        reset({
+          title: data.title,
+          shortPara: data.shortPara,
+          description: data.ourStory.description,
+          graduates: data.numbers.graduates,
+          trainers: data.numbers.trainers,
+          years: data.numbers.years,
+          rate: data.numbers.rate,
+          missiontitle: data.mission.title,
+          missiondescription: data.mission.description,
+          visiontitle: data.vision.title,
+          visiondescription: data.vision.description,
+        });
 
-      setShortParaEditor(data.shortPara);
-      setStoryEditor(data.ourStory.description);
-      setMissionEditor(data.mission.description);
-      setVisionEditor(data.vision.description);
+        setShortParaEditor(data.shortPara);
+        setStoryEditor(data.ourStory.description);
+        setMissionEditor(data.mission.description);
+        setVisionEditor(data.vision.description);
 
-      setMissionTags(data.mission.tags || []);
-      setVisionTags(data.vision.tags || []);
+        setMissionTags(data.mission.tags || []);
+        setVisionTags(data.vision.tags || []);
 
-      setMainImagePreview(
-        data.mainImage
-          ? `${API_BASE_URL}/${data.mainImage.replace(/\\/g, "/")}`
-          : ""
-      );
+        setMainImagePreview(
+          data.mainImage
+            ? `${API_BASE_URL}/${data.mainImage.replace(/\\/g, "/")}`
+            : ""
+        );
 
-      setStoryImage1Preview(
-        data.ourStory?.images?.[0]
-          ? `${API_BASE_URL}/${data.ourStory.images[0].replace(/\\/g, "/")}`
-          : ""
-      );
+        setStoryImage1Preview(
+          data.ourStory?.images?.[0]
+            ? `${API_BASE_URL}/${data.ourStory.images[0].replace(/\\/g, "/")}`
+            : ""
+        );
 
-      setStoryImage2Preview(
-        data.ourStory?.images?.[1]
-          ? `${API_BASE_URL}/${data.ourStory.images[1].replace(/\\/g, "/")}`
-          : ""
-      );
+        setStoryImage2Preview(
+          data.ourStory?.images?.[1]
+            ? `${API_BASE_URL}/${data.ourStory.images[1].replace(/\\/g, "/")}`
+            : ""
+        );
 
-      setMissionImagePreview(
-        data.mission?.image
-          ? `${API_BASE_URL}/${data.mission.image.replace(/\\/g, "/")}`
-          : ""
-      );
+        setMissionImagePreview(
+          data.mission?.image
+            ? `${API_BASE_URL}/${data.mission.image.replace(/\\/g, "/")}`
+            : ""
+        );
 
-      setVisionImagePreview(
-        data.vision?.image
-          ? `${API_BASE_URL}/${data.vision.image.replace(/\\/g, "/")}`
-          : ""
-      );
+        setVisionImagePreview(
+          data.vision?.image
+            ? `${API_BASE_URL}/${data.vision.image.replace(/\\/g, "/")}`
+            : ""
+        );
+      } catch (error) {
+        toast.error("Failed to load About Us");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    } catch (error) {
-      toast.error("Failed to load About Us");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchAboutUs();
-}, [id, API_BASE_URL, reset]);
-
+    fetchAboutUs();
+  }, [id, API_BASE_URL, reset]);
 
   /* ================= TAG HANDLERS ================= */
   const handleTagKeyDown = (e, type) => {
@@ -177,8 +169,10 @@ useEffect(() => {
       if (data.mainImage?.[0]) formData.append("mainImage", data.mainImage[0]);
       if (data.storyImage1?.[0]) formData.append("image", data.storyImage1[0]);
       if (data.storyImage2?.[0]) formData.append("image", data.storyImage2[0]);
-      if (data.missionImage?.[0]) formData.append("missionImage", data.missionImage[0]);
-      if (data.visionImage?.[0]) formData.append("visionImage", data.visionImage[0]);
+      if (data.missionImage?.[0])
+        formData.append("missionImage", data.missionImage[0]);
+      if (data.visionImage?.[0])
+        formData.append("visionImage", data.visionImage[0]);
 
       await axios.put(
         `${API_BASE_URL}/api/AboutUs/updateAboutUs/${id}`,
@@ -221,25 +215,20 @@ useEffect(() => {
         </div>
 
         <div className={styles.field}>
-  <label>Main Image</label>
+          <label>Main Image</label>
 
-  {mainImagePreview && (
-    <img
-      src={mainImagePreview}
-      alt="Main"
-      className={styles.preview}
-    />
-  )}
+          {mainImagePreview && (
+            <img src={mainImagePreview} alt="Main" className={styles.preview} />
+          )}
 
-  <input
-    type="file"
-    {...register("mainImage")}
-    onChange={(e) =>
-      setMainImagePreview(URL.createObjectURL(e.target.files[0]))
-    }
-  />
-</div>
-
+          <input
+            type="file"
+            {...register("mainImage")}
+            onChange={(e) =>
+              setMainImagePreview(URL.createObjectURL(e.target.files[0]))
+            }
+          />
+        </div>
 
         <div className={styles.field}>
           <label>Our Story Description</label>
@@ -255,49 +244,41 @@ useEffect(() => {
           <input type="hidden" {...register("description")} />
         </div>
 
-       <div className={styles.field}>
-  <label>Our Story Image 1</label>
+        <div className={styles.field}>
+          <label>Our Story Image 1</label>
 
-  {storyImage1Preview && (
-    <img src={storyImage1Preview} className={styles.preview} />
-  )}
+          {storyImage1Preview && (
+            <img src={storyImage1Preview} className={styles.preview} />
+          )}
 
-  <input
-  type="file"
-  {...register("storyImage1")}
-  onChange={(e) => {
-    if (e.target.files && e.target.files[0]) {
-      setStoryImage1Preview(
-        URL.createObjectURL(e.target.files[0])
-      );
-    }
-  }}
-/>
-
-</div>
-
+          <input
+            type="file"
+            {...register("storyImage1")}
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                setStoryImage1Preview(URL.createObjectURL(e.target.files[0]));
+              }
+            }}
+          />
+        </div>
 
         <div className={styles.field}>
-  <label>Our Story Image 2</label>
+          <label>Our Story Image 2</label>
 
-  {storyImage2Preview && (
-    <img src={storyImage2Preview} className={styles.preview} />
-  )}
+          {storyImage2Preview && (
+            <img src={storyImage2Preview} className={styles.preview} />
+          )}
 
-  <input
-  type="file"
-  {...register("storyImage2")}
-  onChange={(e) => {
-    if (e.target.files && e.target.files[0]) {
-      setStoryImage2Preview(
-        URL.createObjectURL(e.target.files[0])
-      );
-    }
-  }}
-/>
-
-</div>
-
+          <input
+            type="file"
+            {...register("storyImage2")}
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                setStoryImage2Preview(URL.createObjectURL(e.target.files[0]));
+              }
+            }}
+          />
+        </div>
 
         <div className={styles.field}>
           <label>Graduates</label>
@@ -348,21 +329,20 @@ useEffect(() => {
           </div>
 
           <div className={styles.field}>
-  <label>Mission Image</label>
+            <label>Mission Image</label>
 
-  {missionImagePreview && (
-    <img src={missionImagePreview} className={styles.preview} />
-  )}
+            {missionImagePreview && (
+              <img src={missionImagePreview} className={styles.preview} />
+            )}
 
-  <input
-    type="file"
-    {...register("missionImage")}
-    onChange={(e) =>
-      setMissionImagePreview(URL.createObjectURL(e.target.files[0]))
-    }
-  />
-</div>
-
+            <input
+              type="file"
+              {...register("missionImage")}
+              onChange={(e) =>
+                setMissionImagePreview(URL.createObjectURL(e.target.files[0]))
+              }
+            />
+          </div>
         </div>
 
         <div className={styles.field}>
@@ -400,21 +380,20 @@ useEffect(() => {
           </div>
 
           <div className={styles.field}>
-  <label>Vision Image</label>
+            <label>Vision Image</label>
 
-  {visionImagePreview && (
-    <img src={visionImagePreview} className={styles.preview} />
-  )}
+            {visionImagePreview && (
+              <img src={visionImagePreview} className={styles.preview} />
+            )}
 
-  <input
-    type="file"
-    {...register("visionImage")}
-    onChange={(e) =>
-      setVisionImagePreview(URL.createObjectURL(e.target.files[0]))
-    }
-  />
-</div>
-
+            <input
+              type="file"
+              {...register("visionImage")}
+              onChange={(e) =>
+                setVisionImagePreview(URL.createObjectURL(e.target.files[0]))
+              }
+            />
+          </div>
         </div>
 
         <button className={styles.btn}>Update About Us</button>
