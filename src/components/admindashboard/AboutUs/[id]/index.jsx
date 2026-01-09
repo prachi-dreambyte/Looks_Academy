@@ -5,7 +5,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import styles from "../../../../style/aboutus/CreateaboutUs.module.css";
+import styles from "../../../../assets/styles/aboutus/CreateaboutUs.module.css";
 
 const EditAboutUs = () => {
   const navigate = useNavigate();

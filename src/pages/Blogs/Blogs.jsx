@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../../style/SalonBlog.module.css";
+import styles from "../../assets/styles/SalonBlog.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SalonBlog = () => {
+  const [blogBanner, setBlogBanner] = useState(null);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +15,26 @@ const SalonBlog = () => {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const API_URL = `${API_BASE_URL}/api/blogs/get-all-blogs`;
   const IMAGE_URL = `${API_BASE_URL}/uploads/`;
+
+  const BLOG_BANNER_API = `${API_BASE_URL}/api/blog-banner/get`;
+
+  useEffect(() => {
+  fetchBlogs();
+  fetchBlogBanner();
+}, []);
+
+const fetchBlogBanner = async () => {
+  try {
+    const res = await axios.get(BLOG_BANNER_API);
+    if (res.data.success) {
+      setBlogBanner(res.data.data);
+    }
+  } catch (error) {
+    console.error("Error fetching blog banner", error);
+  }
+};
+
+
 
   useEffect(() => {
     fetchBlogs();
@@ -34,8 +55,15 @@ const SalonBlog = () => {
     <>
       {/* HERO */}
       <section className="TopBanner">
-        <img src="/image/blog.webp" alt="Blogs Banner" />
-      </section>
+  {blogBanner?.image ? (
+    <img
+      src={`${API_BASE_URL}/${blogBanner.image}`}
+      alt="Blogs Banner"
+    />
+  ) : (
+    <div style={{ height: "300px", background: "#eee" }} />
+  )}
+</section>
 
       <section className={styles.heroSection}>
         <div className="container">

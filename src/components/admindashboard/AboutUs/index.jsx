@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import styles from "../../../style/blogs/AllBlogs.module.css";
+import styles from "../../../assets/styles/blogs/AllBlogs.module.css";
 
 import {
   Table,

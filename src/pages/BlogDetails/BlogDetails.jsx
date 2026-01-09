@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import styles from "../../style/BlogDetails.module.css";
+import styles from "../../assets/styles/BlogDetails.module.css";
 
 const BlogDetail = () => {
   const { id } = useParams();

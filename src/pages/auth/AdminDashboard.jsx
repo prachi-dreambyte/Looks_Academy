@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "../../style/AdminDashboard.module.css";
+import styles from "../../assets/styles/AdminDashboard.module.css";
 
 const AdminDashboard = () => {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;

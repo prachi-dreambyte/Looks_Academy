@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../style/CreateAccount.module.css";
+import styles from "../../assets/styles/CreateAccount.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 

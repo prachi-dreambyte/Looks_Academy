@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "../../style/Login.module.css";
+import styles from "../../assets/styles/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
+import axiosInstance from "../../services/axiosInstance";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,18 +10,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
-
   const [loading, setLoading] = useState(false);
-
-  // ✅ CHANGE HERE (ENV BASE URL)
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -30,30 +26,19 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        `${API_BASE_URL}/api/auth/login`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }
+      const res = await axiosInstance.post(
+        "/api/auth/login",
+        formData
       );
 
       // ✅ Save token & user
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      // 🎉 Success toast
       toast.success("Login successfully!");
 
-      // ✅ Redirect
-      setTimeout(() => {
-        navigate("/admin");
-      }, 1500);
-
+      navigate("/admin", { replace: true });
     } catch (err) {
-      // ❌ Error toast
       toast.error(
         err.response?.data?.message || "Login failed"
       );
@@ -64,8 +49,6 @@ const Login = () => {
 
   return (
     <div className={styles.loginContainer}>
-
-      {/* Left */}
       <div className={styles.loginLeft}>
         <div className={styles.overlay}>
           <h1>Looks Salon</h1>
@@ -73,7 +56,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right */}
       <div className={styles.loginRight}>
         <div className={styles.loginBox}>
           <h2>Welcome Back</h2>
@@ -108,17 +90,13 @@ const Login = () => {
               </span>
             </div>
 
-            <div className={styles.forgot}>
-              <a href="#">Forgot Password?</a>
-            </div>
-
             <button type="submit" disabled={loading}>
               {loading ? "Logging in..." : "Login"}
             </button>
 
             <span className={styles.signup}>
               Don’t have an account?{" "}
-              <Link to="/CreateAccount">Sign Up</Link>
+              <Link to="/createaccount">Sign Up</Link>
             </span>
           </form>
         </div>

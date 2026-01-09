@@ -12,23 +12,26 @@ import {
   FaHome,
   FaBook,
 } from "react-icons/fa";
-import styles from "../../style/AdminDashboard.module.css";
-import logo from "/public/image/looks.jpeg";
+import styles from "../../assets/styles/AdminDashboard.module.css";
+import logo from "../../assets/images/looks.jpeg";
 
 const AdminLayout = () => {
   const [open, setOpen] = useState(false);
 
   // dropdown states
   const [homeOpen, setHomeOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [courseOpen, setCourseOpen] = useState(false);
+  const [blogOpen, setBlogOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    navigate("/login", { replace: true });
-  };
+  localStorage.removeItem("token");
+  localStorage.removeItem("user"); // 🔐 recommended
+  navigate("/login", { replace: true });
+};
 
   return (
     <div className={styles.dashboard}>
@@ -57,53 +60,6 @@ const AdminLayout = () => {
               <FaTachometerAlt /> Dashboard
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/admin/aboutus"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaBlog />About Us
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/admin/faqs"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaBlog />FAQ
-            </NavLink>
-          </li>
-           <li>
-            <NavLink
-              to="/admin/our-values"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaBlog />Our Values
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admin/our-facilities"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaBlog />Our Facilities
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admin/about-banner"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              <FaBlog />About Us Banner
-            </NavLink>
-          </li>
-
 
           {/* HOME DROPDOWN */}
           <li className={styles.dropdown}>
@@ -130,7 +86,10 @@ const AdminLayout = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/admin/why-join-us" onClick={() => setOpen(false)}>
+                  <NavLink
+                    to="/admin/why-join-us"
+                    onClick={() => setOpen(false)}
+                  >
                     Why Join Us
                   </NavLink>
                 </li>
@@ -142,9 +101,65 @@ const AdminLayout = () => {
                     Connect With Us
                   </NavLink>
                 </li>
+
+                
               </ul>
             )}
           </li>
+
+          {/* ABOUT US DROPDOWN */}
+          <li className={styles.dropdown}>
+            <div
+              className={styles.dropdownHeader}
+              onClick={() => setAboutOpen(!aboutOpen)}
+            >
+              <span>
+                <FaBlog /> About Us
+              </span>
+              {aboutOpen ? <FaChevronUp /> : <FaChevronDown />}
+            </div>
+
+            {aboutOpen && (
+              <ul className={styles.subMenu}>
+                <li>
+                  <NavLink
+                    to="/admin/aboutus"
+                    onClick={() => setOpen(false)}
+                  >
+                    About us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/faqs" onClick={() => setOpen(false)}>
+                    FAQ
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/our-values" onClick={() => setOpen(false)}>
+                    Our Values
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/admin/our-facilities"
+                    onClick={() => setOpen(false)}
+                  >
+                    Our Facilities
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/admin/about-banner"
+                    onClick={() => setOpen(false)}
+                  >
+                    About Us Banner
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          
 
           {/* GALLERY DROPDOWN */}
           <li className={styles.dropdown}>
@@ -208,23 +223,45 @@ const AdminLayout = () => {
             )}
           </li>
 
-          {/* BLOGS */}
-          <li>
-            <NavLink
-              to="/admin/blogs"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? styles.active : "")}
+          {/* BLOGS DROPDOWN */}
+          <li className={styles.dropdown}>
+            <div
+              className={styles.dropdownHeader}
+              onClick={() => setBlogOpen(!blogOpen)}
             >
-              <FaBlog /> Blogs
-            </NavLink>
+              <span>
+                <FaBlog /> Blogs
+              </span>
+              {blogOpen ? <FaChevronUp /> : <FaChevronDown />}
+            </div>
+
+            {blogOpen && (
+              <ul className={styles.subMenu}>
+                <li>
+                  <NavLink
+                    to="/admin/blogs-banner"
+                    onClick={() => setOpen(false)}
+                  >
+                    Blogs Banner
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/blogs" onClick={() => setOpen(false)}>
+                    Blogs
+                  </NavLink>
+                </li>
+              </ul>
+            )}
           </li>
+
+          {/* BRANDS */}
           <li>
             <NavLink
               to="/admin/brands"
               onClick={() => setOpen(false)}
               className={({ isActive }) => (isActive ? styles.active : "")}
             >
-              <FaBlog />Brands Logo
+              <FaBlog /> Brands Logo
             </NavLink>
           </li>
         </ul>

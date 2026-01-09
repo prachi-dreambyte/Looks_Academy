@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import logo from "/public/image/looks.jpeg";
+import logo from "../assets/images/looks.jpeg";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);

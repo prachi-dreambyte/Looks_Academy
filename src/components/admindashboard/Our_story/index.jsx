@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../style/blogs/AllBlogs.module.css";
+import styles from "../../../assets/styles/blogs/AllBlogs.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 

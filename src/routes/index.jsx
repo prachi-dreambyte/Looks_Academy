@@ -2,7 +2,7 @@ import { lazy } from "react";
 import PublicLayout from "../components/layouts/PublicLayout.jsx";
 import AdminLayout from "../components/layouts/AdminLayout.jsx";
 import ProtectedRoute from "../components/ProtectedRoute.jsx";
-
+import PublicAuthRoute from "../components/PublicAuthRoute.jsx"
 import Login from "../pages/auth/Login.jsx";
 import CreateAccount from "../pages/auth/CreateAccount.jsx";
 import AdminDashboard from "../pages/auth/AdminDashboard.jsx";
@@ -49,6 +49,8 @@ import CreateOurFacilities from "../components/admindashboard/Our Facilities/add
 import EditOurFacilities from "../components/admindashboard/Our Facilities/[id]/index.jsx";
 import AllAboutBanner from "../components/admindashboard/about-use-banner/index.jsx";
 import AboutBannerForm from "../components/admindashboard/about-use-banner/add-new/index.jsx";
+import AllBlogBanner from "../components/admindashboard/blog-banner/index.jsx";
+import BlogBannerForm from "../components/admindashboard/blog-banner/add-new/index.jsx";
 
 const Home = lazy(() => import("../pages/Homepage/Home.jsx"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs.jsx"));
@@ -60,16 +62,30 @@ export const routes = [
     element: <PublicLayout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "Blogs", element: <SalonBlog /> },
-      { path: "blogs/:id", element: <BlogDetail /> }, // ✅ FIXED
-      { path: "login", element: <Login /> },
-      { path: "createaccount", element: <CreateAccount /> },
-      { path: "BlogsDetail", element: <BlogDetail /> },
-      { path: "AboutUs", element: <AboutUs /> },
-      { path: "ContactUs", element: <ContactUs /> },
-      { path: "Gallery", element: <Gallery /> },
-      { path: "Courses", element: <Courses /> },
-      { path: "EnrollNow", element: <EnrollNow /> },
+      { path: "blogs", element: <SalonBlog /> },
+      { path: "blogs/:id", element: <BlogDetail /> },
+      { path: "aboutus", element: <AboutUs /> },
+      { path: "contactus", element: <ContactUs /> },
+      { path: "gallery", element: <Gallery /> },
+      { path: "courses", element: <Courses /> },
+      { path: "enrollnow", element: <EnrollNow /> },
+
+      {
+        path: "login",
+        element: (
+          <PublicAuthRoute>
+            <Login />
+          </PublicAuthRoute>
+        ),
+      },
+      {
+        path: "createaccount",
+        element: (
+          <PublicAuthRoute>
+            <CreateAccount />
+          </PublicAuthRoute>
+        ),
+      },
     ],
   },
 
@@ -97,6 +113,10 @@ export const routes = [
           { path: "blogs", element: <AllBlogs /> },
           { path: "blogs/add-new", element: <CreateBlog /> },
           { path: "blogs/edit/:id", element: <EditBlog /> },
+
+          // blog banner 
+          { path: "blogs-banner", element: <AllBlogBanner /> },
+          { path: "blogs-banner/add-new", element: <BlogBannerForm /> },
 
           // BANNER ROUTES
           { path: "banner", element: <AllBanner /> },

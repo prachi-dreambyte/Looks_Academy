@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../style/connect-with-us/AllGallery.module.css";
+import styles from "../../../assets/styles/connect-with-us/AllGallery.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ReactPaginate from "react-paginate";

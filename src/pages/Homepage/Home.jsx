@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../../style/home.css";
+import "../../assets/styles/home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import image from "../../assets/images/B.png"
 import { BookOpen, Clock, Award, ArrowRight } from "lucide-react";
 
 function Home() {
@@ -111,7 +112,7 @@ function Home() {
       bgColor: "#1a1a1a",
       textColor: "#ffffff",
       hasImage: true,
-      imagePath: "/image/HAIR/1.webp", // Add your hair image path
+      imagePath: "/src/assets/images/HAIR/1.webp", // Add your hair image path
     },
     {
       letter: "A",
@@ -120,7 +121,7 @@ function Home() {
       bgColor: "#ffffff",
       textColor: "#000000",
       hasImage: true,
-      imagePath: "/image/HAIR/2.webp", // Add your academy image path
+      imagePath: "/src/assets/images/HAIR/2.webp", // Add your academy image path
     },
     {
       letter: "I",
@@ -129,7 +130,7 @@ function Home() {
       bgColor: "#000000",
       textColor: "#FFF",
       hasImage: true,
-      imagePath: "/image/HAIR/3.webp", // Add your innovation image path
+      imagePath: "/src/assets/images/HAIR/3.webp", // Add your innovation image path
     },
     {
       letter: "R",
@@ -138,7 +139,7 @@ function Home() {
       bgColor: "#FFF",
       textColor: "#000000",
       hasImage: true,
-      imagePath: "/image/HAIR/4.webp", // Add your results image path
+      imagePath: "/src/assets/images/HAIR/4.webp", // Add your results image path
     },
   ];
   const formatPrice = (price) => {
@@ -297,7 +298,7 @@ function Home() {
                 {/* RIGHT IMAGE */}
                 <div className="col-md-6">
                   <div className="AboutImage">
-                    <img src="/image/B.png" alt="IMAGE" />
+                    <img src={image} alt="IMAGE" />
                   </div>
                 </div>
               </div>

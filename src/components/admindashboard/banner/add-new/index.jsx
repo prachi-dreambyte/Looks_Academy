@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../../../style/homebanner/AddBanner.module.css";
+import styles from "../../../../assets/styles/homebanner/AddBanner.module.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 

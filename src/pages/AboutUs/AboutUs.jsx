@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../style/AboutSection.css";
+import "../../assets/styles/AboutSection.css";
 import { Link, useLocation } from "react-router-dom";
 
 const AboutSection = () => {

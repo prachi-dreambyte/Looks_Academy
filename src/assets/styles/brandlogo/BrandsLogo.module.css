@@ -1,0 +1,157 @@
+/* Card Wrapper */
+.tableCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Add Brand Button */
+.createBtn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.createBtn:hover {
+  background: #084298;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table td {
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+/* Brand Logo Image */
+.galleryImg {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+/* Delete Button */
+.deleteBtn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.deleteBtn:hover {
+  background: #b02a37;
+}
+
+/* Empty State */
+.empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #999;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  font-size: 16px;
+  padding: 30px;
+  color: #555;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.pageItem {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.pageItem:hover {
+  background: #f1f1f1;
+}
+
+.activePage {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .galleryImg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .createBtn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

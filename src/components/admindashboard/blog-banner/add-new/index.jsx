@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styles from "../../../../assets/styles/connect-with-us/GalleryBannerForm.module.css";
+import styles from "../../../../assets/styles/blogs/BlogBannerForm.module.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const GalleryBannerForm = () => {
+const BlogBannerForm = () => {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const GalleryBannerForm = () => {
       setLoading(true);
 
       const res = await fetch(
-        `${API_BASE_URL}/api/gallery-banner/create`,
+        `${API_BASE_URL}/api/blog-banner/create`,
         {
           method: "POST",
           body: formData,
@@ -39,13 +39,11 @@ const GalleryBannerForm = () => {
         throw new Error(result.message);
       }
 
-      toast.success("Gallery banner created successfully");
+      toast.success("Blog banner created successfully");
 
-      // Redirect after success
-      navigate("/admin/gallerybanner");
-
-    } catch (error) {
-      toast.error("Failed to create banner");
+      navigate("/admin/blogs-banner");
+    } catch {
+      toast.error("Failed to create blog banner");
     } finally {
       setLoading(false);
     }
@@ -54,15 +52,15 @@ const GalleryBannerForm = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        <h2 className={styles.title}>Create Gallery Banner</h2>
+        <h2 className={styles.title}>Create Blog Banner</h2>
         <p className={styles.subtitle}>
-          Upload a banner image for the gallery section
+          Upload a banner image for the blog section
         </p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {preview && (
             <div className={styles.previewBox}>
-              <img src={preview} alt="Banner Preview" />
+              <img src={preview} alt="Blog Banner Preview" />
             </div>
           )}
 
@@ -94,4 +92,4 @@ const GalleryBannerForm = () => {
   );
 };
 
-export default GalleryBannerForm;
+export default BlogBannerForm;

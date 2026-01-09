@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import styles from "../../../../style/blogs/CreateBlog.module.css";
+import styles from "../../../../assets/styles/blogs/CreateBlog.module.css";
 
 const EditBlog = () => {
   const navigate = useNavigate();

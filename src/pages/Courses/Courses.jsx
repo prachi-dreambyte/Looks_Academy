@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/course.css";
+import "../../assets/styles/course.css";
 import { Link } from "react-router-dom";
 import { color } from "framer-motion";
 

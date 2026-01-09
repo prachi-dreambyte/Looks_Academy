@@ -1,11 +1,11 @@
 import React from "react";
-import "../style/loader.css";
-import logo from "/image/looks.jpeg"; // adjust path if needed
+import styles from "../assets/styles/Loader.module.css";
+import logo from "../assets/images/looks.jpeg"; // adjust path if needed
 
 const Loader = () => {
   return (
-    <div className="loader-container">
-      <img src={logo} alt="Logo" className="loader-logo" />
+    <div className={styles.loaderContainer}>
+      <img src={logo} alt="Logo" className={styles.loaderLogo} />
     </div>
   );
 };

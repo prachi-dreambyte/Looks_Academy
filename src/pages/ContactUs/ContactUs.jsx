@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import '../../style/contactUs.css';
+import '../../assets/styles/contactUs.css';
 import { Link, useLocation } from 'react-router-dom';
 function ContactUs() {
    const {

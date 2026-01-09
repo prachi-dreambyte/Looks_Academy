@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../../style/Our_Story/AddOurStory.module.css";
+import styles from "../../../../assets/styles/Our_Story/AddOurStory.module.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
